@@ -1,6 +1,6 @@
 // --- DỮ LIỆU MẪU ---
 const defaultPosts = [
-   /* {
+    {
       id: 1,
       title: "Bài viết đầu tiên",
       date: "14/10/2025",
@@ -11,8 +11,14 @@ const defaultPosts = [
         <img src="images/maytinh1.jpg" alt="Ảnh đại diện">
         <p>Chào mừng bạn đến với blog cá nhân!</p>
       `
-    }*/
+    }
   ];
+  fetch('posts.json')
+  .then(res => res.json())
+  .then(posts => {
+    // render posts
+  });
+
   
   // --- Lấy danh sách bài viết ---
   function getPosts() {
