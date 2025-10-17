@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Viết bài mới</title>
+  <link rel="stylesheet" href="css/newpost.css">
+</head>
+<body>
+
+<header>
+  <h1>✍️ Viết bài mới</h1>
+  <nav>
+    <a href="index.html">Home</a>
+  </nav>
+</header>
+
+<main>
+  <form id="newPostForm">
+    <label for="title">Tiêu đề:</label>
+    <input type="text" id="title" required>
+
+    <label for="excerpt">Mô tả ngắn:</label>
+    <input type="text" id="excerpt">
+
+    <label for="content">Nội dung:</label>
+    <textarea id="content" rows="6" required></textarea>
+
+    <label for="imageSelect">Chọn ảnh:</label>
+    <select id="imageSelect">
+      <option value="">-- Chọn ảnh --</option>
+      <option value="images/maytinh1.jpg">maytinh1.jpg</option>
+      <option value="images/anh1.jpg">anh1.jpg</option>
+      <option value="images/maytinh2.jpg">maytinh2.jpg</option>
+      <option value="images/tansho1.jpg">tansho1.jpg</option>
+      <option value="images/tansho2.jpg">tansho2.jpg</option>
+      <option value="images/soba.jpg">soba.jpg</option>
+      <!-- Thêm ảnh khác ở đây -->
+    </select>
+
+    <button type="submit">Lưu bài viết</button>
+  </form>
+</main>
+
+<footer>
+  © <span id="year"></span> HOANG MINH PHUONG BLOG
+</footer>
+
+<script src="js/newpost.js"></script>
+</body>
+</html>

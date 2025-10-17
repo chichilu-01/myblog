@@ -1,0 +1,169 @@
+/* --------------------------------------
+   PHUONG BLOG - PREMIUM POST STYLE 2025
+   (Match Home Page Style)
+   -------------------------------------- */
+
+:root {
+  --accent: #0078d7;
+  --accent-dark: #005a9e;
+  --text: #222;
+  --background: linear-gradient(135deg, #f4f6f8 0%, #eef2f6 100%);
+  --card-bg: #ffffff;
+  --shadow: rgba(0, 0, 0, 0.08);
+}
+
+/* 🌙 Dark mode */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --accent: #58a6ff;
+    --accent-dark: #1f6feb;
+    --text: #e6e6e6;
+    --background: linear-gradient(135deg, #0d1117 0%, #161b22 100%);
+    --card-bg: #161b22;
+    --shadow: rgba(0, 0, 0, 0.5);
+  }
+}
+
+/* 🧱 Body */
+body {
+  font-family: "Segoe UI", "Roboto", "Helvetica Neue", sans-serif;
+  background: var(--background);
+  color: var(--text);
+  max-width: 900px;
+  margin: 60px auto;
+  padding: 0 20px;
+  line-height: 1.8;
+  transition: background 0.4s ease, color 0.4s ease;
+  background-attachment: fixed;
+}
+
+/* 🔙 Back link */
+.back {
+  display: inline-block;
+  margin-bottom: 28px;
+  font-weight: 600;
+  color: var(--accent);
+  background: linear-gradient(90deg, var(--accent) 0%, var(--accent-dark) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  transition: opacity 0.3s ease;
+}
+
+.back:hover {
+  opacity: 0.7;
+}
+
+/* 📰 Article card */
+article {
+  background: var(--card-bg);
+  border-radius: 20px;
+  padding: 48px;
+  box-shadow: 0 8px 28px var(--shadow);
+  animation: fadeIn 0.6s ease;
+  backdrop-filter: blur(8px);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+article:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 32px rgba(0, 0, 0, 0.1);
+}
+
+/* 🏷️ Title */
+article h1 {
+  font-size: 2.3rem;
+  color: var(--accent-dark);
+  margin-bottom: 12px;
+  border-bottom: 3px solid var(--accent);
+  display: inline-block;
+  padding-bottom: 6px;
+  background: linear-gradient(90deg, var(--accent), var(--accent-dark));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* 🧩 Subheading */
+article h2 {
+  margin-top: 28px;
+  font-size: 1.5rem;
+  color: var(--text);
+  position: relative;
+  padding-left: 14px;
+}
+
+article h2::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 6px;
+  width: 4px;
+  height: 80%;
+  background: var(--accent);
+  border-radius: 4px;
+}
+
+/* 🕒 Meta */
+.meta {
+  color: #777;
+  font-size: 0.9rem;
+  margin-bottom: 24px;
+  letter-spacing: 0.3px;
+}
+
+/* 🖼️ Image */
+img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 12px;
+  margin: 24px 0;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.12);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+img:hover {
+  transform: scale(1.03);
+  box-shadow: 0 10px 32px rgba(0, 0, 0, 0.18);
+}
+
+/* ✍️ Paragraph */
+p {
+  margin-bottom: 18px;
+  text-align: justify;
+  font-size: 1.08rem;
+  color: var(--text);
+}
+
+/* ✨ Footer */
+footer {
+  text-align: center;
+  color: #aaa;
+  margin-top: 56px;
+  font-size: 0.9rem;
+  padding-top: 24px;
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+/* 🌈 Fade-in */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* 📱 Responsive */
+@media (max-width: 768px) {
+  body {
+    margin: 24px auto;
+  }
+  article {
+    padding: 28px;
+  }
+  article h1 {
+    font-size: 1.8rem;
+  }
+  article h2 {
+    font-size: 1.25rem;
+  }
+  p {
+    font-size: 1rem;
+  }
+}

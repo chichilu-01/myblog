@@ -1,0 +1,134 @@
+/* ------------------------------
+   PHUONG BLOG - HOME PAGE PRO
+   Modern Luxury Layout (2025)
+   ------------------------------ */
+
+:root {
+  --primary: #00aaff;
+  --secondary: #0044ff;
+  --bg: #0f172a;
+  --card-bg: rgba(255, 255, 255, 0.05);
+  --text: #e2e8f0;
+  --muted: #94a3b8;
+  --accent: linear-gradient(135deg, var(--primary), var(--secondary));
+}
+
+body {
+  font-family: "Poppins", "Segoe UI", Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  background-image: radial-gradient(circle at top left, #1e293b, #0f172a 70%);
+}
+
+/* ---------- MAIN LAYOUT ---------- */
+main {
+  max-width: 1100px;
+  margin: 60px auto;
+  padding: 0 20px;
+  display: grid;
+  gap: 40px;
+}
+
+/* ---------- POST CARD ---------- */
+.post {
+  background: var(--card-bg);
+  border-radius: 20px;
+  padding: 28px;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+  transition: transform 0.4s ease, box-shadow 0.4s ease, border 0.4s ease;
+  animation: fadeIn 0.6s ease;
+}
+
+.post:hover {
+  transform: translateY(-8px);
+  border-color: rgba(0, 170, 255, 0.4);
+  box-shadow: 0 8px 28px rgba(0, 170, 255, 0.25);
+}
+
+/* ---------- IMAGE ---------- */
+.post img {
+  width: 100%;
+  height: auto;
+  border-radius: 14px;
+  margin-bottom: 14px;
+  object-fit: cover;
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.post img:hover {
+  transform: scale(1.02);
+  filter: brightness(1.1);
+}
+
+/* ---------- TITLE ---------- */
+.post h2 {
+  font-size: 1.6rem;
+  margin: 10px 0 8px;
+  background: var(--accent);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.post h2 a {
+  text-decoration: none;
+  color: inherit;
+  transition: opacity 0.2s ease;
+}
+
+.post h2 a:hover {
+  opacity: 0.8;
+}
+
+/* ---------- META ---------- */
+.post small {
+  display: block;
+  margin-bottom: 12px;
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+
+/* ---------- CONTENT ---------- */
+.post p {
+  color: #cbd5e1;
+  font-size: 1.05rem;
+  line-height: 1.7;
+  text-align: justify;
+}
+
+/* ---------- FADE-IN ANIMATION ---------- */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ---------- RESPONSIVE ---------- */
+@media (max-width: 768px) {
+  main {
+    margin: 30px auto;
+    gap: 20px;
+  }
+
+  .post {
+    padding: 18px;
+    border-radius: 14px;
+  }
+
+  .post h2 {
+    font-size: 1.3rem;
+  }
+
+  .post p {
+    font-size: 0.95rem;
+  }
+}
