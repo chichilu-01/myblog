@@ -1,0 +1,192 @@
+/* --- Cấu trúc trang About --- */
+.about-page {
+  padding-top: 60px;
+  padding-bottom: 60px;
+  display: flex;
+  justify-content: center;
+}
+
+/* Thẻ Card lớn chứa toàn bộ nội dung */
+.about-card {
+  background: var(--card-bg);
+  /* Kính mờ từ style.css */
+  backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 24px;
+  padding: 50px;
+  width: 100%;
+  max-width: 1000px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+  display: flex;
+  gap: 50px;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+
+/* --- Cột Trái: Ảnh đại diện --- */
+.profile-section {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.img-wrapper {
+  width: 280px;
+  height: 280px;
+  border-radius: 50%;
+  padding: 5px;
+  /* Viền Gradient xoay */
+  background: linear-gradient(45deg, var(--primary), var(--secondary));
+  box-shadow: 0 0 30px rgba(0, 170, 255, 0.4);
+  margin-bottom: 20px;
+}
+
+.img-wrapper img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid var(--bg-dark);
+  /* Tạo khoảng cách giữa ảnh và viền màu */
+}
+
+.social-icons {
+  display: flex;
+  gap: 15px;
+}
+
+.social-icons a {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  transition: 0.3s;
+}
+
+.social-icons a:hover {
+  background: var(--primary);
+  transform: translateY(-3px);
+}
+
+/* --- Cột Phải: Nội dung --- */
+.content-section {
+  flex: 1.5;
+}
+
+/* Nút chuyển ngôn ngữ */
+.lang-switch {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 30px;
+  background: rgba(0, 0, 0, 0.2);
+  padding: 5px;
+  border-radius: 12px;
+  width: fit-content;
+}
+
+.lang-switch button {
+  background: transparent;
+  color: var(--text-muted);
+  border: none;
+  padding: 8px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  font-family: inherit;
+  transition: all 0.3s ease;
+}
+
+.lang-switch button:hover {
+  color: white;
+}
+
+.lang-switch button.active {
+  background: var(--primary);
+  /* Màu xanh chủ đạo */
+  color: white;
+  box-shadow: 0 2px 10px rgba(0, 170, 255, 0.4);
+}
+
+/* Nội dung Text */
+.about-block {
+  display: none;
+  /* Ẩn mặc định */
+}
+
+.about-block.active {
+  display: block;
+  /* Hiện khi active */
+}
+
+.about-block h2 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  background: var(--accent);
+  /* Gradient chữ */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.about-block p {
+  margin-bottom: 15px;
+  font-size: 1.05rem;
+  color: #e2e8f0;
+  line-height: 1.8;
+}
+
+.signature {
+  margin-top: 30px;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  color: var(--text-muted);
+  letter-spacing: 2px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding-top: 15px;
+  display: inline-block;
+}
+
+/* Animation khi chuyển tab */
+.fade-in {
+  animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* --- Responsive --- */
+@media (max-width: 768px) {
+  .about-card {
+    flex-direction: column;
+    padding: 30px 20px;
+  }
+
+  .img-wrapper {
+    width: 200px;
+    height: 200px;
+  }
+
+  .lang-switch {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .content-section {
+    text-align: center;
+  }
+}

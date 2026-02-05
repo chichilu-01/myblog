@@ -1,31 +1,107 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ja">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>私の趣味は料理をすることです。</title>
-  <link rel="stylesheet" href="../css/post-style.css">
-</head>
-<body>
-  <a href="../index.html">← BackHome</a>
-  <article>
-    <h1>私の趣味は料理をすることです。</h1>
-    <div class="meta">14/03/2025</div>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>私の趣味は料理 - Hoang Minh Phuong</title>
 
-    <img src="../images/soba.jpg" alt="Ảnh đại diện">
-    <img src="../images/soba1.jpg" alt="Ảnh đại diện">
-    <img src="../images/cook1.jpg" alt="Ảnh đại diện">
-    <img src="../images/cook2.jpg" alt="Ảnh đại diện">
-    <img src="../images/cook3.jpg" alt="Ảnh đại diện">
-    <p>
-      私の趣味は料理をすることです。<br>
-      休みの日には、よく家で新しいレシピに挑戦したり、友達や家族のためにごはんを作ったりします。<br>
-      料理を通して、創造力や集中力を高めることができると思っています。<br>
-      特に和食や洋食を作るのが好きで、美味しくできたときにとても嬉しい気持ちになります。
-    </p>
-  </article>
-  <footer>
-    © <span id="year"></span> HOANG MINH PHUONG BLOG
-  </footer>
-</body>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Noto+Sans+JP:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+
+    <link rel="stylesheet" href="../css/style.css" />
+    <link rel="stylesheet" href="../css/post-style.css" />
+  </head>
+
+  <body class="post-page-content">
+    <header class="site-header">
+      <div class="container header-content">
+        <div class="logo">
+          <h1>
+            <a href="../index.html"
+              ><i class="fa-solid fa-pen-nib"></i> HM.Phuong</a
+            >
+          </h1>
+        </div>
+        <nav class="main-nav">
+          <a href="../index.html"><i class="fa-solid fa-house"></i> Home</a>
+          <a href="../about.html"><i class="fa-solid fa-user"></i> About</a>
+          <a href="../newpost.html"><i class="fa-solid fa-pen"></i> Viết bài</a>
+          <a href="../cv.html"><i class="fa-solid fa-file-lines"></i> 履歴書</a>
+        </nav>
+        <button class="mobile-menu-btn">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+      </div>
+    </header>
+
+    <main class="post-container">
+      <a href="../index.html" class="back-btn"
+        ><i class="fa-solid fa-arrow-left"></i> Homeに戻る</a
+      >
+
+      <article class="premium-post">
+        <h1>私の趣味は料理をすることです</h1>
+
+        <div class="post-meta">
+          <span><i class="fa-regular fa-calendar"></i> 2025/03/14</span>
+          <span><i class="fa-solid fa-user"></i> Hoang Minh Phuong</span>
+          <span><i class="fa-solid fa-utensils"></i> Hobby & Cooking</span>
+        </div>
+
+        <img
+          src="../images/soba.jpg"
+          alt="Soba Noodles"
+          class="main-post-image"
+        />
+
+        <h2>料理が好きな理由</h2>
+        <p>
+          私の趣味は料理をすることです。休みの日には、よく家で新しいレシピに挑戦したり、友達や家族のためにごはんを作ったりします。
+        </p>
+
+        <blockquote>
+          "料理を通して、創造力や集中力を高めることができると思っています。何より、人が喜んでくれる顔を見るのが一番の幸せです。"
+        </blockquote>
+
+        <p>
+          特に和食や洋食を作るのが好きで、美味しくできたときにとても達成感を感じます。
+        </p>
+
+        <h3 class="gallery-heading">
+          <i class="fa-solid fa-camera"></i> 最近作った料理たち
+        </h3>
+        <div class="gallery-grid">
+          <img src="../images/soba1.jpg" alt="料理写真 1" />
+          <img src="../images/cook1.jpg" alt="料理写真 2" />
+          <img src="../images/cook2.jpg" alt="料理写真 3" />
+          <img src="../images/cook3.jpg" alt="料理写真 4" />
+        </div>
+
+        <p>これからも色々な国の料理に挑戦していきたいです！</p>
+      </article>
+    </main>
+
+    <footer>
+      <div class="container footer-content">
+        <p>
+          &copy; <span id="year">2025</span> <strong>HOANG MINH PHUONG</strong>.
+          All rights reserved.
+        </p>
+        <div class="social-links">
+          <a href="#"><i class="fa-brands fa-github"></i></a>
+          <a href="#"><i class="fa-brands fa-instagram"></i></a>
+        </div>
+      </div>
+    </footer>
+
+    <script src="../js/script.js"></script>
+  </body>
 </html>

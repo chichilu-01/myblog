@@ -1,39 +1,70 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="vi">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>履歴書</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>履歴書 (CV) - Hoang Minh Phuong</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/cv.css">
 </head>
 <body>
-  <header>
-    <nav class="main-nav">
-      <a href="index.html">Home</a>
-      <a href="about.html">About</a>
-      <a href="cv.html">履歴書</a>
-    </nav>
+
+  <header class="site-header">
+    <div class="container header-content">
+      <div class="logo">
+        <h1><a href="index.html"><i class="fa-solid fa-pen-nib"></i> HM.Phuong</a></h1>
+      </div>
+      <nav class="main-nav">
+        <a href="index.html"><i class="fa-solid fa-house"></i> Home</a>
+        <a href="about.html"><i class="fa-solid fa-user"></i> About</a>
+        <a href="newpost.html"><i class="fa-solid fa-pen"></i> Viết bài</a>
+        <a href="cv.html" class="btn-highlight active"><i class="fa-solid fa-file-lines"></i> 履歴書</a>
+      </nav>
+      <button class="mobile-menu-btn"><i class="fa-solid fa-bars"></i></button>
+    </div>
   </header>
 
-  <main class="container">
-    <h1>履歴書</h1>
+  <main class="container cv-page">
+    <div class="section-title center-text">
+      <h2><i class="fa-solid fa-id-card"></i> 履歴書 (Curriculum Vitae)</h2>
+      <p>Cập nhật lần cuối: 14/01/2025</p>
+    </div>
 
-    <div class="pdf-container">
-      <iframe src="pdf/HOANGMINHPHUONG履歴書.pdf" title="履歴書"></iframe>
-
-      <div class="cv-buttons">
-        <a class="btn" href="pdf/HOANGMINHPHUONG履歴書.pdf" target="_blank" rel="noopener">New Tab</a>
-        <a class="btn btn-download" href="pdf/HOANGMINHPHUONG履歴書.pdf" download="CV_HOANGMINHPHUONG.pdf">⬇️ Download</a>
+    <div class="pdf-wrapper">
+      <iframe src="pdf/HOANGMINHPHUONG履歴書.pdf" title="CV Hoàng Minh Phương"></iframe>
+      
+      <div class="pdf-fallback">
+        <p>Trình duyệt của bạn không hỗ trợ xem PDF trực tiếp.</p>
       </div>
+    </div>
 
-      <div class="pdf-fallback" aria-hidden="true">
-        Nếu trình duyệt không hiển thị PDF, <a href="pdf/HOANGMINHPHUONG履歴書.pdf" download>bấm vào đây để tải</a>.
-      </div>
+    <div class="cv-actions">
+      <a href="pdf/HOANGMINHPHUONG履歴書.pdf" target="_blank" class="btn-primary">
+        <i class="fa-solid fa-external-link-alt"></i> Mở tab mới
+      </a>
+      <a href="pdf/HOANGMINHPHUONG履歴書.pdf" download="CV_HOANGMINHPHUONG.pdf" class="btn-secondary">
+        <i class="fa-solid fa-download"></i> Tải xuống (PDF)
+      </a>
     </div>
   </main>
 
-  <footer>© 2025 - myblog - 履歴書</footer>
+  <footer>
+    <div class="container footer-content">
+      <p>&copy; <span id="year">2025</span> <strong>HOANG MINH PHUONG</strong>. All rights reserved.</p>
+      <div class="social-links">
+        <a href="#"><i class="fa-brands fa-github"></i></a>
+        <a href="#"><i class="fa-brands fa-linkedin"></i></a>
+        <a href="#"><i class="fa-brands fa-facebook"></i></a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/script.js"></script>
 </body>
 </html>
-
-

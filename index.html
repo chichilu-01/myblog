@@ -1,72 +1,163 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="vi">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Hoang Minh Phuong Blog</title>
-  <link rel="stylesheet" href="css/header-footer.css">
-  <link rel="stylesheet" href="css/home.css">
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Blog cá nhân của Hoang Minh Phuong - Chia sẻ về lập trình, nấu ăn và cuộc sống."
+    />
+    <title>Hoang Minh Phuong Blog</title>
 
-  <header>
-    <h1>📝 Hoang Minh Phuong Blog</h1>
-    <nav>
-      <a href="index.html">Home</a>
-      <a href="about.html">About</a>
-      <a href="newpost.html">✍️ Viết bài mới</a>
-      <a href="cv.html">履歴書</a>
-    </nav>
-  </header>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Noto+Sans+JP:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
 
-  <main id="posts">
-    <article class="post">
-      <img src="images/maytinh1.jpg" alt="Ảnh đại diện">
-      <h2><a href="post/post1.html">Bài viết đầu tiên</a></h2>
-      <small>14/01/2025</small>
-      <p>Đây là bài viết đầu tiên của blog cá nhân...</p>
-    </article>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
 
-    <article class="post">
-      <img src="images/anh1.jpg" alt="Ảnh đại diện">
-      <h2><a href="post/post2.html">自己PR</a></h2>
-      <small>14/01/2025</small>
-      <p>責任感が強く、学んだことをすぐに行動に移せるタイプです。
-         現在、Javaを中心にWeb開発を学び、HTML・CSS・JavaScript
-         を使っておみくじアプリやログイン機能付きサイト、個人ブログなどを制作し
-         、GitHubに公開しました。 落ち着いた性格ですが、チームの一員として責任を持ち
-         、最後までやり遂げることができます。 入社後は、新しい技術を積極的に吸収し、
-         成長し続けるエンジニアを目指します。</p>
-    </article>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container header-content">
+        <div class="logo">
+          <h1><i class="fa-solid fa-pen-nib"></i> HM.Phuong</h1>
+        </div>
+        <nav class="main-nav">
+          <a href="index.html" class="active"
+            ><i class="fa-solid fa-house"></i> Home</a
+          >
+          <a href="about.html"><i class="fa-solid fa-user"></i> About</a>
+          <a href="newpost.html"><i class="fa-solid fa-pen"></i> Viết bài</a>
+          <a href="cv.html" class="btn-highlight"
+            ><i class="fa-solid fa-file-lines"></i> 履歴書</a
+          >
+        </nav>
+        <button class="mobile-menu-btn">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+      </div>
+    </header>
 
-    <article class="post">
-      <img src="images/tansho2.jpg" alt="Ảnh đại diện">
-      <h2><a href="post/post3.html">私の短所です。</a></h2>
-      <small>14/02/2025</small>
-      <p>私の短所は、無口で内向的なところです。
-        初対面の人と話すときは少し緊張してしまい、自分の考えをすぐに言葉にするのが苦手です。
-        しかし、その分、人の話をよく聞き、相手の気持ちを理解しようとする姿勢があります。
-        この性格を活かして、チームの中で信頼される存在になれるよう努力しています。</p>
-    </article>
-        <article class="post">
-      <img src="images/soba.jpg" alt="Ảnh đại diện">
-      <img src="images/soba1.jpg" alt="Ảnh đại diện">
-      <img src="images/cook1.jpg" alt="Ảnh đại diện">
-      <img src="images/cook2.jpg" alt="Ảnh đại diện">
-      <img src="images/cook3.jpg" alt="Ảnh đại diện">
-      <h2><a href="post/post4.html">私の趣味は料理をすることです。</a></h2>
-      <small>14/03/2025</small>
-      <p>私の趣味は料理をすることです。
-        休みの日には、よく家で新しいレシピに挑戦したり、友達や家族のためにごはんを作ったりします。
-        料理を通して、創造力や集中力を高めることができると思っています。
-        特に和食や洋食を作るのが好きで、美味しくできたときにとても嬉しい気持ちになります。</p>
-    </article>
-  </main>
+    <section class="hero">
+      <div class="container">
+        <h2>Welcome to my world</h2>
+        <p>
+          Nơi chia sẻ kiến thức lập trình, kinh nghiệm sống và những món ăn
+          ngon.
+        </p>
+      </div>
+    </section>
 
-  <footer>
-    © <span id="year"></span> HOANG MINH PHUONG BLOG
-  </footer>
+    <main class="container" id="posts">
+      <div class="section-title">
+        <h3><i class="fa-regular fa-newspaper"></i> Bài viết mới nhất</h3>
+      </div>
 
-  <script src="js/script.js"></script>
-</body>
+      <div class="post-grid">
+        <article class="post-card">
+          <div class="post-image">
+            <img
+              src="images/maytinh1.jpg"
+              alt="Góc làm việc máy tính"
+              loading="lazy"
+            />
+          </div>
+          <div class="post-content">
+            <div class="post-meta">
+              <time datetime="2025-01-14"
+                ><i class="fa-regular fa-calendar"></i> 14/01/2025</time
+              >
+            </div>
+            <h2><a href="post/post1.html">Bài viết đầu tiên</a></h2>
+            <p class="excerpt">
+              Đây là bài viết đầu tiên của blog cá nhân, đánh dấu sự khởi đầu...
+            </p>
+            <a href="post/post1.html" class="read-more">Đọc tiếp &rarr;</a>
+          </div>
+        </article>
+
+        <article class="post-card">
+          <div class="post-image">
+            <img
+              src="images/anh1.jpg"
+              alt="Chân dung Hoàng Minh Phương"
+              loading="lazy"
+            />
+          </div>
+          <div class="post-content">
+            <div class="post-meta">
+              <span class="tag">Java</span>
+              <time datetime="2025-01-14">14/01/2025</time>
+            </div>
+            <h2><a href="post/post2.html">自己PR (Giới thiệu bản thân)</a></h2>
+            <p class="excerpt">
+              責任感が強く、学んだことをすぐに行動に移せるタイプです。Javaを中心にWeb開発を学び...
+            </p>
+            <a href="post/post2.html" class="read-more">Đọc tiếp &rarr;</a>
+          </div>
+        </article>
+
+        <article class="post-card">
+          <div class="post-image">
+            <img src="images/tansho2.jpg" alt="Suy tư" loading="lazy" />
+          </div>
+          <div class="post-content">
+            <div class="post-meta">
+              <time datetime="2025-02-14">14/02/2025</time>
+            </div>
+            <h2>
+              <a href="post/post3.html">私の短所です (Điểm yếu của tôi)</a>
+            </h2>
+            <p class="excerpt">
+              私の短所は、無口で内向的なところです。初対面の人と話すときは少し緊張してしまい...
+            </p>
+            <a href="post/post3.html" class="read-more">Đọc tiếp &rarr;</a>
+          </div>
+        </article>
+
+        <article class="post-card">
+          <div class="post-gallery">
+            <img src="images/soba.jpg" alt="Món mỳ Soba" loading="lazy" />
+            <div class="gallery-overlay">
+              <span>+4 ảnh khác</span>
+            </div>
+          </div>
+          <div class="post-content">
+            <div class="post-meta">
+              <span class="tag hobby">Hobby</span>
+              <time datetime="2025-03-14">14/03/2025</time>
+            </div>
+            <h2><a href="post/post4.html">私の趣味は料理をすることです</a></h2>
+            <p class="excerpt">
+              休みの日には、よく家で新しいレシピに挑戦したり、友達や家族のためにごはんを作ったりします...
+            </p>
+            <a href="post/post4.html" class="read-more">Đọc tiếp &rarr;</a>
+          </div>
+        </article>
+      </div>
+    </main>
+
+    <footer>
+      <div class="container footer-content">
+        <p>
+          &copy; <span id="year"></span> <strong>HOANG MINH PHUONG</strong>. All
+          rights reserved.
+        </p>
+        <div class="social-links">
+          <a href="#"><i class="fa-brands fa-github"></i></a>
+          <a href="#"><i class="fa-brands fa-linkedin"></i></a>
+          <a href="#"><i class="fa-brands fa-facebook"></i></a>
+        </div>
+      </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+  </body>
 </html>
