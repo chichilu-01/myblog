@@ -1,0 +1,103 @@
+/* -----------------------------------------------------------
+   NÂNG CẤP: MODERN LUXURY PRO (DARK THEME)
+   ----------------------------------------------------------- */
+:root {
+  --primary: #00f2ff;
+  --secondary: #0044ff;
+  --bg: #050608;
+  --card-bg: rgba(255, 255, 255, 0.03);
+  --glass: rgba(255, 255, 255, 0.05);
+  --text: #f8fafc;
+  --muted: #94a3b8;
+  --accent: linear-gradient(135deg, var(--primary), var(--secondary));
+}
+
+body {
+  font-family: "Inter", -apple-system, sans-serif;
+  background-color: var(--bg);
+  background-image: 
+    radial-gradient(at 0% 0%, rgba(0, 170, 255, 0.15) 0px, transparent 50%),
+    radial-gradient(at 100% 100%, rgba(0, 68, 255, 0.15) 0px, transparent 50%);
+  color: var(--text);
+  margin: 0;
+  line-height: 1.6;
+}
+
+/* ---------- MAIN LAYOUT ---------- */
+main {
+  max-width: 1100px;
+  margin: 80px auto;
+  padding: 0 20px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 30px;
+}
+
+/* ---------- PREMIUM POST CARD ---------- */
+.post {
+  position: relative;
+  background: var(--card-bg);
+  border-radius: 24px;
+  padding: 24px;
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  overflow: hidden;
+}
+
+/* Hiệu ứng viền phát sáng khi hover */
+.post::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 24px;
+  padding: 1px;
+  background: linear-gradient(135deg, rgba(0, 242, 255, 0.3), transparent);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0;
+  transition: 0.4s;
+}
+
+.post:hover {
+  transform: translateY(-12px);
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.post:hover::before { opacity: 1; }
+
+.post img {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border-radius: 16px;
+  margin-bottom: 20px;
+  object-fit: cover;
+  transition: 0.5s;
+}
+
+.post:hover img { transform: scale(1.03); }
+
+.post h2 {
+  font-size: 1.4rem;
+  letter-spacing: -0.02em;
+  margin: 0 0 10px;
+  color: #fff;
+}
+
+.post small {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.85rem;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* ---------- RESPONSIVE ---------- */
+@media (max-width: 768px) {
+  main { margin: 40px auto; grid-template-columns: 1fr; }
+  .post:hover { transform: none; }
+}

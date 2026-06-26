@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="vi">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="description" content="Blog cá nhân của Hoang Minh Phuong - Chia sẻ về lập trình, nấu ăn và cuộc sống." />
+  <title>Hoang Minh Phuong Blog</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Noto+Sans+JP:wght@400;700&display=swap"
+    rel="stylesheet" />
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/header-footer.css" />
+  <link rel="stylesheet" href="css/projector.css">
+</head>
+
+<body>
+  <header class="site-header">
+    <div class="container header-content">
+      <div class="logo">
+        <h1><i class="fa-solid fa-pen-nib"></i> Welcome to My Blog</h1>
+      </div>
+      <nav class="main-nav">
+        <a href="index.html" class="active"><i class="fa-solid fa-house"></i> Home</a>
+        <a href="about.html"><i class="fa-solid fa-user"></i> About</a>
+        <a href="newpost.html"><i class="fa-solid fa-pen"></i> Viết bài</a>
+        <a href="cv.html" class="btn-highlight"><i class="fa-solid fa-file-lines"></i> 履歴書</a>
+      </nav>
+      <button class="mobile-menu-btn">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+    </div>
+  </header>
+
+  <section class="hero">
+    <video autoplay muted loop playsinline class="hero-video">
+      <source src="video/backgroundvideo.mp4" type="video/mp4">
+      Trình duyệt của bạn không hỗ trợ thẻ video.
+    </video>
+    <div class="container">
+      <h2>Welcome to my world</h2>
+      <p>
+        Nơi chia sẻ kiến thức lập trình, kinh nghiệm sống và những món ăn
+        ngon.
+      </p>
+    </div>
+  </section>
+
+  <main class="container" id="posts">
+    <div class="section-title">
+      <h3><i class="fa-regular fa-newspaper"></i> Bài viết mới nhất</h3>
+    </div>
+
+    <div class="projector-container">
+      <div class="retro-tv-container">
+
+        <div class="antenna-container">
+          <div class="antenna antenna-left"></div>
+          <div class="antenna antenna-right"></div>
+        </div>
+
+        <div class="tv-frame">
+          <div class="screen" id="post-screen">
+            <img id="post-image" src="" alt="Post" style="display:none;">
+            <h2 id="post-title"></h2>
+            <p id="post-excerpt"></p>
+          </div>
+
+          <div class="side-panel">
+            <div class="control-group">
+              <div class="channel-dial" onclick="changeChannel()"></div>
+              <span>CHANNELS</span>
+            </div>
+            <div class="control-group">
+              <div class="channel-dial small-dial"></div>
+              <span>VOLUME</span>
+            </div>
+            <div class="control-group">
+              <div class="power-btn" id="power-btn" onclick="togglePower()"></div>
+              <span>POWER</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="post-grid">
+      <article class="post-card">
+        <div class="post-image">
+          <img src="images/maytinh1.jpg" alt="Góc làm việc máy tính" loading="lazy" />
+        </div>
+        <div class="post-content">
+          <div class="post-meta">
+            <time datetime="2025-01-14"><i class="fa-regular fa-calendar"></i> 14/01/2025</time>
+          </div>
+          <h2><a href="post/post1.html">Bài viết đầu tiên</a></h2>
+          <p class="excerpt">
+            Đây là bài viết đầu tiên của blog cá nhân, đánh dấu sự khởi đầu...
+          </p>
+          <a href="post/post1.html" class="read-more">Đọc tiếp &rarr;</a>
+        </div>
+      </article>
+
+      <article class="post-card">
+        <div class="post-image">
+          <img src="images/anh1.jpg" alt="Chân dung Hoàng Minh Phương" loading="lazy" />
+        </div>
+        <div class="post-content">
+          <div class="post-meta">
+            <span class="tag">Java</span>
+            <time datetime="2025-01-14">14/01/2025</time>
+          </div>
+          <h2><a href="post/post2.html">自己PR (Giới thiệu bản thân)</a></h2>
+          <p class="excerpt">
+            責任感が強く、学んだことをすぐに行動に移せるタイプです。Javaを中心にWeb開発を学び...
+          </p>
+          <a href="post/post2.html" class="read-more">Đọc tiếp &rarr;</a>
+        </div>
+      </article>
+
+      <article class="post-card">
+        <div class="post-image">
+          <img src="images/tansho2.jpg" alt="Suy tư" loading="lazy" />
+        </div>
+        <div class="post-content">
+          <div class="post-meta">
+            <time datetime="2025-02-14">14/02/2025</time>
+          </div>
+          <h2>
+            <a href="post/post3.html">私の短所です (Điểm yếu của tôi)</a>
+          </h2>
+          <p class="excerpt">
+            私の短所は、無口で内向的なところです。初対面の人と話すときは少し緊張してしまい...
+          </p>
+          <a href="post/post3.html" class="read-more">Đọc tiếp &rarr;</a>
+        </div>
+      </article>
+
+      <article class="post-card">
+        <div class="post-gallery">
+          <img src="images/soba.jpg" alt="Món mỳ Soba" loading="lazy" />
+          <div class="gallery-overlay">
+            <span>+4 ảnh khác</span>
+          </div>
+        </div>
+        <div class="post-content">
+          <div class="post-meta">
+            <span class="tag hobby">Hobby</span>
+            <time datetime="2025-03-14">14/03/2025</time>
+          </div>
+          <h2><a href="post/post4.html">私の趣味は料理をすることです</a></h2>
+          <p class="excerpt">
+            休みの日には、よく家で新しいレシピに挑戦したり、友達や家族のためにごはんを作ったりします...
+          </p>
+          <a href="post/post4.html" class="read-more">Đọc tiếp &rarr;</a>
+        </div>
+      </article>
+    </div>
+  </main>
+
+  <footer>
+    <div class="container footer-content">
+      <!-- Cột 1: Thông tin cá nhân -->
+      <div class="footer-col">
+        <h3>Hoang Minh Phuong</h3>
+        <p>Blog cá nhân chia sẻ về lập trình, nấu ăn và hành trình trải nghiệm cuộc sống.</p>
+      </div>
+
+      <!-- Cột 2: Thông tin liên hệ -->
+      <div class="footer-col">
+        <h3>Liên hệ</h3>
+        <ul class="contact-info">
+          <li><i class="fa-solid fa-envelope"></i> hoangminhphuong270401@gmail.com</li>
+          <li><i class="fa-solid fa-phone"></i>08058264308</li>
+        </ul>
+      </div>
+
+      <!-- Cột 3: Mạng xã hội & Bản quyền -->
+      <div class="footer-col">
+        <h3>Kết nối</h3>
+        <div class="social-links">
+          <a href="#"><i class="fa-brands fa-github"></i></a>
+          <a href="#"><i class="fa-brands fa-linkedin"></i></a>
+          <a href="#"><i class="fa-brands fa-facebook"></i></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>&copy; <span id="year"></span> HOANG MINH PHUONG. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="js/script.js"></script>
+  <script src="js/projector.js"></script>
+</body>
+
+</html>
