@@ -99,7 +99,7 @@
 
 .about-block { display: none; }
 .about-block.active { display: block; }
-.about-block h2 { font-size: 2rem; margin-bottom: 18px; background: var(--accent); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+.about-block h2 { font-size: 2rem; margin-bottom: 18px; background: var(--accent); background-clip: text; -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
 .about-block p { color: var(--text-muted); font-size: 1.05rem; line-height: 1.7; margin-bottom: 16px; }
 
 .signature {

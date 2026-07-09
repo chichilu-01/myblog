@@ -2,7 +2,6 @@
    GLOBAL STYLE - WATERCOLOR & MODERN LUXURY THEME (DARK)
    Hoàng Minh Phương Blog - Main Content Style Sheet
    ----------------------------------------------------------- */
-
 :root {
   --bg-dark: #0b0c10;
   --bg-card: rgba(15, 17, 23, 0.85);
@@ -12,108 +11,312 @@
   --text-muted: #b0b0b0;
   --border: rgba(255, 209, 102, 0.12);
 }
-
 /* --- RESET & BASE STYLES --- */
-* { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; font-size: 16px; }
-body { font-family: "Inter", "Noto Sans JP", sans-serif; background-color: var(--bg-dark); color: var(--text-main); line-height: 1.6; }
-a { text-decoration: none; color: inherit; transition: 0.3s ease; }
-ul { list-style: none; }
-img { max-width: 100%; height: auto; display: block; object-fit: cover; }
-.container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
-
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+body {
+  font-family: "Inter", "Noto Sans JP", sans-serif;
+  background-color: var(--bg-dark);
+  color: var(--text-main);
+  line-height: 1.6;
+}
+a {
+  text-decoration: none;
+  color: inherit;
+  transition: 0.3s ease;
+}
+ul {
+  list-style: none;
+}
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+}
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
 /* --- HERO SECTION --- */
 .hero {
-  position: relative; overflow: hidden; height: 650px; 
-  display: flex; align-items: center; justify-content: center;
+  position: relative;
+  overflow: hidden;
+  height: 664px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-.hero-video { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: -1; }
-.hero-content { position: relative; z-index: 1; color: white; text-align: center; width: 100%; }
-.hero h2, .hero p { display: none !important; }
-
+.hero-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding-top: 10px;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 1000;
+}
+.hero-content {
+  position: relative;
+  z-index: 1;
+  color: white;
+  text-align: center;
+  width: 100%;
+}
+.hero h2,
+.hero p {
+  display: none !important;
+}
 /* --- MAIN CONTENT & POSTS LAYOUT --- */
 main#posts {
-  background-color: var(--bg-dark);
-  position: relative; z-index: 10;
-  padding-top: 60px; padding-bottom: 100px;
+  /*background-color: var(--bg-dark);*/
+  position: relative;
+  z-index: 10;
+  padding-top: 60px;
+  padding-bottom: 100px;
 }
-
-.section-title { margin-bottom: 40px; border-bottom: 2px solid rgba(255, 209, 102, 0.15); padding-bottom: 16px; }
+.section-title {
+  margin-bottom: 40px;
+  border-bottom: 2px solid rgba(255, 209, 102, 0.15);
+  padding-bottom: 16px;
+}
 .section-title h3 {
-  font-size: 3.65rem; font-weight: 700; letter-spacing: 0.5px;
-  display: flex; align-items: center; justify-content: center; gap: 12px; color: var(--primary);
+  font-size: 3.65rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  color: rgb(251, 255, 0);
   text-shadow: 0 2px 10px rgba(255, 209, 102, 0.2);
 }
-.section-title h3 i { color: #FFB703; }
-
-.post-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 35px; }
-
+.section-title h3 i {
+  color: rgb(251, 255, 0);
+}
+.post-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 35px;
+}
 /* --- POST CARD --- */
 .post-card {
   background: linear-gradient(145deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.01) 100%);
   background-color: var(--bg-card);
   border: 1px solid var(--border);
-  border-radius: 20px; overflow: hidden;
-  display: flex; flex-direction: column;
+  border-radius: 20px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
   transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
 }
 .post-card:hover {
-  transform: translateY(-8px); border-color: rgba(255, 209, 102, 0.4);
+  transform: translateY(-8px);
+  border-color: rgba(255, 209, 102, 0.4);
   box-shadow: 0 20px 40px rgba(255, 209, 102, 0.08), 0 15px 25px rgba(0, 0, 0, 0.5);
 }
-
-.post-image, .post-gallery { height: 240px; overflow: hidden; position: relative; background-color: #000; }
-.post-image img, .post-gallery img {
-  width: 100%; height: 100%; object-fit: cover;
-  transition: transform 0.6s cubic-bezier(0.25, 0.8, 0.25, 1); filter: brightness(0.9);
+.post-image,
+.post-gallery {
+  height: 240px;
+  overflow: hidden;
+  position: relative;
+  background-color: #000;
 }
-.post-card:hover .post-image img, .post-card:hover .post-gallery img { transform: scale(1.05); filter: brightness(1); }
-
-.post-content { padding: 28px; display: flex; flex-direction: column; flex-grow: 1; }
-.post-meta { display: flex; align-items: center; gap: 14px; font-size: 0.85rem; color: var(--text-muted); margin-bottom: 16px; }
+.post-image img,
+.post-gallery img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s cubic-bezier(0.25, 0.8, 0.25, 1);
+  filter: brightness(0.9);
+}
+.post-card:hover .post-image img,
+.post-card:hover .post-gallery img {
+  transform: scale(1.05);
+  filter: brightness(1);
+}
+.post-content {
+  padding: 28px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+.post-meta {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin-bottom: 16px;
+}
 .tag {
   background: linear-gradient(135deg, rgba(255, 209, 102, 0.15) 0%, rgba(255, 183, 3, 0.05) 100%);
-  color: var(--primary); padding: 4px 12px; border-radius: 8px; font-weight: 700; font-size: 0.75rem; text-transform: uppercase; border: 1px solid rgba(255, 209, 102, 0.2);
+  color: var(--primary);
+  padding: 4px 12px;
+  border-radius: 8px;
+  font-weight: 700;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  border: 1px solid rgba(255, 209, 102, 0.2);
 }
-
-.post-card h2 { font-size: 1.45rem; font-weight: 700; line-height: 1.4; margin-bottom: 14px; }
-.post-card h2 a { color: #FFFFFF; transition: color 0.3s ease; }
-.post-card:hover h2 a { color: var(--primary); }
-
+.post-card h2 {
+  font-size: 1.45rem;
+  font-weight: 700;
+  line-height: 1.4;
+  margin-bottom: 14px;
+}
+.post-card h2 a {
+  color: #FFFFFF;
+  transition: color 0.3s ease;
+}
+.post-card:hover h2 a {
+  color: var(--primary);
+}
 .excerpt {
-  color: #cbd5e1; font-size: 0.95rem; line-height: 1.65; margin-bottom: 24px;
-  display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;
+  color: #cbd5e1;
+  font-size: 0.95rem;
+  line-height: 1.65;
+  margin-bottom: 24px;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+  overflow: hidden;
 }
-
+@media (max-width: 768px) {
+  .excerpt {
+    font-size: 0.9rem;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    margin-bottom: 20px;
+  }
+}
 .read-more {
-  margin-top: auto; color: var(--primary); font-weight: 600; font-size: 0.95rem;
-  display: inline-flex; align-items: center; gap: 6px; transition: gap 0.3s ease;
+  margin-top: auto;
+  color: var(--primary);
+  font-weight: 600;
+  font-size: 0.95rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: gap 0.3s ease;
 }
-.read-more:hover { color: #FFB703; gap: 12px; }
-
+.read-more:hover {
+  color: #FFB703;
+  gap: 12px;
+}
 /* --- RESPONSIVE ADJUSTMENTS --- */
 @media (max-width: 768px) {
-  .hero { height: 30vh; min-height: 200px; }
-  main#posts { padding-top: 40px; }
-  .section-title h3 { font-size: 1.4rem; gap: 8px; }
-  .post-grid { grid-template-columns: 1fr; gap: 30px; }
-  .post-card:hover { transform: translateY(-4px); }
-  .post-image, .post-gallery { height: 180px; }
-  .post-content { padding: 22px; }
-  .post-card h2 { font-size: 1.25rem; }
-  .excerpt { font-size: 0.9rem; -webkit-line-clamp: 2; margin-bottom: 20px; }
-  
+    .hero{
+        height:45vh;
+        min-height:320px;
+    }
+  main#posts {
+    padding-top: 40px;
+  }
+  .section-title h3 {
+    font-size: 1.4rem;
+    gap: 8px;
+  }
+  .post-grid {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+  .post-card:hover {
+    transform: translateY(-4px);
+  }
+  .post-image,
+  .post-gallery {
+    height: 180px;
+  }
+  .post-content {
+    padding: 22px;
+  }
+  .post-card h2 {
+    font-size: 1.25rem;
+  }
+  .excerpt {
+    font-size: 0.9rem;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    margin-bottom: 20px;
+    overflow: hidden;
+  }
   /* ĐIỀU CHỈNH ĐỂ SÁT SẠT MÉP (0 padding) */
-  main { 
-    margin: 20px auto; 
-    padding: 0; /* Hủy bỏ padding để nội dung sát vào viền màn hình */
-    width: 100%; /* Chiếm trọn 100% chiều rộng */
-    box-sizing: border-box; /* Đảm bảo không bị tràn */
+  main {
+    margin: 20px auto;
+    padding: 0;
+    /* Hủy bỏ padding để nội dung sát vào viền màn hình */
+    width: 100%;
+    /* Chiếm trọn 100% chiều rộng */
+    box-sizing: border-box;
+    /* Đảm bảo không bị tràn */
   }
-  
-  #newPostForm { 
-    padding: 20px; 
-    margin: 0; /* Hủy bỏ margin để form sát sạt 2 bên */
+  #newPostForm {
+    padding: 20px;
+    margin: 0;
+    /* Hủy bỏ margin để form sát sạt 2 bên */
   }
+}
+/*#canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}*/
+/* --- 背景・ベースの透過設定 --- */
+html,
+body {
+  background-color: black;
+  margin: 0;
+  padding: 0;
+}
+/* headerとmainの背景色を透明に（iframeを透かすため） */
+header,
+main {
+  background-color: transparent;
+  position: relative;
+  z-index: 1;
+}
+/* iframeを全画面背景に固定 */
+iframe {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  border: none;
+  z-index: -1;
+  pointer-events: none;
+  /* コンテンツ操作を邪魔しないようにする */
+}
+/* モバイル */
+@media (max-width: 768px) {
+  iframe {
+    transform-origin: center center;
+  }
+  .hero-video {
+    z-index:0;
+  }
+}
+/* コンテンツカードには背景色を付けて視認性を確保 */
+.post-card {
+  background-color: rgba(15, 17, 23, 0.9);
+  /* 少し透明度を入れるとより綺麗です */
+  border: 1px solid var(--border);
+  /* ...その他の設定は維持... */
 }

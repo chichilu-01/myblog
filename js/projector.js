@@ -2,11 +2,13 @@ let isPowerOn = false; // Trạng thái này cần được cập nhật
 let channel = 0;
 
 const posts = [
-    { title: "プログラミング", excerpt: "ベストコードになりたい...", img: "images/maytinh1.jpg" },
+    { title: "プログラミング", excerpt: "自分の限界までわかりたい...", img: "images/maytinh1.jpg" },
     { title: "わくわく", excerpt: "遊び日...", img: "images/anh1.jpg" },
     { title: "日記", excerpt: "楽しい日...", img: "images/tansho2.jpg" },
     { title: "考えること", excerpt: "...", img: "images/maytinh2.jpg" },
-    { title: "趣味", excerpt: "Sobaが大好き...", img: "images/soba.jpg" }
+    { title: "趣味", excerpt: "Sobaが大好き...", img: "images/soba.jpg" },
+    { title: "pizza", excerpt: "彼女へありがとう❣", img: "images/pizza.jpg" },
+    { title: "Tokyo旅", excerpt: "Console.WriteLine(\"Tokyo旅\")", img: "images/avatar.jpg" }
 ];
 
 function updateDisplay() {

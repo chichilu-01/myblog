@@ -1,3 +1,5 @@
+console.log(menuBtn);
+console.log(nav);
 document.addEventListener('DOMContentLoaded', () => {
     const menuBtn = document.querySelector('.mobile-menu-btn');
     const nav = document.querySelector('.main-nav');
@@ -7,7 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
     menuBtn.addEventListener('click', (e) => {
         e.stopPropagation(); // Ngăn sự kiện click lan ra ngoài
         nav.classList.toggle('active');
-        
+
         // Thay đổi icon menu
         const icon = menuBtn.querySelector('i');
         if (nav.classList.contains('active')) {
@@ -29,3 +31,4 @@ document.addEventListener('DOMContentLoaded', () => {
     // Tự động điền năm vào footer
     document.getElementById('year').textContent = new Date().getFullYear();
 });
+
