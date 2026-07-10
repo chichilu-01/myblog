@@ -51,23 +51,18 @@ img {
   position: relative;
   overflow: hidden;
   height: 664px;
-  display: flex;
   align-items: center;
   justify-content: center;
 }
 .hero-video {
-  position: absolute;
   top: 0;
   left: 0;
-  padding-top: 10px;
+  right: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
-  z-index: 1000;
 }
 .hero-content {
-  position: relative;
-  z-index: 1;
   color: white;
   text-align: center;
   width: 100%;
@@ -269,54 +264,4 @@ main#posts {
     margin: 0;
     /* Hủy bỏ margin để form sát sạt 2 bên */
   }
-}
-/*#canvas {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -1;
-}*/
-/* --- 背景・ベースの透過設定 --- */
-html,
-body {
-  background-color: black;
-  margin: 0;
-  padding: 0;
-}
-/* headerとmainの背景色を透明に（iframeを透かすため） */
-header,
-main {
-  background-color: transparent;
-  position: relative;
-  z-index: 1;
-}
-/* iframeを全画面背景に固定 */
-iframe {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  border: none;
-  z-index: -1;
-  pointer-events: none;
-  /* コンテンツ操作を邪魔しないようにする */
-}
-/* モバイル */
-@media (max-width: 768px) {
-  iframe {
-    transform-origin: center center;
-  }
-  .hero-video {
-    z-index:0;
-  }
-}
-/* コンテンツカードには背景色を付けて視認性を確保 */
-.post-card {
-  background-color: rgba(15, 17, 23, 0.9);
-  /* 少し透明度を入れるとより綺麗です */
-  border: 1px solid var(--border);
-  /* ...その他の設定は維持... */
 }
