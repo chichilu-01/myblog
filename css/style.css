@@ -265,3 +265,18 @@ main#posts {
     /* Hủy bỏ margin để form sát sạt 2 bên */
   }
 }
+
+/* 翻訳ボタンそのものを隠す */
+#google_translate_element {
+    display: none !important;
+}
+
+/* 翻訳後の上部に表示されるバーを隠す */
+.goog-te-banner-frame.skiptranslate {
+    display: none !important;
+}
+
+/* ページ上部の余白を調整（バーが消えても上にズレないようにする） */
+body {
+    top: 0px !important;
+}

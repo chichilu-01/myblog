@@ -196,7 +196,7 @@ body {
         font-size: 16px;
         font-weight: 600;
         border-radius: 16px;
-        background: rgba(255, 255, 255, .05);
+        background: rgba(206, 247, 2, 0.519);
         border: 1px solid rgba(255, 209, 102, .12);
         transition: .35s;
     }
