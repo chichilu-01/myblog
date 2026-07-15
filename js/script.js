@@ -34,3 +34,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
+// ページ読み込み完了後に実行
+/*window.addEventListener('load', function () {
+    var frame = document.getElementById('gt-nvframe');
+    if (frame) {
+        frame.style.display = 'none';
+        document.body.style.marginTop = '0px';
+    }
+});*/
