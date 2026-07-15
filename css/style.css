@@ -267,36 +267,11 @@ main#posts {
 }
 
 /* Google翻訳のフレームを非表示にする */
-/*#gt-nvframe {
-    display: none !important;
-}
-
-
-body {
-    margin-top: 0px !important;
-}*/
-
-/* 1. 大きなバーを非表示にする */
 #gt-nvframe {
     display: none !important;
 }
 
-/* 2. Google翻訳の本来のボタン（または要素）を小さく丸くする */
-#google_translate_element {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    z-index: 9999;
-    border-radius: 50% !important; /* 丸くする */
-    overflow: hidden;
-    width: 50px;
-    height: 50px;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.2);
-}
-
-/* 3. 中身のセレクトボックスを消してアイコンのみにするなどの調整 */
-.goog-te-combo {
-    width: 50px;
-    height: 50px;
-    cursor: pointer;
+/* bodyの余白を強制的に消す */
+body {
+    margin-top: 0px !important;
 }
