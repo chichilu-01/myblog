@@ -32,3 +32,11 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('year').textContent = new Date().getFullYear();
 });
 
+// 翻訳を実行する例（翻訳先の言語コードを指定）
+function changeLanguage(langCode) {
+    var select = document.querySelector('.goog-te-combo');
+    if (select) {
+        select.value = langCode;
+        select.dispatchEvent(new Event('change'));
+    }
+}
