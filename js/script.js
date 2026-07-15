@@ -42,11 +42,3 @@ document.addEventListener('DOMContentLoaded', () => {
         document.body.style.marginTop = '0px';
     }
 });*/
-
-// ボタンをクリックしたらGoogle翻訳のメニューを開く（擬似クリック）
-document.getElementById('my-custom-button').addEventListener('click', function() {
-    var combo = document.querySelector('.goog-te-combo');
-    if (combo) {
-        // ここで言語選択や翻訳トリガーを制御する
-    }
-});
