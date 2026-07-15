@@ -266,7 +266,12 @@ main#posts {
   }
 }
 
-/* 最初は消しておく */
-#google_translate_element {
+/* Google翻訳のフレームを非表示にする */
+#gt-nvframe {
     display: none !important;
+}
+
+/* bodyの余白を強制的に消す */
+body {
+    margin-top: 0px !important;
 }

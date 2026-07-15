@@ -32,9 +32,13 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('year').textContent = new Date().getFullYear();
 });
 
-// ボタンをクリックした時に初めてGoogle翻訳を読み込む
-document.getElementById('my-translate-button').addEventListener('click', function() {
-    var s = document.createElement('script');
-    s.src = "//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit";
-    document.body.appendChild(s);
-});
+
+  // ページ読み込み完了後に実行
+  window.addEventListener('load', function() {
+    var frame = document.getElementById('gt-nvframe');
+    if (frame) {
+      frame.style.display = 'none';
+      document.body.style.marginTop = '0px';
+    }
+  });
+
