@@ -43,3 +43,55 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });*/
 
+// 現在のページのパスを取得して判定
+const currentPath = window.location.pathname;
+const isTargetPage = disabledPages.some(pagePath => currentPath.endsWith(pagePath));
+
+if (isTargetPage) {
+  // -----------------------------------------
+  // 【対象ページの場合】非活性（無効化）処理
+  // -----------------------------------------
+  
+  // PC用ボタンの非活性化
+  if (pcLanguageBox) {
+    const pcButton = pcLanguageBox.querySelector('span');
+    if (pcButton) pcButton.classList.add('disabled');
+  }
+
+  // スマホ用ボタンの非活性化
+  if (spLanguageItem) {
+    spLanguageItem.classList.add('disabled');
+  }
+
+  console.log('Language buttons (PC & Mobile) are disabled on this page.');
+
+} else {
+  // -----------------------------------------
+  // 【対象ページ以外の場合】通常のクリックイベント登録
+  // -----------------------------------------
+  
+  // PC用の開閉イベント
+  if (pcLanguageBox) {
+    const pcButton = pcLanguageBox.querySelector('span');
+    const pcMenu = pcLanguageBox.querySelector('.header-language-menu');
+
+    if (pcButton && pcMenu) {
+      pcButton.addEventListener('click', (e) => {
+        console.log('PC Language CLICK');
+        e.stopPropagation();
+        pcMenu.classList.toggle('show');
+      });
+
+      document.addEventListener('click', () => {
+        pcMenu.classList.remove('show');
+      });
+
+      pcMenu.addEventListener('click', (e) => {
+        e.stopPropagation();
+      });
+    }
+  }
+
+  // ※スマホ側（.nav-language-item）でも、もしアコーディオンなどの開閉や
+  // リンク移動のJSイベントを個別に設定している場合は、ここに記述します。
+}
