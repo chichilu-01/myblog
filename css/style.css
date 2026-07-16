@@ -312,3 +312,11 @@ body {
 .lang-google:hover {
   background-color: #f4f4f4;
 }
+
+/* Google翻訳のフレームを隠す */
+.goog-te-banner-frame, .goog-te-balloon-frame {
+    display: none !important;
+}
+body {
+    top: 0 !important;
+}
