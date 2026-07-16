@@ -266,44 +266,58 @@ main#posts {
   }
 }
 
-/* ナビゲーションアイテムのコンテナ */
-.nav-item {
-  position: relative;
-  display: inline-block;
-  cursor: pointer;
-  padding: 10px;
+/* Language Menu */
+.nav-language-item {
+    position: relative;
+    cursor: pointer;
 }
 
-/* ドロップダウンメニュー本体 */
+.nav-language-item p {
+    margin: 0;
+    padding: 10px 15px;
+    color: #fff;
+    transition: 0.3s;
+}
+
+.nav-language-item p:hover {
+    color: #ffd54f;
+}
+
+/* Dropdown */
 .dropdown {
-  position: absolute;
-  top: 100%;
-  right: 0;
-  background-color: #ffffff;
-  border: 1px solid #ddd;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-  min-width: 150px;
-  display: none; /* 初期状態は非表示 */
-  z-index: 1000;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    min-width: 180px;
+    background: rgba(20,20,20,.95);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 10px 25px rgba(0,0,0,.3);
+
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px);
+
+    transition: .25s;
+    z-index: 999;
 }
 
-/* ホバー時にドロップダウンを表示 */
-.nav-item:hover .dropdown {
-  display: block;
+.dropdown a {
+    display: block;
+    padding: 12px 18px;
+    color: white;
+    text-decoration: none;
+    transition: .25s;
 }
 
-/* 各リンクのスタイル */
-.lang-google {
-  display: block;
-  padding: 10px 15px;
-  text-decoration: none;
-  color: #333;
+.dropdown a:hover {
+    background: #ffb703;
+    color: #111;
 }
 
-.lang-google:hover {
-  background-color: #f4f4f4;
+/* Show menu */
+.nav-language-item.active .dropdown {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
 }
-
-/* Google 翻訳ウィジェットの見た目を整える */
-.goog-te-banner-frame { display: none !important; }
-body { top: 0 !important; }

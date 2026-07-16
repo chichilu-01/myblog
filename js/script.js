@@ -44,30 +44,64 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
-// Google 翻訳の初期化
-function googleTranslateElementInit() {
-  new google.translate.TranslateElement({
-    pageLanguage: 'ja',
-    includedLanguages: 'en,ko,zh-CN,vi,ne,pt,fr',
-    autoDisplay: false
-  }, 'google_translate_element');
+function translateTo(lang) {
+    const url = window.location.origin + window.location.pathname;
+
+    window.location.href =
+        `https://translate.google.com/translate?sl=ja&tl=${lang}&u=${encodeURIComponent(url)}`;
+}
+function goTranslatedPage(path) {
+
+    // 翻訳中ではない
+    if (!location.href.includes("translate.google")) {
+        window.location.href = path;
+        return;
+    }
+
+    // 現在の翻訳言語を取得
+    const url = new URL(location.href);
+    const lang = url.searchParams.get("tl") || "en";
+
+    const target =
+        window.location.origin + path;
+
+    window.location.href =
+        `https://translate.google.com/translate?sl=ja&tl=${lang}&u=${encodeURIComponent(target)}`;
 }
 
-// 言語切替関数
-function changeLanguage(langCode) {
-  var selectField = document.querySelector(".goog-te-combo");
-  if (selectField) {
-    selectField.value = langCode;
-    selectField.dispatchEvent(new Event('change'));
+function translateToEnglish()    { translateTo("en"); }
+function translateToKorean()     { translateTo("ko"); }
+function translateToChinese()    { translateTo("zh-CN"); }
+function translateToVietnamese() { translateTo("vi"); }
+function translateToNepali()     { translateTo("ne"); }
+function translateToPortuguese() { translateTo("pt"); }
+function translateToFrench()     { translateTo("fr"); }
+
+// ==========================================
+// 2. 日本語に戻す処理
+// ==========================================
+function backToJapanese() {
+  // Google翻訳内（セッション分離状態）のキーも念のため削除
+  sessionStorage.removeItem("siteLanguage");
+
+  const currentHost = window.location.hostname;
+
+  // Google翻訳ドメイン（*.translate.goog）内にいる場合の復元処理
+  if (currentHost.includes("translate.goog")) {
+    let cleanHost = currentHost.split(".translate.goog")[0];
+
+    // ドメインの復元（-- を - に、- を . に戻す）
+    cleanHost = cleanHost
+      .replace(/--/g, "___HYPHEN___")
+      .replace(/-/g, ".")
+      .replace(/___HYPHEN___/g, "-");
+
+    // ★日本語に戻る際、URLパラメータに「resetLang=true」を付与してリダイレクトする
+    const originalUrl = window.location.protocol + "//" + cleanHost + window.location.pathname + "?resetLang=true";
+    window.location.href = originalUrl;
+    return;
   }
-}
 
-// HTMLの各関数をマッピング
-function backToJapanese() { changeLanguage('ja'); }
-function translateToEnglish() { changeLanguage('en'); }
-function translateToKorean() { changeLanguage('ko'); }
-function translateToChinese() { changeLanguage('zh-CN'); }
-function translateToVietnamese() { changeLanguage('vi'); }
-function translateToNepali() { changeLanguage('ne'); }
-function translateToPortuguese() { changeLanguage('pt'); }
-function translateToFrench() { changeLanguage('fr'); }
+  // 通常ドメインにいる場合
+  window.location.href = window.location.origin + window.location.pathname;
+}
