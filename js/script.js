@@ -44,23 +44,30 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
-function doGoogleTranslate(lang) {
-    // 1. Google翻訳用のCookieをセット (有効期限1年)
-    // 形式: /auto/対象言語
-    const date = new Date();
-    date.setTime(date.getTime() + (365 * 24 * 60 * 60 * 1000));
-    document.cookie = "googtrans=/auto/" + lang + "; expires=" + date.toUTCString() + "; path=/";
-    
-    // 2. ページをリロードして翻訳を適用
-    location.reload();
+// Google 翻訳の初期化
+function googleTranslateElementInit() {
+  new google.translate.TranslateElement({
+    pageLanguage: 'ja',
+    includedLanguages: 'en,ko,zh-CN,vi,ne,pt,fr',
+    autoDisplay: false
+  }, 'google_translate_element');
 }
 
-// 各関数の割り当て
-function backToJapanese() { doGoogleTranslate('ja'); }
-function translateToEnglish() { doGoogleTranslate('en'); }
-function translateToKorean() { doGoogleTranslate('ko'); }
-function translateToChinese() { doGoogleTranslate('zh-CN'); }
-function translateToVietnamese() { doGoogleTranslate('vi'); }
-function translateToNepali() { doGoogleTranslate('ne'); }
-function translateToPortuguese() { doGoogleTranslate('pt'); }
-function translateToFrench() { doGoogleTranslate('fr'); }
+// 言語切替関数
+function changeLanguage(langCode) {
+  var selectField = document.querySelector(".goog-te-combo");
+  if (selectField) {
+    selectField.value = langCode;
+    selectField.dispatchEvent(new Event('change'));
+  }
+}
+
+// HTMLの各関数をマッピング
+function backToJapanese() { changeLanguage('ja'); }
+function translateToEnglish() { changeLanguage('en'); }
+function translateToKorean() { changeLanguage('ko'); }
+function translateToChinese() { changeLanguage('zh-CN'); }
+function translateToVietnamese() { changeLanguage('vi'); }
+function translateToNepali() { changeLanguage('ne'); }
+function translateToPortuguese() { changeLanguage('pt'); }
+function translateToFrench() { changeLanguage('fr'); }
