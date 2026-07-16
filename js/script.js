@@ -44,38 +44,34 @@ document.addEventListener('DOMContentLoaded', () => {
 });*/
 
 
-// ==========================================
-// 翻訳管理システム（全ページ共通）
-// ==========================================
-
 function translateTo(lang) {
+  const currentHost = window.location.hostname;
+
+// ★Google翻訳の中にいる場合
+  if (currentHost.includes("translate.goog")) {
+    // 1. セッションに次の言語を確実に保存（遷移後の自動維持のため）
+    sessionStorage.setItem("siteLanguage", lang);
+
+    // 2. 現在の Google翻訳のURL（例: https://example-com.translate.goog/... ）を取得
+    const currentUrl = new URL(window.location.href);
+
+    // 3. URLパラメーターの「tl（翻訳先言語）」を新しい言語コードに直接上書きする
+    // これにより、元のドメイン（cleanHost）に一度も戻らず、URLも一切見えません。
+    currentUrl.searchParams.set("tl", lang);
+
+    // 4. Google翻訳のドメインのまま直接ジャンプ
+    window.top.location.href = currentUrl.toString();
+    return;
+  }
+
+  // 最初から通常ドメインにいる場合は、そのままセッションを上書きして翻訳
+  sessionStorage.removeItem("siteLanguage");
   sessionStorage.setItem("siteLanguage", lang);
   const cleanUrl = window.location.origin + window.location.pathname;
-
-  // すでに翻訳ドメインにいる場合：パラメータを更新して再読み込み
-  if (window.location.hostname.includes("translate.goog")) {
-    const currentUrl = new URL(window.location.href);
-    currentUrl.searchParams.set("tl", lang);
-    window.top.location.href = currentUrl.toString();
-  } else {
-    // 通常ドメインにいる場合：翻訳URLへジャンプ
-    window.location.href = `https://translate.google.com/translate?sl=ja&tl=${lang}&u=${encodeURIComponent(cleanUrl)}`;
-  }
+  const translateUrl = `https://translate.google.com/translate?sl=ja&tl=${lang}&u=${encodeURIComponent(cleanUrl)}`;
+  window.location.href = translateUrl;
 }
-
-function backToJapanese() {
-  sessionStorage.removeItem("siteLanguage");
-  if (window.location.hostname.includes("translate.goog")) {
-    // ドメイン復元処理
-    let cleanHost = window.location.hostname.split(".translate.goog")[0]
-      .replace(/--/g, "___HYPHEN___").replace(/-/g, ".").replace(/___HYPHEN___/g, "-");
-    window.location.href = window.location.protocol + "//" + cleanHost + window.location.pathname + "?resetLang=true";
-  } else {
-    window.location.href = window.location.origin + window.location.pathname;
-  }
-}
-
-// 各言語トリガー
+// 各言語のトリガー関数（既存のHTML側のonclick等はそのまま使えます）
 function translateToEnglish()    { translateTo("en"); }
 function translateToKorean()     { translateTo("ko"); }
 function translateToChinese()    { translateTo("zh-CN"); }
@@ -84,53 +80,79 @@ function translateToNepali()     { translateTo("ne"); }
 function translateToPortuguese() { translateTo("pt"); }
 function translateToFrench()     { translateTo("fr"); }
 
-document.addEventListener("DOMContentLoaded", function () {
-  const urlParams = new URLSearchParams(window.location.search);
-  if (urlParams.get("resetLang") === "true") {
-    sessionStorage.removeItem("siteLanguage");
-    window.history.replaceState({}, document.title, window.location.pathname);
+// ==========================================
+// 2. 日本語に戻す処理
+// ==========================================
+function backToJapanese() {
+  // Google翻訳内（セッション分離状態）のキーも念のため削除
+  sessionStorage.removeItem("siteLanguage");
+
+  const currentHost = window.location.hostname;
+
+  // Google翻訳ドメイン（*.translate.goog）内にいる場合の復元処理
+  if (currentHost.includes("translate.goog")) {
+    let cleanHost = currentHost.split(".translate.goog")[0];
+
+    // ドメインの復元（-- を - に、- を . に戻す）
+    cleanHost = cleanHost
+      .replace(/--/g, "___HYPHEN___")
+      .replace(/-/g, ".")
+      .replace(/___HYPHEN___/g, "-");
+
+    // ★日本語に戻る際、URLパラメータに「resetLang=true」を付与してリダイレクトする
+    const originalUrl = window.location.protocol + "//" + cleanHost + window.location.pathname + "?resetLang=true";
+    window.location.href = originalUrl;
     return;
   }
 
-  const lang = sessionStorage.getItem("siteLanguage");
-  const noTranslatePages = ["/test/contact/contact.html", "/test/recruit/contact_new.html", "/test/recruit/contact_career.html"];
+  // 通常ドメインにいる場合
+  window.location.href = window.location.origin + window.location.pathname;
+}
 
-  // 翻訳設定があり、かつ現在通常ドメインなら翻訳へ飛ばす
-  if (lang && !window.location.hostname.includes("translate.goog") && !noTranslatePages.includes(window.location.pathname)) {
+document.addEventListener("DOMContentLoaded", function () {
+  const urlParams = new URLSearchParams(window.location.search);
+  const resetLang = urlParams.get("resetLang");
+  const nextLang = urlParams.get("nextLang"); // ★新しく追加：次の言語
+
+  // 日本語に戻るボタン、または他言語切り替え経由で戻ってきた場合
+  if (resetLang === "true") {
+    // 1. まず元のサイトの古いセッションを完全に削除
+    sessionStorage.removeItem("siteLanguage");
+    
+    // 2. もし「新しい別の言語」が指定されている場合、それを確実に新しく保存して翻訳へジャンプ
+    if (nextLang) {
+      sessionStorage.setItem("siteLanguage", nextLang);
+      const cleanUrl = window.location.origin + window.location.pathname;
+      const translateUrl = `https://translate.google.com/translate?sl=ja&tl=${nextLang}&u=${encodeURIComponent(cleanUrl)}`;
+      window.location.href = translateUrl;
+      return;
+    }
+
+    // 3. 次の言語指定がない（単に日本語に戻るだけ）なら終了
     const cleanUrl = window.location.origin + window.location.pathname;
-    window.location.href = `https://translate.google.com/translate?sl=ja&tl=${lang}&u=${encodeURIComponent(cleanUrl)}`;
+    window.history.replaceState({}, document.title, cleanUrl);
+    return;
   }
-});
 
-// 5. 【重要】リンククリック時のシームレス遷移
-document.addEventListener("click", function (e) {
-  const target = e.target.closest("a");
-  if (!target || !target.href) return;
-
+  // --- これ以降は通常の自動翻訳判定（変更なし） ---
   const lang = sessionStorage.getItem("siteLanguage");
   if (!lang) return;
 
-  // すでに翻訳ドメイン（translate.goog）にいる場合
-  if (window.location.hostname.includes("translate.goog")) {
-    // リンク先も翻訳ドメインになるよう、パラメータを維持して遷移させる
-    const url = new URL(target.href);
-    if (url.hostname === window.location.hostname.split(".translate.goog")[0].replace(/_/g, ".")) {
-      // リンク先が自サイト内であれば、Google翻訳ドメイン形式にURLを変換
-      const newHost = url.hostname.replace(/\./g, "-") + ".translate.goog";
-      url.hostname = newHost;
-      url.searchParams.set("tl", lang);
-      target.href = url.toString();
-    }
-  } 
-  // 通常ドメインから遷移する場合
-  else {
-    const url = new URL(target.href);
-    const isInternal = url.hostname === window.location.hostname;
-    const noTranslatePages = ["/test/contact/contact.html", "/test/recruit/contact_career.html", "/test/recruit/contact_new.html"];
-    
-    if (isInternal && !noTranslatePages.some(page => url.pathname.includes(page))) {
-      e.preventDefault();
-      window.location.href = `https://translate.google.com/translate?sl=ja&tl=${lang}&u=${encodeURIComponent(target.href)}`;
-    }
+  const noTranslatePages = [
+    "/test/contact/contact.html",
+    "/test/recruit/contact_new.html",
+    "/test/recruit/contact_career.html"
+  ];
+  if (noTranslatePages.includes(window.location.pathname)) {
+    //sessionStorage.removeItem("siteLanguage");
+    return;
   }
+
+  if (location.hostname.includes("translate.goog")) {
+    return;
+  }
+
+  const cleanUrl = window.location.origin + window.location.pathname;
+  const translateUrl = `https://translate.google.com/translate?sl=ja&tl=${lang}&u=${encodeURIComponent(cleanUrl)}`;
+  window.location.href = translateUrl;
 });
