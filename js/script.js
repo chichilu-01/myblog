@@ -108,7 +108,7 @@ function backToJapanese() {
       .replace(/___HYPHEN___/g, "-");
 
     // ★日本語に戻る際、URLパラメータに「resetLang=true」を付与してリダイレクトする
-    const originalUrl = window.location.protocol + "//" + cleanHost + window.location.pathname + "?resetLang=true";
+    const originalUrl = window.location.protocol + "//" + cleanHost + window.location.pathname;
     window.location.href = originalUrl;
     return;
   }
