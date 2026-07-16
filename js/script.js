@@ -65,19 +65,22 @@ function goTranslatedPage(path) {
 }
 function translateTo(lang) {
 
-    let url = window.location.href;
+    let path = location.pathname;
 
-    // translate.goog上なら元URLを取得
+    // translate.goog上ならそのままパスを利用
     if (location.hostname.includes("translate.goog")) {
-        const params = new URLSearchParams(location.search);
-        const original = params.get("u");
-        if (original) {
-            url = decodeURIComponent(original);
-        }
+
+        window.location.href =
+            `https://chichilu--01-github-io.translate.goog${path}?_x_tr_sl=ja&_x_tr_tl=${lang}&_x_tr_hl=ja`;
+
+    } else {
+
+        const url = encodeURIComponent(location.href);
+
+        window.location.href =
+            `https://translate.google.com/translate?sl=ja&tl=${lang}&u=${url}`;
     }
 
-    window.location.href =
-        `https://translate.google.com/translate?sl=ja&tl=${lang}&u=${encodeURIComponent(url)}`;
 }
 
 function translateToEnglish()    { translateTo("en"); }
@@ -89,19 +92,29 @@ function translateToPortuguese() { translateTo("pt"); }
 function translateToFrench()     { translateTo("fr"); }
 
 function backToJapanese() {
+  // Google翻訳内（セッション分離状態）のキーも念のため削除
+  sessionStorage.removeItem("siteLanguage");
 
-    if (location.hostname.includes("translate.goog")) {
+  const currentHost = window.location.hostname;
 
-        const params = new URLSearchParams(location.search);
-        const original = params.get("u");
+  // Google翻訳ドメイン（*.translate.goog）内にいる場合の復元処理
+  if (currentHost.includes("translate.goog")) {
+    let cleanHost = currentHost.split(".translate.goog")[0];
 
-        if (original) {
-            window.location.href = decodeURIComponent(original);
-            return;
-        }
-    }
+    // ドメインの復元（-- を - に、- を . に戻す）
+    cleanHost = cleanHost
+      .replace(/--/g, "___HYPHEN___")
+      .replace(/-/g, ".")
+      .replace(/___HYPHEN___/g, "-");
 
-    window.location.reload();
+    // ★日本語に戻る際、URLパラメータに「resetLang=true」を付与してリダイレクトする
+    const originalUrl = window.location.protocol + "//" + cleanHost + window.location.pathname + "?resetLang=true";
+    window.location.href = originalUrl;
+    return;
+  }
+
+  // 通常ドメインにいる場合
+  window.location.href = window.location.origin + window.location.pathname;
 }
 
 // 対象の要素を取得
