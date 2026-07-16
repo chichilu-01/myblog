@@ -1,35 +1,35 @@
 console.log(menuBtn);
 console.log(nav);
 document.addEventListener('DOMContentLoaded', () => {
-    const menuBtn = document.querySelector('.mobile-menu-btn');
-    const nav = document.querySelector('.main-nav');
-    const body = document.body;
+  const menuBtn = document.querySelector('.mobile-menu-btn');
+  const nav = document.querySelector('.main-nav');
+  const body = document.body;
 
-    // Xử lý click mở/đóng menu
-    menuBtn.addEventListener('click', (e) => {
-        e.stopPropagation(); // Ngăn sự kiện click lan ra ngoài
-        nav.classList.toggle('active');
+  // Xử lý click mở/đóng menu
+  menuBtn.addEventListener('click', (e) => {
+    e.stopPropagation(); // Ngăn sự kiện click lan ra ngoài
+    nav.classList.toggle('active');
 
-        // Thay đổi icon menu
-        const icon = menuBtn.querySelector('i');
-        if (nav.classList.contains('active')) {
-            icon.classList.replace('fa-bars', 'fa-times');
-        } else {
-            icon.classList.replace('fa-times', 'fa-bars');
-        }
-    });
+    // Thay đổi icon menu
+    const icon = menuBtn.querySelector('i');
+    if (nav.classList.contains('active')) {
+      icon.classList.replace('fa-bars', 'fa-times');
+    } else {
+      icon.classList.replace('fa-times', 'fa-bars');
+    }
+  });
 
-    // Đóng menu khi click ra ngoài
-    document.addEventListener('click', (e) => {
-        if (!nav.contains(e.target) && !menuBtn.contains(e.target)) {
-            nav.classList.remove('active');
-            const icon = menuBtn.querySelector('i');
-            icon.classList.replace('fa-times', 'fa-bars');
-        }
-    });
+  // Đóng menu khi click ra ngoài
+  document.addEventListener('click', (e) => {
+    if (!nav.contains(e.target) && !menuBtn.contains(e.target)) {
+      nav.classList.remove('active');
+      const icon = menuBtn.querySelector('i');
+      icon.classList.replace('fa-times', 'fa-bars');
+    }
+  });
 
-    // Tự động điền năm vào footer
-    document.getElementById('year').textContent = new Date().getFullYear();
+  // Tự động điền năm vào footer
+  document.getElementById('year').textContent = new Date().getFullYear();
 });
 
 
@@ -43,6 +43,17 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });*/
 
+// 対象の要素を取得
+const pcLanguageBox = document.querySelector('.header-language');
+const spLanguageItem = document.querySelector('.nav-language-item');
+
+// 非活性（無効化）にしたい対象ページのパスリスト
+const disabledPages = [
+  "contact.html",
+  "contact_new.html",
+  "contact_career.html"
+];
+
 // 現在のページのパスを取得して判定
 const currentPath = window.location.pathname;
 const isTargetPage = disabledPages.some(pagePath => currentPath.endsWith(pagePath));
@@ -51,7 +62,7 @@ if (isTargetPage) {
   // -----------------------------------------
   // 【対象ページの場合】非活性（無効化）処理
   // -----------------------------------------
-  
+
   // PC用ボタンの非活性化
   if (pcLanguageBox) {
     const pcButton = pcLanguageBox.querySelector('span');
@@ -69,7 +80,7 @@ if (isTargetPage) {
   // -----------------------------------------
   // 【対象ページ以外の場合】通常のクリックイベント登録
   // -----------------------------------------
-  
+
   // PC用の開閉イベント
   if (pcLanguageBox) {
     const pcButton = pcLanguageBox.querySelector('span');
