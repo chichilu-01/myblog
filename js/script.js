@@ -64,7 +64,17 @@ function goTranslatedPage(path) {
         `https://translate.google.com/translate?sl=ja&tl=${lang}&u=${encodeURIComponent(target)}`;
 }
 function translateTo(lang) {
-    const url = window.location.origin + window.location.pathname;
+
+    let url = window.location.href;
+
+    // translate.goog上なら元URLを取得
+    if (location.hostname.includes("translate.goog")) {
+        const params = new URLSearchParams(location.search);
+        const original = params.get("u");
+        if (original) {
+            url = decodeURIComponent(original);
+        }
+    }
 
     window.location.href =
         `https://translate.google.com/translate?sl=ja&tl=${lang}&u=${encodeURIComponent(url)}`;
@@ -79,8 +89,19 @@ function translateToPortuguese() { translateTo("pt"); }
 function translateToFrench()     { translateTo("fr"); }
 
 function backToJapanese() {
-    window.location.href =
-        window.location.origin + window.location.pathname;
+
+    if (location.hostname.includes("translate.goog")) {
+
+        const params = new URLSearchParams(location.search);
+        const original = params.get("u");
+
+        if (original) {
+            window.location.href = decodeURIComponent(original);
+            return;
+        }
+    }
+
+    window.location.reload();
 }
 
 // 対象の要素を取得
