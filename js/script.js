@@ -210,3 +210,23 @@ if (isTargetPage) {
   // ※スマホ側（.nav-language-item）でも、もしアコーディオンなどの開閉や
   // リンク移動のJSイベントを個別に設定している場合は、ここに記述します。
 }
+
+window.addEventListener("load", () => {
+
+    const removeBanner = () => {
+
+        const banner = document.querySelector(".goog-te-banner-frame");
+        if (banner) {
+            banner.style.display = "none";
+        }
+
+        document.body.style.top = "0";
+        document.body.style.marginTop = "0";
+        document.documentElement.style.marginTop = "0";
+    };
+
+    removeBanner();
+
+    // Googleが後から追加するので少し監視
+    setInterval(removeBanner, 300);
+});

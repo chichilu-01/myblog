@@ -324,3 +324,18 @@ main#posts {
     background: rgba(255,255,255,.08);
     color: #FFD166;
 }
+
+/* Google翻訳バーを非表示 */
+.goog-te-banner-frame.skiptranslate {
+    display: none !important;
+}
+
+body {
+    top: 0 !important;
+    margin-top: 0 !important;
+    position: static !important;
+}
+
+html {
+    margin-top: 0 !important;
+}
