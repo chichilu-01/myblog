@@ -117,6 +117,55 @@ function backToJapanese() {
   window.location.href = window.location.origin + window.location.pathname;
 }
 
+document.addEventListener("DOMContentLoaded", function () {
+  const urlParams = new URLSearchParams(window.location.search);
+  const resetLang = urlParams.get("resetLang");
+  const nextLang = urlParams.get("nextLang"); // ★新しく追加：次の言語
+
+  // 日本語に戻るボタン、または他言語切り替え経由で戻ってきた場合
+  if (resetLang === "true") {
+    // 1. まず元のサイトの古いセッションを完全に削除
+    sessionStorage.removeItem("siteLanguage");
+    
+    // 2. もし「新しい別の言語」が指定されている場合、それを確実に新しく保存して翻訳へジャンプ
+    if (nextLang) {
+      sessionStorage.setItem("siteLanguage", nextLang);
+      const cleanUrl = window.location.origin + window.location.pathname;
+      const translateUrl = `https://translate.google.com/translate?sl=ja&tl=${nextLang}&u=${encodeURIComponent(cleanUrl)}`;
+      window.location.href = translateUrl;
+      return;
+    }
+
+    // 3. 次の言語指定がない（単に日本語に戻るだけ）なら終了
+    const cleanUrl = window.location.origin + window.location.pathname;
+    window.history.replaceState({}, document.title, cleanUrl);
+    return;
+  }
+
+  // --- これ以降は通常の自動翻訳判定（変更なし） ---
+  const lang = sessionStorage.getItem("siteLanguage");
+  if (!lang) return;
+
+  const noTranslatePages = [
+    "/test/contact/contact.html",
+    "/test/recruit/contact_new.html",
+    "/test/recruit/contact_career.html"
+  ];
+  if (noTranslatePages.includes(window.location.pathname)) {
+    //sessionStorage.removeItem("siteLanguage");
+    return;
+  }
+
+  if (location.hostname.includes("translate.goog")) {
+    return;
+  }
+
+  const cleanUrl = window.location.origin + window.location.pathname;
+  const translateUrl = `https://translate.google.com/translate?sl=ja&tl=${lang}&u=${encodeURIComponent(cleanUrl)}`;
+  window.location.href = translateUrl;
+});
+
+
 // 対象の要素を取得
 const pcLanguageBox = document.querySelector('.header-language');
 const spLanguageItem = document.querySelector('.nav-language-item');
