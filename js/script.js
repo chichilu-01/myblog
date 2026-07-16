@@ -141,7 +141,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         // translate.goog のURLへ書き換える
         link.href =
-            `https://chichilu--01-github-io.translate.goog${target.pathname}?_x_tr_sl=ja&_x_tr_tl=${lang}&_x_tr_hl=ja`;
+            `https://chichilu--01-github-io.translate.goog/myblog/${target.pathname}?_x_tr_sl=ja&_x_tr_tl=${lang}&_x_tr_hl=ja`;
     });
 
 });
