@@ -117,52 +117,33 @@ function backToJapanese() {
   window.location.href = window.location.origin + window.location.pathname;
 }
 
-document.addEventListener("DOMContentLoaded", function () {
-  const urlParams = new URLSearchParams(window.location.search);
-  const resetLang = urlParams.get("resetLang");
-  const nextLang = urlParams.get("nextLang"); // ★新しく追加：次の言語
+document.addEventListener("DOMContentLoaded", () => {
 
-  // 日本語に戻るボタン、または他言語切り替え経由で戻ってきた場合
-  if (resetLang === "true") {
-    // 1. まず元のサイトの古いセッションを完全に削除
-    sessionStorage.removeItem("siteLanguage");
-    
-    // 2. もし「新しい別の言語」が指定されている場合、それを確実に新しく保存して翻訳へジャンプ
-    if (nextLang) {
-      sessionStorage.setItem("siteLanguage", nextLang);
-      const cleanUrl = window.location.origin + window.location.pathname;
-      const translateUrl = `https://translate.google.com/translate?sl=ja&tl=${nextLang}&u=${encodeURIComponent(cleanUrl)}`;
-      window.location.href = translateUrl;
-      return;
-    }
+    // translate.goog上だけ実行
+    if (!location.hostname.includes("translate.goog")) return;
 
-    // 3. 次の言語指定がない（単に日本語に戻るだけ）なら終了
-    const cleanUrl = window.location.origin + window.location.pathname;
-    window.history.replaceState({}, document.title, cleanUrl);
-    return;
-  }
+    const lang = new URLSearchParams(location.search).get("_x_tr_tl") || "en";
 
-  // --- これ以降は通常の自動翻訳判定（変更なし） ---
-  const lang = sessionStorage.getItem("siteLanguage");
-  if (!lang) return;
+    document.querySelectorAll("a[href]").forEach(link => {
 
-  const noTranslatePages = [
-    "/test/contact/contact.html",
-    "/test/recruit/contact_new.html",
-    "/test/recruit/contact_career.html"
-  ];
-  if (noTranslatePages.includes(window.location.pathname)) {
-    //sessionStorage.removeItem("siteLanguage");
-    return;
-  }
+        const href = link.getAttribute("href");
 
-  if (location.hostname.includes("translate.goog")) {
-    return;
-  }
+        // 外部リンクやJavaScriptは無視
+        if (!href ||
+            href.startsWith("#") ||
+            href.startsWith("javascript:") ||
+            href.startsWith("http")) {
+            return;
+        }
 
-  const cleanUrl = window.location.origin + window.location.pathname;
-  const translateUrl = `https://translate.google.com/translate?sl=ja&tl=${lang}&u=${encodeURIComponent(cleanUrl)}`;
-  window.location.href = translateUrl;
+        // 相対URLを絶対URLへ
+        const target = new URL(href, "https://chichilu-01.github.io/myblog/");
+
+        // translate.goog のURLへ書き換える
+        link.href =
+            `https://chichilu--01-github-io.translate.goog${target.pathname}?_x_tr_sl=ja&_x_tr_tl=${lang}&_x_tr_hl=ja`;
+    });
+
 });
 
 
