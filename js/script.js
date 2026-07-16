@@ -83,6 +83,17 @@ function backToJapanese() {
         window.location.origin + window.location.pathname;
 }
 
+// 対象の要素を取得
+const pcLanguageBox = document.querySelector('.header-language');
+const spLanguageItem = document.querySelector('.nav-language-item');
+
+// 非活性（無効化）にしたい対象ページのパスリスト
+const disabledPages = [
+  "contact.html",
+  "contact_new.html",
+  "contact_career.html"
+];
+
 // 現在のページのパスを取得して判定
 const currentPath = window.location.pathname;
 const isTargetPage = disabledPages.some(pagePath => currentPath.endsWith(pagePath));
