@@ -215,7 +215,7 @@ window.addEventListener("load", () => {
 
     const removeBanner = () => {
 
-        const banner = document.querySelector(".goog-te-banner-frame");
+        const banner = document.querySelector("#gt-nvframe");
         if (banner) {
             banner.style.display = "none";
         }

@@ -326,7 +326,7 @@ main#posts {
 }
 
 /* Google翻訳バーを非表示 */
-.goog-te-banner-frame.skiptranslate {
+#gt-nvframe {
     display: none !important;
 }
 
