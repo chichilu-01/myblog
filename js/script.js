@@ -1,5 +1,4 @@
-console.log(menuBtn);
-console.log(nav);
+
 document.addEventListener('DOMContentLoaded', () => {
   const menuBtn = document.querySelector('.mobile-menu-btn');
   const nav = document.querySelector('.main-nav');
