@@ -43,6 +43,28 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });*/
 
+function loadGoogleTranslate() {
+    // 1. グローバル関数を定義
+    window.googleTranslateElementInit = function() {
+        new google.translate.TranslateElement({
+            pageLanguage: 'ja',
+            includedLanguages: 'en,ko,zh-CN,vi,ne,pt,fr',
+            layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+        }, 'google_translate_element');
+    };
+
+    // 2. スクリプト要素を作成して head に追加
+    const script = document.createElement('script');
+    script.type = 'text/javascript';
+    script.src = '//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit';
+    script.async = true;
+    document.head.appendChild(script);
+}
+
+// 実行したいタイミングで呼び出す
+// 例: ページ読み込み完了時
+window.addEventListener('load', loadGoogleTranslate);
+
 function doGoogleTranslate(lang) {
     // 1. Google翻訳用のCookieをセット (有効期限1年)
     // 形式: /auto/対象言語
