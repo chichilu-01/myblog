@@ -275,48 +275,40 @@ body {
     margin-top: 0px !important;
 }
 
-/* 最上部の言語バー全体の背景と配置 */
-.top-lang-bar {
-  background-color: #f4f4f4; /* 薄いグレー */
-  padding: 5px 0;
-  font-size: 12px;
-  border-bottom: 1px solid #ddd;
-  margin-top: 20px;
-}
-
-/* ボタンとラベルを横並びにする */
-.lang-buttons {
-  display: flex;
-  justify-content: flex-end; /* 右寄せ */
-  align-items: center;
-  gap: 8px;
-  flex-wrap: wrap; /* スマホで折り返せるようにする */
-}
-
-.lang-label {
-  margin-right: 5px;
-  color: #666;
-  font-weight: bold;
-}
-
-/* ボタンのスタイル */
-.top-lang-bar button {
-  background: none;
-  border: 1px solid #ccc;
-  padding: 2px 8px;
-  border-radius: 3px;
+/* ナビゲーションアイテムのコンテナ */
+.nav-item {
+  position: relative;
+  display: inline-block;
   cursor: pointer;
+  padding: 10px;
+}
+
+/* ドロップダウンメニュー本体 */
+.dropdown {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background-color: #ffffff;
+  border: 1px solid #ddd;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  min-width: 150px;
+  display: none; /* 初期状態は非表示 */
+  z-index: 1000;
+}
+
+/* ホバー時にドロップダウンを表示 */
+.nav-item:hover .dropdown {
+  display: block;
+}
+
+/* 各リンクのスタイル */
+.lang-google {
+  display: block;
+  padding: 10px 15px;
+  text-decoration: none;
   color: #333;
-  transition: 0.2s;
 }
 
-.top-lang-bar button:hover {
-  background-color: #333;
-  color: #fff;
-}
-
-/* 日本語に戻すボタンを目立たせる */
-.top-lang-bar .btn-reset {
-  border-color: #999;
-  background-color: #ddd;
+.lang-google:hover {
+  background-color: #f4f4f4;
 }

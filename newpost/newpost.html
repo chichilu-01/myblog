@@ -19,19 +19,20 @@
 
 <body>
   <div id="header"></div>
-    <div class="top-lang-bar">
-  <div class="container lang-buttons">
-    <span class="lang-label">Language:</span>
-    <button onclick="translateToEnglish()">English</button>
-    <button onclick="translateToKorean()">한국어</button>
-    <button onclick="translateToChinese()">中文</button>
-    <button onclick="translateToVietnamese()">Tiếng Việt</button>
-    <button onclick="translateToNepali()">नेपाली</button>
-    <button onclick="translateToPortuguese()">Português</button>
-    <button onclick="translateToFrench()">Français</button>
-    <button class="btn-reset" onclick="backToJapanese()">日本語に戻す</button>
-  </div>
-</div>
+        <div class="nav-item nav-language-item">
+          <p>${nav.language}</p>
+            <div class="dropdown dropdown-right">
+              <a class="lang-google" href="#" onclick="backToJapanese(); return false;">日本語</a>
+              <a class="lang-google" href="#" onclick="translateToEnglish(); return false;">English</a>
+              <a class="lang-google" href="#" onclick="translateToKorean(); return false;">한국어</a>
+              <a class="lang-google" href="#" onclick="translateToChinese(); return false;">中文</a>
+              <a class="lang-google" href="#" onclick="translateToVietnamese(); return false;">Tiếng Việt</a>
+              <a class="lang-google" href="#" onclick="translateToNepali(); return false;">नेपाली</a>
+              <a class="lang-google" href="#" onclick="translateToPortuguese(); return false;">Português</a>
+              <a class="lang-google" href="#" onclick="translateToFrench(); return false;">Français</a>
+              <div id="google_translate_element"></div>
+            </div>
+          </div>
   <main class="container">
     <form id="newPostForm">
       <label for="title">タイトル:</label>
@@ -61,6 +62,20 @@
   <script src="../js/components.js"></script>
   <script src="../js/script.js"></script>
   <script src="../js/newpost.js"></script>
+  <!-- サイトのコンテンツなど -->
+
+  <!-- ここに配置 -->
+  <script type="text/javascript">
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement({
+        pageLanguage: 'ja',
+        includedLanguages: 'en,ko,zh-CN,vi,ne,pt,fr',
+        layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+      }, 'google_translate_element');
+    }
+  </script>
+  <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+</body>
 </body>
 
 </html>
