@@ -45,44 +45,59 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
-function goTranslatedPage(path) {
+// --- 翻訳用設定 ---
+const LANG_KEY = "siteLanguage";
 
-    // 翻訳中ではない
-    if (!location.href.includes("translate.google")) {
-        window.location.href = path;
-        return;
-    }
-
-    // 現在の翻訳言語を取得
-    const url = new URL(location.href);
-    const lang = url.searchParams.get("tl") || "en";
-
-    const target =
-        window.location.origin + path;
-
-    window.location.href =
-        `https://translate.google.com/translate?sl=ja&tl=${lang}&u=${encodeURIComponent(target)}`;
-}
+// 言語切り替えの共通処理
 function translateTo(lang) {
+  sessionStorage.setItem(LANG_KEY, lang);
+  
+  // お問い合わせ等の翻訳対象外ページリスト
+  const noTranslatePages = ["contact.html", "contact_new.html", "contact_career.html"];
+  const isNoTranslate = noTranslatePages.some(p => window.location.pathname.endsWith(p));
+  
+  // 翻訳対象外ページなら翻訳せず、言語設定だけ保存してリロード
+  if (isNoTranslate) {
+    window.location.reload();
+    return;
+  }
 
-    let path = location.pathname;
-
-    // translate.goog上ならそのままパスを利用
-    if (location.hostname.includes("translate.goog")) {
-
-        window.location.href =
-            `https://chichilu--01-github-io.translate.goog${path}?_x_tr_sl=ja&_x_tr_tl=${lang}&_x_tr_hl=ja`;
-
-    } else {
-
-        const url = encodeURIComponent(location.href);
-
-        window.location.href =
-            `https://translate.google.com/translate?sl=ja&tl=${lang}&u=${url}`;
-    }
-
+  // 翻訳先へリダイレクト
+  const cleanUrl = window.location.origin + window.location.pathname;
+  window.location.href = `https://translate.google.com/translate?sl=ja&tl=${lang}&u=${encodeURIComponent(cleanUrl)}`;
 }
 
+// 日本語に戻す処理
+function backToJapanese() {
+  sessionStorage.removeItem(LANG_KEY);
+  
+  // Google翻訳経由ならドメインを元に戻す処理
+  if (location.hostname.includes("translate.goog")) {
+    let cleanHost = location.hostname.split(".translate.goog")[0].replace(/--/g, "___HYPHEN___").replace(/-/g, ".").replace(/___HYPHEN___/g, "-");
+    window.location.href = window.location.protocol + "//" + cleanHost + window.location.pathname;
+  } else {
+    window.location.reload();
+  }
+}
+
+// ページ読み込み時の自動翻訳判定
+document.addEventListener("DOMContentLoaded", () => {
+  const lang = sessionStorage.getItem(LANG_KEY);
+  if (!lang) return;
+
+  // Google翻訳のドメイン内にいる場合は何もしない（無限ループ防止）
+  if (location.hostname.includes("translate.goog")) return;
+
+  // お問い合わせ等のページでは自動翻訳させない
+  const noTranslatePages = ["contact.html", "contact_new.html", "contact_career.html"];
+  if (noTranslatePages.some(p => window.location.pathname.endsWith(p))) return;
+
+  // 通常ページなら翻訳へ飛ばす
+  const cleanUrl = window.location.origin + window.location.pathname;
+  window.location.href = `https://translate.google.com/translate?sl=ja&tl=${lang}&u=${encodeURIComponent(cleanUrl)}`;
+});
+
+// 各言語のトリガー（既存のHTMLから呼び出せる状態を維持）
 function translateToEnglish()    { translateTo("en"); }
 function translateToKorean()     { translateTo("ko"); }
 function translateToChinese()    { translateTo("zh-CN"); }
@@ -90,61 +105,6 @@ function translateToVietnamese() { translateTo("vi"); }
 function translateToNepali()     { translateTo("ne"); }
 function translateToPortuguese() { translateTo("pt"); }
 function translateToFrench()     { translateTo("fr"); }
-
-function backToJapanese() {
-  // Google翻訳内（セッション分離状態）のキーも念のため削除
-  sessionStorage.removeItem("siteLanguage");
-
-  const currentHost = window.location.hostname;
-
-  // Google翻訳ドメイン（*.translate.goog）内にいる場合の復元処理
-  if (currentHost.includes("translate.goog")) {
-    let cleanHost = currentHost.split(".translate.goog")[0];
-
-    // ドメインの復元（-- を - に、- を . に戻す）
-    cleanHost = cleanHost
-      .replace(/--/g, "___HYPHEN___")
-      .replace(/-/g, ".")
-      .replace(/___HYPHEN___/g, "-");
-
-    // ★日本語に戻る際、URLパラメータに「resetLang=true」を付与してリダイレクトする
-    const originalUrl = window.location.protocol + "//" + cleanHost + window.location.pathname;
-    window.location.href = originalUrl;
-    return;
-  }
-
-  // 通常ドメインにいる場合
-  window.location.href = window.location.origin + window.location.pathname;
-}
-
-document.addEventListener("DOMContentLoaded", () => {
-
-    // translate.goog上だけ実行
-    if (!location.hostname.includes("translate.goog")) return;
-
-    const lang = new URLSearchParams(location.search).get("_x_tr_tl") || "en";
-
-    document.querySelectorAll("a[href]").forEach(link => {
-
-        const href = link.getAttribute("href");
-
-        // 外部リンクやJavaScriptは無視
-        if (!href ||
-            href.startsWith("#") ||
-            href.startsWith("javascript:") ||
-            href.startsWith("http")) {
-            return;
-        }
-
-        // 相対URLを絶対URLへ
-        const target = new URL(href, "https://chichilu-01.github.io/myblog/");
-
-        // translate.goog のURLへ書き換える
-        link.href =
-            `https://chichilu--01-github-io.translate.goog/myblog${target.pathname}?_x_tr_sl=ja&_x_tr_tl=${lang}&_x_tr_hl=ja`;
-    });
-
-});
 
 
 // 対象の要素を取得
@@ -210,23 +170,3 @@ if (isTargetPage) {
   // ※スマホ側（.nav-language-item）でも、もしアコーディオンなどの開閉や
   // リンク移動のJSイベントを個別に設定している場合は、ここに記述します。
 }
-
-window.addEventListener("load", () => {
-
-    const removeBanner = () => {
-
-        const banner = document.querySelector("#gt-nvframe");
-        if (banner) {
-            banner.style.display = "none";
-        }
-
-        document.body.style.top = "0";
-        document.body.style.marginTop = "0";
-        document.documentElement.style.marginTop = "0";
-    };
-
-    removeBanner();
-
-    // Googleが後から追加するので少し監視
-    setInterval(removeBanner, 300);
-});
