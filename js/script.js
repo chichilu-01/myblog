@@ -45,118 +45,144 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
-// --- 翻訳用設定 ---
-const LANG_KEY = "siteLanguage";
-const NO_TRANSLATE_PAGES = ["contact.html", "contact_new.html", "contact_career.html"];
 
-// 翻訳URLを生成する関数
-function getTranslateUrl(url, lang) {
-  return `https://translate.google.com/translate?sl=ja&tl=${lang}&u=${encodeURIComponent(url)}`;
-}
 
-// ページ遷移をインターセプトする処理（重要）
-document.addEventListener("click", (event) => {
-  const lang = sessionStorage.getItem(LANG_KEY);
-  if (!lang) return; // 言語設定がなければ何もしない
+function goTranslatedPage(path) {
 
-  // クリックされたのが <a> タグか確認
-  const link = event.target.closest("a");
-  if (!link || !link.href) return;
-
-  const url = new URL(link.href);
-
-  // 1. 同一ドメインかつ翻訳対象外ページでない場合のみ翻訳URLへ書き換え
-  if (url.origin === window.location.origin && 
-      !NO_TRANSLATE_PAGES.some(p => url.pathname.endsWith(p))) {
-    
-    event.preventDefault(); // 一旦遷移を止める
-    window.location.href = getTranslateUrl(link.href, lang); // 翻訳URLへ遷移
-  }
-}, true); // キャプチャモードで先にイベントを拾う
-
-// 言語切り替え時の処理
-function translateTo(lang) {
-  sessionStorage.setItem(LANG_KEY, lang);
-  const isNoTranslate = NO_TRANSLATE_PAGES.some(p => window.location.pathname.endsWith(p));
-  
-  if (isNoTranslate) {
-    window.location.reload();
-  } else {
-    window.location.href = getTranslateUrl(window.location.href, lang);
-  }
-}
-
-// 日本語に戻す処理
-function backToJapanese() {
-  sessionStorage.removeItem(LANG_KEY);
-  if (location.hostname.includes("translate.goog")) {
-    let cleanHost = location.hostname.split(".translate.goog")[0].replace(/--/g, "___HYPHEN___").replace(/-/g, ".").replace(/___HYPHEN___/g, "-");
-    window.location.href = window.location.protocol + "//" + cleanHost + window.location.pathname;
-  } else {
-    window.location.reload();
-  }
-}
-
-// 対象の要素を取得
-const pcLanguageBox = document.querySelector('.header-language');
-const spLanguageItem = document.querySelector('.nav-language-item');
-
-// 非活性（無効化）にしたい対象ページのパスリスト
-const disabledPages = [
-  "contact.html",
-  "contact_new.html",
-  "contact_career.html"
-];
-
-// 現在のページのパスを取得して判定
-const currentPath = window.location.pathname;
-const isTargetPage = disabledPages.some(pagePath => currentPath.endsWith(pagePath));
-
-if (isTargetPage) {
-  // -----------------------------------------
-  // 【対象ページの場合】非活性（無効化）処理
-  // -----------------------------------------
-  
-  // PC用ボタンの非活性化
-  if (pcLanguageBox) {
-    const pcButton = pcLanguageBox.querySelector('span');
-    if (pcButton) pcButton.classList.add('disabled');
-  }
-
-  // スマホ用ボタンの非活性化
-  if (spLanguageItem) {
-    spLanguageItem.classList.add('disabled');
-  }
-
-  console.log('Language buttons (PC & Mobile) are disabled on this page.');
-
-} else {
-  // -----------------------------------------
-  // 【対象ページ以外の場合】通常のクリックイベント登録
-  // -----------------------------------------
-  
-  // PC用の開閉イベント
-  if (pcLanguageBox) {
-    const pcButton = pcLanguageBox.querySelector('span');
-    const pcMenu = pcLanguageBox.querySelector('.header-language-menu');
-
-    if (pcButton && pcMenu) {
-      pcButton.addEventListener('click', (e) => {
-        console.log('PC Language CLICK');
-        e.stopPropagation();
-        pcMenu.classList.toggle('show');
-      });
-
-      document.addEventListener('click', () => {
-        pcMenu.classList.remove('show');
-      });
-
-      pcMenu.addEventListener('click', (e) => {
-        e.stopPropagation();
-      });
+    // 鄙ｻ險ｳ荳ｭ縺ｧ縺ｯ縺ｪ縺�
+    if (!location.href.includes("translate.google")) {
+        window.location.href = path;
+        return;
     }
+
+    // 迴ｾ蝨ｨ縺ｮ鄙ｻ險ｳ險隱槭ｒ蜿門ｾ�
+    const url = new URL(location.href);
+    const lang = url.searchParams.get("tl") || "en";
+
+    const target =
+        window.location.origin + path;
+
+    window.location.href =
+        `https://translate.google.com/translate?sl=ja&tl=${lang}&u=${encodeURIComponent(target)}`;
+}
+function translateTo(lang) {
+
+    let path = location.pathname;
+
+    // translate.goog荳翫↑繧峨◎縺ｮ縺ｾ縺ｾ繝代せ繧貞茜逕ｨ
+    if (location.hostname.includes("translate.goog")) {
+
+        window.location.href =
+            `https://www-ones--house-co-jp.translate.goog${path}?_x_tr_sl=ja&_x_tr_tl=${lang}&_x_tr_hl=ja`;
+
+    } else {
+
+        const url = encodeURIComponent(location.href);
+
+        window.location.href =
+            `https://translate.google.com/translate?sl=ja&tl=${lang}&u=${url}`;
+    }
+
+}
+
+function translateToEnglish()    { translateTo("en"); }
+function translateToKorean()     { translateTo("ko"); }
+function translateToChinese()    { translateTo("zh-CN"); }
+function translateToVietnamese() { translateTo("vi"); }
+function translateToNepali()     { translateTo("ne"); }
+function translateToPortuguese() { translateTo("pt"); }
+function translateToFrench()     { translateTo("fr"); }
+
+function backToJapanese() {
+  // Google鄙ｻ險ｳ蜀�ｼ医そ繝�す繝ｧ繝ｳ蛻�屬迥ｶ諷具ｼ峨�繧ｭ繝ｼ繧ょｿｵ縺ｮ縺溘ａ蜑企勁
+  sessionStorage.removeItem("siteLanguage");
+
+  const currentHost = window.location.hostname;
+
+  // Google鄙ｻ險ｳ繝峨Γ繧､繝ｳ��*.translate.goog�牙�縺ｫ縺�ｋ蝣ｴ蜷医�蠕ｩ蜈��逅�
+  if (currentHost.includes("translate.goog")) {
+    let cleanHost = currentHost.split(".translate.goog")[0];
+
+    // 繝峨Γ繧､繝ｳ縺ｮ蠕ｩ蜈�ｼ�-- 繧� - 縺ｫ縲�- 繧� . 縺ｫ謌ｻ縺呻ｼ�
+    cleanHost = cleanHost
+      .replace(/--/g, "___HYPHEN___")
+      .replace(/-/g, ".")
+      .replace(/___HYPHEN___/g, "-");
+
+    // 笘�律譛ｬ隱槭↓謌ｻ繧矩圀縲ゞRL繝代Λ繝｡繝ｼ繧ｿ縺ｫ縲罫esetLang=true縲阪ｒ莉倅ｸ弱＠縺ｦ繝ｪ繝繧､繝ｬ繧ｯ繝医☆繧�
+    const originalUrl = window.location.protocol + "//" + cleanHost + window.location.pathname;
+    window.location.href = originalUrl;
+    return;
   }
 
-  // ※スマホ側（.nav-language-item）でも、もしアコーディオンなどの開閉や
-  // リンク移動のJSイベントを個別に設定している場合は、ここに記述します。
+  // 騾壼ｸｸ繝峨Γ繧､繝ｳ縺ｫ縺�ｋ蝣ｴ蜷�
+  window.location.href = window.location.origin + window.location.pathname;
 }
+
+/*document.addEventListener("DOMContentLoaded", () => {
+
+    // translate.goog荳翫□縺大ｮ溯｡�
+    if (!location.hostname.includes("translate.goog")) return;
+
+    const lang = new URLSearchParams(location.search).get("_x_tr_tl") || "en";
+
+    document.querySelectorAll("a[href]").forEach(link => {
+
+        const href = link.getAttribute("href");
+
+        // 螟夜Κ繝ｪ繝ｳ繧ｯ繧ЙavaScript縺ｯ辟｡隕�
+        if (!href ||
+            href.startsWith("#") ||
+            href.startsWith("javascript:") ||
+            href.startsWith("http")) {
+            return;
+        }
+
+        // 逶ｸ蟇ｾURL繧堤ｵｶ蟇ｾURL縺ｸ
+        const target = new URL(href, "https://www.ones-house.co.jp/");
+
+        // translate.goog 縺ｮURL縺ｸ譖ｸ縺肴鋤縺医ｋ
+        link.href =
+            `https://www-ones--house-co-jp.translate.goog${target.pathname}?_x_tr_sl=ja&_x_tr_tl=${lang}&_x_tr_hl=ja`;
+    });
+
+});*/
+
+document.addEventListener("DOMContentLoaded", () => {
+    // 1. 蟇ｾ雎｡縺ｮ繝壹�繧ｸ��contact.html / contact_career.html�牙愛螳�
+    const isContactPage = location.pathname.includes("contact.html") || location.pathname.includes("contact_career.html") || location.pathname.includes("contact_new.html");
+
+    // 2. 繧ゅ＠騾壼ｸｸ縺ｮ繧ｵ繧､繝茨ｼ�translate.goog莉･螟厄ｼ峨�繧ｳ繝ｳ繧ｿ繧ｯ繝医�繝ｼ繧ｸ縺ｫ逶ｴ謗･譚･縺溘ｉ縲√ョ繝輔か繝ｫ繝郁ｨ隱橸ｼ井ｾ�: en�峨〒Google鄙ｻ險ｳ縺ｸ繝ｪ繝繧､繝ｬ繧ｯ繝�
+    if (!location.hostname.includes("translate.goog")) {
+        if (isContactPage) {
+            const defaultLang = "en"; // 蛻晄悄繝ｪ繝繧､繝ｬ繧ｯ繝域凾縺ｮ鄙ｻ險ｳ蜈郁ｨ隱�
+            const currentPath = location.pathname;
+            location.href = `https://www-ones--house-co-jp.translate.goog${currentPath}?_x_tr_sl=ja&_x_tr_tl=${defaultLang}&_x_tr_hl=ja`;
+        }
+        return; // 騾壼ｸｸ繧ｵ繧､繝医�莉悶�繝壹�繧ｸ縺ｧ縺ｯ縺薙ｌ莉･髯阪�蜃ｦ逅�ｼ医Μ繝ｳ繧ｯ譖ｸ縺肴鋤縺茨ｼ峨�荳崎ｦ�
+    }
+
+    // --- 縺薙％縺九ｉ荳九� translate.goog 荳翫〒縺ｮ縺ｿ螳溯｡後＆繧後ｋ蜃ｦ逅� ---
+
+    // URL繝代Λ繝｡繝ｼ繧ｿ縺九ｉ迴ｾ蝨ｨ縺ｮ鄙ｻ險ｳ蜈郁ｨ隱槭ｒ蜿門ｾ暦ｼ医↑縺代ｌ縺ｰ en��
+    const lang = new URLSearchParams(location.search).get("_x_tr_tl") || "en";
+
+    // 繧ｵ繧､繝亥�縺ｮ蜈ｨ繝ｪ繝ｳ繧ｯ繧呈嶌縺肴鋤縺茨ｼ医％繧後〒莉悶�繝壹�繧ｸ縺ｫ遘ｻ蜍輔＠縺ｦ繧りｨ隱槭′邯ｭ謖√＆繧後ｋ��
+    document.querySelectorAll("a[href]").forEach(link => {
+        const href = link.getAttribute("href");
+
+        // 螟夜Κ繝ｪ繝ｳ繧ｯ繧��繝代�繝�Μ繝ｳ繧ｯ縲゛avaScript縺ｯ辟｡隕�
+        if (!href ||
+            href.startsWith("#") ||
+            href.startsWith("javascript:") ||
+            href.startsWith("http")) {
+            return;
+        }
+
+        // 逶ｸ蟇ｾURL繧堤ｵｶ蟇ｾURL縺ｸ螟画鋤�亥�縺ｮ繝峨Γ繧､繝ｳ蜷阪↓蜷医ｏ縺帙※菫ｮ豁｣縺励※縺上□縺輔＞��
+        const target = new URL(href, "https://www.ones-house.co.jp/");
+
+        // translate.goog 縺ｮURL縺ｸ譖ｸ縺肴鋤縺医ｋ�育樟蝨ｨ縺ｮ險隱� lang 繧貞ｼ輔″邯吶＄��
+        link.href = `https://www-ones--house-co-jp.translate.goog${target.pathname}?_x_tr_sl=ja&_x_tr_tl=${lang}&_x_tr_hl=ja`;
+    });
+});
