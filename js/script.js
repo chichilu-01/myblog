@@ -156,108 +156,123 @@ document.addEventListener("DOMContentLoaded", () => {
     case "about.html":
     case "contact_career.html":
     case "contact_new.html":
+
       if (location.hostname.includes("translate.goog")) {
-        const lang = new URLSearchParams(location.search).get("_x_tr_tl");
+
+        const lang =
+          new URLSearchParams(location.search)
+            .get("_x_tr_tl");
 
         if (lang) {
-          sessionStorage.setItem("translateLang", lang);
+          localStorage.setItem(
+            "translateLang",
+            lang
+          );
         }
 
-        location.href = `https://chichilu-01.github.io${location.pathname}`;
+        location.replace(
+          `https://chichilu-01.github.io${location.pathname}`
+        );
       }
+
       return;
   }
 
   // --- 縺薙％縺九ｉ荳九� translate.goog 荳翫〒縺ｮ縺ｿ螳溯｡後＆繧後ｋ蜃ｦ逅� ---
 
   // URL繝代Λ繝｡繝ｼ繧ｿ縺九ｉ迴ｾ蝨ｨ縺ｮ鄙ｻ險ｳ蜈郁ｨ隱槭ｒ蜿門ｾ暦ｼ医↑縺代ｌ縺ｰ en��
-const lang =
-  new URLSearchParams(location.search).get("_x_tr_tl") ||
-  sessionStorage.getItem("translateLang");
+  const lang =
+    new URLSearchParams(location.search).get("_x_tr_tl") ||
+    localStorage.getItem("translateLang");
 
-if (lang) {
-  document.querySelectorAll("a[href]").forEach(link => {
-    const href = link.getAttribute("href");
+  if (lang) {
 
-    if (
-      !href ||
-      href.startsWith("#") ||
-      href.startsWith("javascript:") ||
-      href.startsWith("http")
-    ) {
-      return;
+    document.querySelectorAll("a[href]").forEach(link => {
+
+      const href = link.getAttribute("href");
+
+      if (
+        !href ||
+        href.startsWith("#") ||
+        href.startsWith("javascript:")
+      ) {
+        return;
+      }
+
+
+      const target = new URL(
+        href,
+        "https://chichilu-01.github.io/myblog/"
+      );
+
+
+      link.href =
+        `https://chichilu--01-github-io.translate.goog${target.pathname}?_x_tr_sl=ja&_x_tr_tl=${lang}&_x_tr_hl=ja`;
+
+    });
+  }});
+
+  // 対象の要素を取得
+  const pcLanguageBox = document.querySelector('.header-language');
+  const spLanguageItem = document.querySelector('.nav-language-item');
+
+  // 非活性（無効化）にしたい対象ページのパスリスト
+  const disabledPages = [
+    "contact.html",
+    "contact_new.html",
+    "contact_career.html"
+  ];
+
+  // 現在のページのパスを取得して判定
+  const currentPath = window.location.pathname;
+  const isTargetPage = disabledPages.some(pagePath => currentPath.endsWith(pagePath));
+
+  if (isTargetPage) {
+    // -----------------------------------------
+    // 【対象ページの場合】非活性（無効化）処理
+    // -----------------------------------------
+
+    // PC用ボタンの非活性化
+    if (pcLanguageBox) {
+      const pcButton = pcLanguageBox.querySelector('span');
+      if (pcButton) pcButton.classList.add('disabled');
     }
 
-    const target = new URL(href, "https://chichilu-01.github.io/myblog/");
-
-    link.href =
-      `https://chichilu--01-github-io.translate.goog${target.pathname}?_x_tr_sl=ja&_x_tr_tl=${lang}&_x_tr_hl=ja`;
-  });
-}
-
-});
-
-// 対象の要素を取得
-const pcLanguageBox = document.querySelector('.header-language');
-const spLanguageItem = document.querySelector('.nav-language-item');
-
-// 非活性（無効化）にしたい対象ページのパスリスト
-const disabledPages = [
-  "contact.html",
-  "contact_new.html",
-  "contact_career.html"
-];
-
-// 現在のページのパスを取得して判定
-const currentPath = window.location.pathname;
-const isTargetPage = disabledPages.some(pagePath => currentPath.endsWith(pagePath));
-
-if (isTargetPage) {
-  // -----------------------------------------
-  // 【対象ページの場合】非活性（無効化）処理
-  // -----------------------------------------
-
-  // PC用ボタンの非活性化
-  if (pcLanguageBox) {
-    const pcButton = pcLanguageBox.querySelector('span');
-    if (pcButton) pcButton.classList.add('disabled');
-  }
-
-  // スマホ用ボタンの非活性化
-  if (spLanguageItem) {
-    spLanguageItem.classList.add('disabled');
-  }
-
-  console.log('Language buttons (PC & Mobile) are disabled on this page.');
-
-} else {
-  // -----------------------------------------
-  // 【対象ページ以外の場合】通常のクリックイベント登録
-  // -----------------------------------------
-
-  // PC用の開閉イベント
-  if (pcLanguageBox) {
-    const pcButton = pcLanguageBox.querySelector('span');
-    const pcMenu = pcLanguageBox.querySelector('.header-language-menu');
-
-    if (pcButton && pcMenu) {
-      pcButton.addEventListener('click', (e) => {
-        console.log('PC Language CLICK');
-        e.stopPropagation();
-        pcMenu.classList.toggle('show');
-      });
-
-      document.addEventListener('click', () => {
-        pcMenu.classList.remove('show');
-      });
-
-      pcMenu.addEventListener('click', (e) => {
-        e.stopPropagation();
-      });
+    // スマホ用ボタンの非活性化
+    if (spLanguageItem) {
+      spLanguageItem.classList.add('disabled');
     }
-  }
 
-  // ※スマホ側（.nav-language-item）でも、もしアコーディオンなどの開閉や
-  // リンク移動のJSイベントを個別に設定している場合は、ここに記述します。
-}
+    console.log('Language buttons (PC & Mobile) are disabled on this page.');
+
+  } else {
+    // -----------------------------------------
+    // 【対象ページ以外の場合】通常のクリックイベント登録
+    // -----------------------------------------
+
+    // PC用の開閉イベント
+    if (pcLanguageBox) {
+      const pcButton = pcLanguageBox.querySelector('span');
+      const pcMenu = pcLanguageBox.querySelector('.header-language-menu');
+
+      if (pcButton && pcMenu) {
+        pcButton.addEventListener('click', (e) => {
+          console.log('PC Language CLICK');
+          e.stopPropagation();
+          pcMenu.classList.toggle('show');
+        });
+
+        document.addEventListener('click', () => {
+          pcMenu.classList.remove('show');
+        });
+
+        pcMenu.addEventListener('click', (e) => {
+          e.stopPropagation();
+        });
+      }
+    }
+
+    // ※スマホ側（.nav-language-item）でも、もしアコーディオンなどの開閉や
+    // リンク移動のJSイベントを個別に設定している場合は、ここに記述します。
+  }
 
