@@ -213,7 +213,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (lang) {
 
       link.href =
-        `https://chichilu--01-github-io.translate.goog${target.pathname}?_x_tr_sl=ja&_x_tr_tl=${lang}&_x_tr_hl=ja`;
+        `https://chichilu--01-github-io.translate.goog/myblog${target.pathname}?_x_tr_sl=ja&_x_tr_tl=${lang}&_x_tr_hl=ja`;
 
     }
 
