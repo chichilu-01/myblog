@@ -73,7 +73,7 @@ function translateTo(lang) {
     if (location.hostname.includes("translate.goog")) {
 
         window.location.href =
-            `https://www-ones--house-co-jp.translate.goog${path}?_x_tr_sl=ja&_x_tr_tl=${lang}&_x_tr_hl=ja`;
+            `https://chichilu--01-github-io.translate.goog${path}?_x_tr_sl=ja&_x_tr_tl=${lang}&_x_tr_hl=ja`;
 
     } else {
 
@@ -139,7 +139,7 @@ function backToJapanese() {
         }
 
         // 逶ｸ蟇ｾURL繧堤ｵｶ蟇ｾURL縺ｸ
-        const target = new URL(href, "https://www.ones-house.co.jp/");
+        const target = new URL(href, "https://chichilu-01.github.io/myblog/");
 
         // translate.goog 縺ｮURL縺ｸ譖ｸ縺肴鋤縺医ｋ
         link.href =
@@ -157,7 +157,7 @@ document.addEventListener("DOMContentLoaded", () => {
         if (isContactPage) {
             const defaultLang = "en"; // 蛻晄悄繝ｪ繝繧､繝ｬ繧ｯ繝域凾縺ｮ鄙ｻ險ｳ蜈郁ｨ隱�
             const currentPath = location.pathname;
-            location.href = `https://www-ones--house-co-jp.translate.goog${currentPath}?_x_tr_sl=ja&_x_tr_tl=${defaultLang}&_x_tr_hl=ja`;
+            location.href = `https://chichilu--01-github-io.translate.goog${currentPath}?_x_tr_sl=ja&_x_tr_tl=${defaultLang}&_x_tr_hl=ja`;
         }
         return; // 騾壼ｸｸ繧ｵ繧､繝医�莉悶�繝壹�繧ｸ縺ｧ縺ｯ縺薙ｌ莉･髯阪�蜃ｦ逅�ｼ医Μ繝ｳ繧ｯ譖ｸ縺肴鋤縺茨ｼ峨�荳崎ｦ�
     }
@@ -180,9 +180,9 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
         // 逶ｸ蟇ｾURL繧堤ｵｶ蟇ｾURL縺ｸ螟画鋤�亥�縺ｮ繝峨Γ繧､繝ｳ蜷阪↓蜷医ｏ縺帙※菫ｮ豁｣縺励※縺上□縺輔＞��
-        const target = new URL(href, "https://www.ones-house.co.jp/");
+        const target = new URL(href, "https://chichilu-01.github.io/myblog/");
 
         // translate.goog 縺ｮURL縺ｸ譖ｸ縺肴鋤縺医ｋ�育樟蝨ｨ縺ｮ險隱� lang 繧貞ｼ輔″邯吶＄��
-        link.href = `https://www-ones--house-co-jp.translate.goog${target.pathname}?_x_tr_sl=ja&_x_tr_tl=${lang}&_x_tr_hl=ja`;
+        link.href = `https://chichilu--01-github-io.translate.goog${target.pathname}?_x_tr_sl=ja&_x_tr_tl=${lang}&_x_tr_hl=ja`;
     });
 });
