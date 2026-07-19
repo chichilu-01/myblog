@@ -156,21 +156,25 @@ document.addEventListener("DOMContentLoaded", () => {
     case "about.html":
     case "contact_career.html":
     case "contact_new.html":
-      if (!location.hostname.includes("translate.goog")) {
-        const defaultLang = "ja";
+      if (location.hostname.includes("translate.goog")) {
+        const lang = new URLSearchParams(location.search).get("_x_tr_tl");
+
+        if (lang) {
+          sessionStorage.setItem("translateLang", lang);
+        }
 
         location.href = `https://chichilu-01.github.io${location.pathname}`;
       }
       return;
-
-    default:
-      break;
   }
 
   // --- 縺薙％縺九ｉ荳九� translate.goog 荳翫〒縺ｮ縺ｿ螳溯｡後＆繧後ｋ蜃ｦ逅� ---
 
   // URL繝代Λ繝｡繝ｼ繧ｿ縺九ｉ迴ｾ蝨ｨ縺ｮ鄙ｻ險ｳ蜈郁ｨ隱槭ｒ蜿門ｾ暦ｼ医↑縺代ｌ縺ｰ en��
-  const lang = new URLSearchParams(location.search).get("_x_tr_tl") || "en";
+const lang =
+  new URLSearchParams(location.search).get("_x_tr_tl") ||
+  sessionStorage.getItem("translateLang") ||
+  "ja";
 
   // 繧ｵ繧､繝亥�縺ｮ蜈ｨ繝ｪ繝ｳ繧ｯ繧呈嶌縺肴鋤縺茨ｼ医％繧後〒莉悶�繝壹�繧ｸ縺ｫ遘ｻ蜍輔＠縺ｦ繧りｨ隱槭′邯ｭ謖√＆繧後ｋ��
   document.querySelectorAll("a[href]").forEach(link => {
