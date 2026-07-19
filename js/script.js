@@ -149,34 +149,47 @@ function backToJapanese() {
 });*/
 
 document.addEventListener("DOMContentLoaded", () => {
-  // 1. 蟇ｾ雎｡縺ｮ繝壹�繧ｸ��contact.html / contact_career.html�牙愛螳�
-  const page = location.pathname.split("/").pop();
 
-  switch (page) {
-    case "about.html":
-    case "contact_career.html":
-    case "contact_new.html":
+  const formPages = [
+    "about.html",
+    "contact_career.html",
+    "contact_new.html"
+  ];
 
-      if (location.hostname.includes("translate.goog")) {
+  document.querySelectorAll("a[href]").forEach(link => {
 
-        const lang =
+    link.addEventListener("click", () => {
+
+      const href = link.getAttribute("href");
+
+      if (!href) return;
+
+      const target = new URL(
+        href,
+        location.href
+      );
+
+      const targetPage = target.pathname.split("/").pop();
+
+
+      // Nếu chuẩn bị đi vào 3 trang form
+      if (formPages.includes(targetPage)) {
+
+        const currentLang =
           new URLSearchParams(location.search)
             .get("_x_tr_tl");
 
-        if (lang) {
+        if (currentLang) {
           localStorage.setItem(
             "translateLang",
-            lang
+            currentLang
           );
         }
-
-        location.replace(
-          `https://chichilu-01.github.io${location.pathname}`
-        );
       }
 
-      return;
-  }
+    });
+
+  });
 
   // --- 縺薙％縺九ｉ荳九� translate.goog 荳翫〒縺ｮ縺ｿ螳溯｡後＆繧後ｋ蜃ｦ逅� ---
 
@@ -210,69 +223,70 @@ document.addEventListener("DOMContentLoaded", () => {
         `https://chichilu--01-github-io.translate.goog${target.pathname}?_x_tr_sl=ja&_x_tr_tl=${lang}&_x_tr_hl=ja`;
 
     });
-  }});
-
-  // 対象の要素を取得
-  const pcLanguageBox = document.querySelector('.header-language');
-  const spLanguageItem = document.querySelector('.nav-language-item');
-
-  // 非活性（無効化）にしたい対象ページのパスリスト
-  const disabledPages = [
-    "contact.html",
-    "contact_new.html",
-    "contact_career.html"
-  ];
-
-  // 現在のページのパスを取得して判定
-  const currentPath = window.location.pathname;
-  const isTargetPage = disabledPages.some(pagePath => currentPath.endsWith(pagePath));
-
-  if (isTargetPage) {
-    // -----------------------------------------
-    // 【対象ページの場合】非活性（無効化）処理
-    // -----------------------------------------
-
-    // PC用ボタンの非活性化
-    if (pcLanguageBox) {
-      const pcButton = pcLanguageBox.querySelector('span');
-      if (pcButton) pcButton.classList.add('disabled');
-    }
-
-    // スマホ用ボタンの非活性化
-    if (spLanguageItem) {
-      spLanguageItem.classList.add('disabled');
-    }
-
-    console.log('Language buttons (PC & Mobile) are disabled on this page.');
-
-  } else {
-    // -----------------------------------------
-    // 【対象ページ以外の場合】通常のクリックイベント登録
-    // -----------------------------------------
-
-    // PC用の開閉イベント
-    if (pcLanguageBox) {
-      const pcButton = pcLanguageBox.querySelector('span');
-      const pcMenu = pcLanguageBox.querySelector('.header-language-menu');
-
-      if (pcButton && pcMenu) {
-        pcButton.addEventListener('click', (e) => {
-          console.log('PC Language CLICK');
-          e.stopPropagation();
-          pcMenu.classList.toggle('show');
-        });
-
-        document.addEventListener('click', () => {
-          pcMenu.classList.remove('show');
-        });
-
-        pcMenu.addEventListener('click', (e) => {
-          e.stopPropagation();
-        });
-      }
-    }
-
-    // ※スマホ側（.nav-language-item）でも、もしアコーディオンなどの開閉や
-    // リンク移動のJSイベントを個別に設定している場合は、ここに記述します。
   }
+});
+
+// 対象の要素を取得
+const pcLanguageBox = document.querySelector('.header-language');
+const spLanguageItem = document.querySelector('.nav-language-item');
+
+// 非活性（無効化）にしたい対象ページのパスリスト
+const disabledPages = [
+  "contact.html",
+  "contact_new.html",
+  "contact_career.html"
+];
+
+// 現在のページのパスを取得して判定
+const currentPath = window.location.pathname;
+const isTargetPage = disabledPages.some(pagePath => currentPath.endsWith(pagePath));
+
+if (isTargetPage) {
+  // -----------------------------------------
+  // 【対象ページの場合】非活性（無効化）処理
+  // -----------------------------------------
+
+  // PC用ボタンの非活性化
+  if (pcLanguageBox) {
+    const pcButton = pcLanguageBox.querySelector('span');
+    if (pcButton) pcButton.classList.add('disabled');
+  }
+
+  // スマホ用ボタンの非活性化
+  if (spLanguageItem) {
+    spLanguageItem.classList.add('disabled');
+  }
+
+  console.log('Language buttons (PC & Mobile) are disabled on this page.');
+
+} else {
+  // -----------------------------------------
+  // 【対象ページ以外の場合】通常のクリックイベント登録
+  // -----------------------------------------
+
+  // PC用の開閉イベント
+  if (pcLanguageBox) {
+    const pcButton = pcLanguageBox.querySelector('span');
+    const pcMenu = pcLanguageBox.querySelector('.header-language-menu');
+
+    if (pcButton && pcMenu) {
+      pcButton.addEventListener('click', (e) => {
+        console.log('PC Language CLICK');
+        e.stopPropagation();
+        pcMenu.classList.toggle('show');
+      });
+
+      document.addEventListener('click', () => {
+        pcMenu.classList.remove('show');
+      });
+
+      pcMenu.addEventListener('click', (e) => {
+        e.stopPropagation();
+      });
+    }
+  }
+
+  // ※スマホ側（.nav-language-item）でも、もしアコーディオンなどの開閉や
+  // リンク移動のJSイベントを個別に設定している場合は、ここに記述します。
+}
 
