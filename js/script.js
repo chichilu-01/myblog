@@ -156,28 +156,45 @@ document.addEventListener("DOMContentLoaded", () => {
     "contact_new.html"
   ];
 
+
+  const lang =
+    new URLSearchParams(location.search).get("_x_tr_tl") ||
+    localStorage.getItem("translateLang");
+
+
   document.querySelectorAll("a[href]").forEach(link => {
 
-    link.addEventListener("click", () => {
+    const href = link.getAttribute("href");
 
-      const href = link.getAttribute("href");
-
-      if (!href) return;
-
-      const target = new URL(
-        href,
-        location.href
-      );
-
-      const targetPage = target.pathname.split("/").pop();
+    if (
+      !href ||
+      href.startsWith("#") ||
+      href.startsWith("javascript:")
+    ) {
+      return;
+    }
 
 
-      // Nếu chuẩn bị đi vào 3 trang form
-      if (formPages.includes(targetPage)) {
+    const target = new URL(
+      href,
+      "https://chichilu-01.github.io/myblog/"
+    );
+
+    const targetPage = target.pathname.split("/").pop();
+
+
+    // ===== Đi vào trang form =====
+    if (formPages.includes(targetPage)) {
+
+      link.href = target.pathname;
+
+      link.addEventListener("click", () => {
 
         const currentLang =
           new URLSearchParams(location.search)
-            .get("_x_tr_tl");
+            .get("_x_tr_tl") ||
+          localStorage.getItem("translateLang");
+
 
         if (currentLang) {
           localStorage.setItem(
@@ -185,45 +202,23 @@ document.addEventListener("DOMContentLoaded", () => {
             currentLang
           );
         }
-      }
 
-    });
+      });
 
-  });
-
-  // --- 縺薙％縺九ｉ荳九� translate.goog 荳翫〒縺ｮ縺ｿ螳溯｡後＆繧後ｋ蜃ｦ逅� ---
-
-  // URL繝代Λ繝｡繝ｼ繧ｿ縺九ｉ迴ｾ蝨ｨ縺ｮ鄙ｻ險ｳ蜈郁ｨ隱槭ｒ蜿門ｾ暦ｼ医↑縺代ｌ縺ｰ en��
-  const lang =
-    new URLSearchParams(location.search).get("_x_tr_tl") ||
-    localStorage.getItem("translateLang");
-
-  if (lang) {
-
-    document.querySelectorAll("a[href]").forEach(link => {
-
-      const href = link.getAttribute("href");
-
-      if (
-        !href ||
-        href.startsWith("#") ||
-        href.startsWith("javascript:")
-      ) {
-        return;
-      }
+      return;
+    }
 
 
-      const target = new URL(
-        href,
-        "https://chichilu-01.github.io/myblog/"
-      );
-
+    // ===== Các trang bình thường =====
+    if (lang) {
 
       link.href =
         `https://chichilu--01-github-io.translate.goog${target.pathname}?_x_tr_sl=ja&_x_tr_tl=${lang}&_x_tr_hl=ja`;
 
-    });
-  }
+    }
+
+  });
+
 });
 
 // 対象の要素を取得
