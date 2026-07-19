@@ -143,14 +143,14 @@ function backToJapanese() {
 
         // translate.goog 縺ｮURL縺ｸ譖ｸ縺肴鋤縺医ｋ
         link.href =
-            `https://www-ones--house-co-jp.translate.goog${target.pathname}?_x_tr_sl=ja&_x_tr_tl=${lang}&_x_tr_hl=ja`;
+            `https://.translate.goog${target.pathname}?_x_tr_sl=ja&_x_tr_tl=${lang}&_x_tr_hl=ja`;
     });
 
 });*/
 
 document.addEventListener("DOMContentLoaded", () => {
     // 1. 蟇ｾ雎｡縺ｮ繝壹�繧ｸ��contact.html / contact_career.html�牙愛螳�
-    const isContactPage = location.pathname.includes("contact.html") || location.pathname.includes("contact_career.html") || location.pathname.includes("contact_new.html");
+    const isContactPage = location.pathname.includes("about.html") || location.pathname.includes("contact_career.html") || location.pathname.includes("contact_new.html");
 
     // 2. 繧ゅ＠騾壼ｸｸ縺ｮ繧ｵ繧､繝茨ｼ�translate.goog莉･螟厄ｼ峨�繧ｳ繝ｳ繧ｿ繧ｯ繝医�繝ｼ繧ｸ縺ｫ逶ｴ謗･譚･縺溘ｉ縲√ョ繝輔か繝ｫ繝郁ｨ隱橸ｼ井ｾ�: en�峨〒Google鄙ｻ險ｳ縺ｸ繝ｪ繝繧､繝ｬ繧ｯ繝�
     if (!location.hostname.includes("translate.goog")) {
