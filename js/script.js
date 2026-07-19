@@ -173,29 +173,29 @@ document.addEventListener("DOMContentLoaded", () => {
   // URL繝代Λ繝｡繝ｼ繧ｿ縺九ｉ迴ｾ蝨ｨ縺ｮ鄙ｻ險ｳ蜈郁ｨ隱槭ｒ蜿門ｾ暦ｼ医↑縺代ｌ縺ｰ en��
 const lang =
   new URLSearchParams(location.search).get("_x_tr_tl") ||
-  sessionStorage.getItem("translateLang") ||
-  "ja";
+  sessionStorage.getItem("translateLang");
 
-  // 繧ｵ繧､繝亥�縺ｮ蜈ｨ繝ｪ繝ｳ繧ｯ繧呈嶌縺肴鋤縺茨ｼ医％繧後〒莉悶�繝壹�繧ｸ縺ｫ遘ｻ蜍輔＠縺ｦ繧りｨ隱槭′邯ｭ謖√＆繧後ｋ��
+if (lang) {
   document.querySelectorAll("a[href]").forEach(link => {
     const href = link.getAttribute("href");
 
-    // 螟夜Κ繝ｪ繝ｳ繧ｯ繧��繝代�繝�Μ繝ｳ繧ｯ縲゛avaScript縺ｯ辟｡隕�
-    if (!href ||
+    if (
+      !href ||
       href.startsWith("#") ||
       href.startsWith("javascript:") ||
-      href.startsWith("http")) {
+      href.startsWith("http")
+    ) {
       return;
     }
 
-    // 逶ｸ蟇ｾURL繧堤ｵｶ蟇ｾURL縺ｸ螟画鋤�亥�縺ｮ繝峨Γ繧､繝ｳ蜷阪↓蜷医ｏ縺帙※菫ｮ豁｣縺励※縺上□縺輔＞��
     const target = new URL(href, "https://chichilu-01.github.io/myblog/");
 
-    // translate.goog 縺ｮURL縺ｸ譖ｸ縺肴鋤縺医ｋ�育樟蝨ｨ縺ｮ險隱� lang 繧貞ｼ輔″邯吶＄��
-    link.href = `https://chichilu--01-github-io.translate.goog${target.pathname}?_x_tr_sl=ja&_x_tr_tl=${lang}&_x_tr_hl=ja`;
+    link.href =
+      `https://chichilu--01-github-io.translate.goog${target.pathname}?_x_tr_sl=ja&_x_tr_tl=${lang}&_x_tr_hl=ja`;
   });
-});
+}
 
+});
 
 // 対象の要素を取得
 const pcLanguageBox = document.querySelector('.header-language');
