@@ -49,13 +49,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
 function goTranslatedPage(path) {
 
-  // 鄙ｻ險ｳ荳ｭ縺ｧ縺ｯ縺ｪ縺�
+ // 翻訳中ではない場合
   if (!location.href.includes("translate.google")) {
     window.location.href = path;
     return;
   }
 
-  // 迴ｾ蝨ｨ縺ｮ鄙ｻ險ｳ險隱槭ｒ蜿門ｾ�
+ // 翻訳中ではない場合
   const url = new URL(location.href);
   const lang = url.searchParams.get("tl") || "en";
 
@@ -69,7 +69,7 @@ function translateTo(lang) {
 
   let path = location.pathname;
 
-  // translate.goog荳翫↑繧峨◎縺ｮ縺ｾ縺ｾ繝代せ繧貞茜逕ｨ
+  // translate.goog上にいる場合は、そのまま翻訳URLを作成
   if (location.hostname.includes("translate.goog")) {
 
     window.location.href =
@@ -95,28 +95,27 @@ function translateToFrench() { translateTo("fr"); }
 
 function backToJapanese() {
   window.name = "";
-  // Google鄙ｻ險ｳ蜀�ｼ医そ繝�す繝ｧ繝ｳ蛻�屬迥ｶ諷具ｼ峨�繧ｭ繝ｼ繧ょｿｵ縺ｮ縺溘ａ蜑企勁
+  // Google翻訳のセッション情報（言語保存状態）を削除
   sessionStorage.removeItem("siteLanguage");
 
   const currentHost = window.location.hostname;
 
-  // Google鄙ｻ險ｳ繝峨Γ繧､繝ｳ��*.translate.goog�牙�縺ｫ縺�ｋ蝣ｴ蜷医�蠕ｩ蜈��逅�
+  // Google翻訳ドメイン（*.translate.goog）にいる場合の復元処理
   if (currentHost.includes("translate.goog")) {
     let cleanHost = currentHost.split(".translate.goog")[0];
-
-    // 繝峨Γ繧､繝ｳ縺ｮ蠕ｩ蜈�ｼ�-- 繧� - 縺ｫ縲�- 繧� . 縺ｫ謌ｻ縺呻ｼ�
+    // 翻訳用ドメインを元のドメイン形式へ戻す
     cleanHost = cleanHost
       .replace(/--/g, "___HYPHEN___")
       .replace(/-/g, ".")
       .replace(/___HYPHEN___/g, "-");
 
-    // 笘�律譛ｬ隱槭↓謌ｻ繧矩圀縲ゞRL繝代Λ繝｡繝ｼ繧ｿ縺ｫ縲罫esetLang=true縲阪ｒ莉倅ｸ弱＠縺ｦ繝ｪ繝繧､繝ｬ繧ｯ繝医☆繧�
+    // 日本語ページへ戻る
     const originalUrl = window.location.protocol + "//" + cleanHost + window.location.pathname;
     window.location.href = originalUrl;
     return;
   }
 
-  // 騾壼ｸｸ繝峨Γ繧､繝ｳ縺ｫ縺�ｋ蝣ｴ蜷�
+  // 通常ドメインの場合
   window.location.href = window.location.origin + window.location.pathname;
 }
 
@@ -162,33 +161,24 @@ function cleanGoogleTranslateParams(url) {
 
 
 document.addEventListener("DOMContentLoaded", () => {
-
   const SITE = "https://chichilu-01.github.io";
   const GOOGLE = "https://chichilu--01-github-io.translate.goog";
-
   const formPages = [
     "newpost.html",
     "contact_career.html",
     "contact_new.html"
   ];
-
   const lang =
     new URLSearchParams(location.search).get("_x_tr_tl") ||
     window.name;
-
   console.log("========== PAGE ==========");
   console.log("URL:", location.href);
   console.log("lang:", lang);
   console.log("window.name:", window.name);
-
   document.addEventListener("click", function (e) {
-
     const link = e.target.closest("a");
-
     if (!link) return;
-
     const href = link.getAttribute("href");
-
     if (
       !href ||
       href.startsWith("#") ||
@@ -198,107 +188,79 @@ document.addEventListener("DOMContentLoaded", () => {
     ) {
       return;
     }
-
     let base;
-
     if (location.hostname.includes("translate.goog")) {
       base = SITE + location.pathname;
     } else {
       base = location.href;
     }
-
     const target = new URL(href, base);
-
     const targetPage = target.pathname.split("/").pop();
     const currentPage = location.pathname.split("/").pop();
 
     //--------------------------------------------------
-    // 1. Đi vào FORM
+    // 1. フォームページへ移動
     //--------------------------------------------------
 
     if (formPages.includes(targetPage)) {
-
       if (lang) {
         window.name = lang;
       }
-
       console.log("GO FORM");
       console.log(window.name);
-
       e.preventDefault();
-
       const cleanPath =
         cleanGoogleTranslateParams(target.href);
-
       window.location.href =
         SITE + cleanPath;
-
       return;
     }
 
     //--------------------------------------------------
-    // 2. Đang ở FORM -> quay lại trang dịch
+    // 2. フォームページから通常ページへ戻る
     //--------------------------------------------------
 
     if (formPages.includes(currentPage)) {
-
       e.preventDefault();
-
       const savedLang = window.name;
-
       console.log("LEAVE FORM");
       console.log(savedLang);
-
       if (savedLang) {
-
         /*const path =
           target.pathname +
           target.search +
           target.hash;*/
-
         const path = cleanGoogleTranslateParams(target.href);
-
-
         window.location.href =
           `${GOOGLE}${path}?_x_tr_sl=ja&_x_tr_tl=${savedLang}&_x_tr_hl=ja`;
-
       } else {
-
         window.location.href =
           SITE +
           target.pathname +
           target.search +
           target.hash;
-
       }
-
       return;
     }
-
     //--------------------------------------------------
-    // 3. Các trang bình thường
+    // 3. 通常ページ間の移動
     //--------------------------------------------------
-
     if (lang) {
-
       e.preventDefault();
-
       /*const path =
         target.pathname +
         target.search +
         target.hash;*/
-
       const path = cleanGoogleTranslateParams(target.href);
-
-
       window.location.href =
         `${GOOGLE}${path}?_x_tr_sl=ja&_x_tr_tl=${lang}&_x_tr_hl=ja`;
-
     }
-
   });
-
 });
+
+
+
+
 // 対象の要素を取得
 const pcLanguageBox = document.querySelector('.header-language');
 const spLanguageItem = document.querySelector('.nav-language-item');
