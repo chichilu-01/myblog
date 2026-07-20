@@ -157,10 +157,10 @@ document.addEventListener("DOMContentLoaded", () => {
   ];
 
 
-  /*const lang =
+  const lang =
     new URLSearchParams(location.search).get("_x_tr_tl") ||
     localStorage.getItem("translateLang");
-*/
+
 
   document.querySelectorAll("a[href]").forEach(link => {
 
