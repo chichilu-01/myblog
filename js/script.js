@@ -150,67 +150,136 @@ function backToJapanese() {
 });*/
 
 document.addEventListener("DOMContentLoaded", () => {
+
   const SITE = "https://chichilu-01.github.io";
   const GOOGLE = "https://chichilu--01-github-io.translate.goog";
 
-  const formPages = ["newpost.html", "contact_career.html", "contact_new.html"];
+  const formPages = [
+    "newpost.html",
+    "contact_career.html",
+    "contact_new.html"
+  ];
 
-  const urlParams = new URLSearchParams(location.search);
-  const lang = urlParams.get("_x_tr_tl") || window.name;
+  const lang =
+    new URLSearchParams(location.search).get("_x_tr_tl") ||
+    window.name;
+
+  console.log("========== PAGE ==========");
+  console.log("URL:", location.href);
+  console.log("lang:", lang);
+  console.log("window.name:", window.name);
 
   document.addEventListener("click", function (e) {
+
     const link = e.target.closest("a");
+
     if (!link) return;
 
     const href = link.getAttribute("href");
-    if (!href || href.startsWith("#") || href.startsWith("javascript:") || href.startsWith("mailto:") || href.startsWith("tel:")) {
+
+    if (
+      !href ||
+      href.startsWith("#") ||
+      href.startsWith("javascript:") ||
+      href.startsWith("mailto:") ||
+      href.startsWith("tel:")
+    ) {
       return;
     }
 
-    const isGoogleDomain = location.hostname.includes("translate.goog");
-    const base = isGoogleDomain ? SITE + location.pathname : location.href;
+    let base;
+
+    if (location.hostname.includes("translate.goog")) {
+      base = SITE + location.pathname;
+    } else {
+      base = location.href;
+    }
+
     const target = new URL(href, base);
 
     const targetPage = target.pathname.split("/").pop();
     const currentPage = location.pathname.split("/").pop();
 
-    // 1. Đi vào trang FORM -> Thoát khỏi Google Translate
+    //--------------------------------------------------
+    // 1. Đi vào FORM
+    //--------------------------------------------------
+
     if (formPages.includes(targetPage)) {
-      if (lang) window.name = lang; // Luu lai ngon ngu
-      e.preventDefault();
-      window.location.href = SITE + target.pathname + target.search + target.hash;
-      return;
-    }
 
-    // 2. Từ trang FORM quay lại trang thường -> Bật lại Google Translate nếu có lang
-    if (formPages.includes(currentPage)) {
-      e.preventDefault();
-      const savedLang = window.name;
-      
-      if (savedLang) {
-        const destUrl = new URL(GOOGLE + target.pathname + target.search + target.hash);
-        destUrl.searchParams.set("_x_tr_sl", "ja");
-        destUrl.searchParams.set("_x_tr_tl", savedLang);
-        destUrl.searchParams.set("_x_tr_hl", "ja");
-        window.location.href = destUrl.toString();
-      } else {
-        window.location.href = SITE + target.pathname + target.search + target.hash;
+      if (lang) {
+        window.name = lang;
       }
+
+      console.log("GO FORM");
+      console.log(window.name);
+
+      e.preventDefault();
+
+      window.location.href =
+        SITE +
+        target.pathname +
+        target.search +
+        target.hash;
+
       return;
     }
 
-    // 3. Các trang bình thường:
-    // Nếu đang ở trên translate.goog rồi thì NÊN ĐỂ GOOGLE TỰ CHUYỂN TRANG (Không e.preventDefault)
-    // Chỉ can thiệp nếu đang ở web gốc (SITE) mà có lang
-    if (!isGoogleDomain && lang) {
+    //--------------------------------------------------
+    // 2. Đang ở FORM -> quay lại trang dịch
+    //--------------------------------------------------
+
+    if (formPages.includes(currentPage)) {
+
       e.preventDefault();
-      const destUrl = new URL(GOOGLE + target.pathname + target.search + target.hash);
-      destUrl.searchParams.set("_x_tr_sl", "ja");
-      destUrl.searchParams.set("_x_tr_tl", lang);
-      destUrl.searchParams.set("_x_tr_hl", "ja");
-      window.location.href = destUrl.toString();
+
+      const savedLang = window.name;
+
+      console.log("LEAVE FORM");
+      console.log(savedLang);
+
+      if (savedLang) {
+
+        const path =
+          target.pathname +
+          target.search +
+          target.hash;
+
+        window.location.href =
+          `${GOOGLE}${path}?_x_tr_sl=ja&_x_tr_tl=${savedLang}&_x_tr_hl=ja`;
+
+      } else {
+
+        window.location.href =
+          SITE +
+          target.pathname +
+          target.search +
+          target.hash;
+
+      }
+
+      return;
     }
+
+    //--------------------------------------------------
+    // 3. Các trang bình thường
+    //--------------------------------------------------
+
+    if (lang) {
+
+      e.preventDefault();
+
+      const path =
+        target.pathname +
+        target.search +
+        target.hash;
+
+      window.location.href =
+        `${GOOGLE}${path}?_x_tr_sl=ja&_x_tr_tl=${lang}&_x_tr_hl=ja`;
+
+    }
+
   });
+
 });
 // 対象の要素を取得
 const pcLanguageBox = document.querySelector('.header-language');
