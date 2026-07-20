@@ -179,7 +179,7 @@ document.addEventListener("DOMContentLoaded", () => {
       href,
       "https://chichilu-01.github.io/myblog/"
     );*/
-const target = new URL(href, document.baseURI);
+    const target = new URL(href, document.baseURI);
 
     const targetPage = target.pathname.split("/").pop();
     const currentPage = location.pathname.split("/").pop();
@@ -189,7 +189,8 @@ const target = new URL(href, document.baseURI);
     if (formPages.includes(targetPage)) {
 
       const currentLang =
-        new URLSearchParams(location.search).get("_x_tr_tl");
+        new URLSearchParams(location.search).get("_x_tr_tl") ||
+        localStorage.getItem("translateLang");
 
       if (currentLang) {
         localStorage.setItem("translateLang", currentLang);
@@ -198,7 +199,7 @@ const target = new URL(href, document.baseURI);
       // Đi vào trang form (không dịch)
       link.href = target.href;
       console.log(target.href);
-console.log(target.pathname);
+      console.log(target.pathname);
 
       return;
     }
@@ -210,8 +211,10 @@ console.log(target.pathname);
 
       if (savedLang) {
 
+        const path = target.pathname + target.search + target.hash;
+
         link.href =
-          `https://chichilu--01-github-io.translate.goog${target.pathname}?_x_tr_sl=ja&_x_tr_tl=${savedLang}&_x_tr_hl=ja`;
+          `https://chichilu--01-github-io.translate.goog${path}?_x_tr_sl=ja&_x_tr_tl=${savedLang}&_x_tr_hl=ja`;
 
       } else {
 
@@ -227,8 +230,10 @@ console.log(target.pathname);
     // ===== Các trang bình thường =====
     if (lang) {
 
+      const path = target.pathname + target.search + target.hash;
+
       link.href =
-        `https://chichilu--01-github-io.translate.goog${target.pathname}?_x_tr_sl=ja&_x_tr_tl=${lang}&_x_tr_hl=ja`;
+        `https://chichilu--01-github-io.translate.goog${path}?_x_tr_sl=ja&_x_tr_tl=${lang}&_x_tr_hl=ja`;
 
     }
 
