@@ -198,7 +198,7 @@ if (formPages.includes(currentPage)) {
     } else {
 
         // Chưa từng dịch → đi bình thường
-        link.href = target.pathname;
+        link.href = target.href;
 
     }
 
