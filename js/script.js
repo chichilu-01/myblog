@@ -196,6 +196,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
       // Đi vào trang form (không dịch)
       link.href = target.href;
+      console.log(target.href);
+console.log(target.pathname);
 
       return;
     }
