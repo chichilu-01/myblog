@@ -159,13 +159,15 @@ document.addEventListener("DOMContentLoaded", () => {
     "contact_new.html"
   ];
 
+  // Lấy ngôn ngữ hiện tại
   const lang =
     new URLSearchParams(location.search).get("_x_tr_tl") ||
-    localStorage.getItem("translateLang");
+    window.name;
 
   console.log("========== PAGE ==========");
   console.log("URL:", location.href);
   console.log("lang:", lang);
+  console.log("window.name:", window.name);
 
   document.querySelectorAll("a[href]").forEach(link => {
 
@@ -182,16 +184,14 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     //--------------------------------------------------
-    // luôn tính URL từ website gốc
+    // Luôn lấy URL gốc
     //--------------------------------------------------
 
     let base;
 
     if (location.hostname.includes("translate.goog")) {
 
-      base =
-        SITE +
-        location.pathname;
+      base = SITE + location.pathname;
 
     } else {
 
@@ -201,11 +201,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const target = new URL(href, base);
 
-    const targetPage =
-      target.pathname.split("/").pop();
-
-    const currentPage =
-      location.pathname.split("/").pop();
+    const targetPage = target.pathname.split("/").pop();
+    const currentPage = location.pathname.split("/").pop();
 
     //--------------------------------------------------
     // 1. ĐI VÀO FORM
@@ -214,15 +211,13 @@ document.addEventListener("DOMContentLoaded", () => {
     if (formPages.includes(targetPage)) {
 
       if (lang) {
-        localStorage.setItem(
-          "translateLang",
-          lang
-        );
+        window.name = lang;
       }
 
-      console.log("GO FORM");
-      console.log("save:", lang);
+      console.log("===== GO FORM =====");
+      console.log("save:", window.name);
 
+      // luôn mở trang gốc
       link.href =
         SITE +
         target.pathname +
@@ -233,18 +228,15 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     //--------------------------------------------------
-    // 2. RỜI FORM
+    // 2. ĐANG Ở FORM -> QUAY RA
     //--------------------------------------------------
 
     if (formPages.includes(currentPage)) {
 
-      const savedLang =
-        localStorage.getItem(
-          "translateLang"
-        );
+      const savedLang = window.name;
 
-      console.log("LEAVE FORM");
-      console.log(savedLang);
+      console.log("===== LEAVE FORM =====");
+      console.log("window.name:", savedLang);
 
       if (savedLang) {
 
