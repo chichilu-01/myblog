@@ -155,12 +155,11 @@ document.addEventListener("DOMContentLoaded", () => {
   const GOOGLE = "https://chichilu--01-github-io.translate.goog";
 
   const formPages = [
-    "newpost.html",
+    "cv.html",
     "contact_career.html",
     "contact_new.html"
   ];
 
-  // Lấy ngôn ngữ hiện tại
   const lang =
     new URLSearchParams(location.search).get("_x_tr_tl") ||
     window.name;
@@ -170,7 +169,11 @@ document.addEventListener("DOMContentLoaded", () => {
   console.log("lang:", lang);
   console.log("window.name:", window.name);
 
-  document.querySelectorAll("a[href]").forEach(link => {
+  document.addEventListener("click", function (e) {
+
+    const link = e.target.closest("a");
+
+    if (!link) return;
 
     const href = link.getAttribute("href");
 
@@ -184,20 +187,12 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
-    //--------------------------------------------------
-    // Luôn lấy URL gốc
-    //--------------------------------------------------
-
     let base;
 
     if (location.hostname.includes("translate.goog")) {
-
       base = SITE + location.pathname;
-
     } else {
-
       base = location.href;
-
     }
 
     const target = new URL(href, base);
@@ -206,7 +201,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const currentPage = location.pathname.split("/").pop();
 
     //--------------------------------------------------
-    // 1. ĐI VÀO FORM
+    // 1. Đi vào FORM
     //--------------------------------------------------
 
     if (formPages.includes(targetPage)) {
@@ -215,11 +210,12 @@ document.addEventListener("DOMContentLoaded", () => {
         window.name = lang;
       }
 
-      console.log("===== GO FORM =====");
-      console.log("save:", window.name);
+      console.log("GO FORM");
+      console.log(window.name);
 
-      // luôn mở trang gốc
-      link.href =
+      e.preventDefault();
+
+      window.location.href =
         SITE +
         target.pathname +
         target.search +
@@ -229,15 +225,17 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     //--------------------------------------------------
-    // 2. ĐANG Ở FORM -> QUAY RA
+    // 2. Đang ở FORM -> quay lại trang dịch
     //--------------------------------------------------
 
     if (formPages.includes(currentPage)) {
 
+      e.preventDefault();
+
       const savedLang = window.name;
 
-      console.log("===== LEAVE FORM =====");
-      console.log("window.name:", savedLang);
+      console.log("LEAVE FORM");
+      console.log(savedLang);
 
       if (savedLang) {
 
@@ -246,12 +244,12 @@ document.addEventListener("DOMContentLoaded", () => {
           target.search +
           target.hash;
 
-        link.href =
+        window.location.href =
           `${GOOGLE}${path}?_x_tr_sl=ja&_x_tr_tl=${savedLang}&_x_tr_hl=ja`;
 
       } else {
 
-        link.href =
+        window.location.href =
           SITE +
           target.pathname +
           target.search +
@@ -263,26 +261,20 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     //--------------------------------------------------
-    // 3. TRANG BÌNH THƯỜNG
+    // 3. Các trang bình thường
     //--------------------------------------------------
 
     if (lang) {
+
+      e.preventDefault();
 
       const path =
         target.pathname +
         target.search +
         target.hash;
 
-      link.href =
+      window.location.href =
         `${GOOGLE}${path}?_x_tr_sl=ja&_x_tr_tl=${lang}&_x_tr_hl=ja`;
-
-    } else {
-
-      link.href =
-        SITE +
-        target.pathname +
-        target.search +
-        target.hash;
 
     }
 
