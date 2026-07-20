@@ -94,6 +94,7 @@ function translateToPortuguese() { translateTo("pt"); }
 function translateToFrench() { translateTo("fr"); }
 
 function backToJapanese() {
+    window.name = "";
   // Google鄙ｻ險ｳ蜀�ｼ医そ繝�す繝ｧ繝ｳ蛻�屬迥ｶ諷具ｼ峨�繧ｭ繝ｼ繧ょｿｵ縺ｮ縺溘ａ蜑企勁
   sessionStorage.removeItem("siteLanguage");
 
