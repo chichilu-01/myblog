@@ -157,9 +157,9 @@ document.addEventListener("DOMContentLoaded", () => {
   ];
 
 
-  const lang =
+  /*const lang =
     new URLSearchParams(location.search).get("_x_tr_tl") ||
-    localStorage.getItem("translateLang");
+    localStorage.getItem("translateLang");*/
 
 
   document.querySelectorAll("a[href]").forEach(link => {
@@ -175,45 +175,48 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 
-   const target = new URL(
+    const target = new URL(
       href,
       "https://chichilu-01.github.io/myblog/"
     );
 
     const targetPage = target.pathname.split("/").pop();
+    const currentPage = location.pathname.split("/").pop();
 
 
     // ===== Đi vào trang form =====
-    if (formPages.includes(targetPage)) {
+if (formPages.includes(currentPage)) {
 
-      link.href = target.pathname;
+    const savedLang = localStorage.getItem("translateLang");
 
-      link.addEventListener("click", () => {
+    if (savedLang) {
 
-        const currentLang =
-          new URLSearchParams(location.search)
-            .get("_x_tr_tl") ||
-          localStorage.getItem("translateLang");
+        // Có ngôn ngữ trước đó → quay lại bản dịch
+        link.href =
+          `https://chichilu--01-github-io.translate.goog${target.pathname}?_x_tr_sl=ja&_x_tr_tl=${savedLang}&_x_tr_hl=ja`;
 
+    } else {
 
-        if (currentLang) {
-          localStorage.setItem(
-            "translateLang",
-            currentLang
-          );
-        }
+        // Chưa từng dịch → đi bình thường
+        link.href = target.pathname;
 
-      });
-
-      return;
     }
+
+    return;
+}
 
 
     // ===== Các trang bình thường =====
-    if (lang) {
+
+    // Lấy ngôn ngữ mới nhất
+    const savedLang =
+      localStorage.getItem("translateLang") ||
+      new URLSearchParams(location.search).get("_x_tr_tl");
+
+    if (savedLang) {
 
       link.href =
-        `https://chichilu--01-github-io.translate.goog${target.pathname}?_x_tr_sl=ja&_x_tr_tl=${lang}&_x_tr_hl=ja`;
+        `https://chichilu--01-github-io.translate.goog${target.pathname}?_x_tr_sl=ja&_x_tr_tl=${savedLang}&_x_tr_hl=ja`;
 
     }
 
