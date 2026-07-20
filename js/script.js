@@ -175,10 +175,11 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 
-    const target = new URL(
+    /*const target = new URL(
       href,
       "https://chichilu-01.github.io/myblog/"
-    );
+    );*/
+    const target = new URL(href, window.location.href);
 
     const targetPage = target.pathname.split("/").pop();
     const currentPage = location.pathname.split("/").pop();
