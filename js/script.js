@@ -161,6 +161,11 @@ document.addEventListener("DOMContentLoaded", () => {
     new URLSearchParams(location.search).get("_x_tr_tl") ||
     localStorage.getItem("translateLang");
 
+  console.log("=== PAGE LOAD ===");
+  console.log("URL:", location.href);
+  console.log("_x_tr_tl:", new URLSearchParams(location.search).get("_x_tr_tl"));
+  console.log("localStorage:", localStorage.getItem("translateLang"));
+  console.log("lang:", lang);
 
   document.querySelectorAll("a[href]").forEach(link => {
 
@@ -191,19 +196,32 @@ document.addEventListener("DOMContentLoaded", () => {
       const currentLang =
         new URLSearchParams(location.search).get("_x_tr_tl") ||
         localStorage.getItem("translateLang");
+      console.log("=== GO TO FORM ===");
+      console.log("Current URL:", location.href);
+      console.log("Target:", target.href);
+      console.log("currentLang:", currentLang);
+      console.log("Before save:", localStorage.getItem("translateLang"));
 
       if (currentLang) {
         localStorage.setItem("translateLang", currentLang);
+        console.log("After save:", localStorage.getItem("translateLang"));
       }
 
       // Đi vào trang form (không dịch)
       link.href = target.href;
       console.log(target.href);
       console.log(target.pathname);
+      console.log("currentLang:", currentLang);
+      console.log("location.href:", location.href);
+      console.log("saved after set:", localStorage.getItem("translateLang"));
 
       return;
     }
 
+    console.log("=== LEAVE FORM ===");
+    console.log("Current URL:", location.href);
+    console.log("Target:", target.href);
+    console.log("savedLang:", localStorage.getItem("translateLang"));
     // ===== Rời khỏi trang form =====
     if (formPages.includes(currentPage)) {
 
