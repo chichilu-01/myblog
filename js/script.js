@@ -150,21 +150,21 @@ function backToJapanese() {
 
 document.addEventListener("DOMContentLoaded", () => {
 
+  const SITE = "https://chichilu-01.github.io";
+  const GOOGLE = "https://chichilu--01-github-io.translate.goog";
+
   const formPages = [
     "cv.html",
     "contact_career.html",
     "contact_new.html"
   ];
 
-
   const lang =
     new URLSearchParams(location.search).get("_x_tr_tl") ||
     localStorage.getItem("translateLang");
 
-  console.log("=== PAGE LOAD ===");
+  console.log("========== PAGE ==========");
   console.log("URL:", location.href);
-  console.log("_x_tr_tl:", new URLSearchParams(location.search).get("_x_tr_tl"));
-  console.log("localStorage:", localStorage.getItem("translateLang"));
   console.log("lang:", lang);
 
   document.querySelectorAll("a[href]").forEach(link => {
@@ -174,94 +174,128 @@ document.addEventListener("DOMContentLoaded", () => {
     if (
       !href ||
       href.startsWith("#") ||
-      href.startsWith("javascript:")
+      href.startsWith("javascript:") ||
+      href.startsWith("mailto:") ||
+      href.startsWith("tel:")
     ) {
       return;
     }
 
+    //--------------------------------------------------
+    // luôn tính URL từ website gốc
+    //--------------------------------------------------
 
-    /*const target = new URL(
-      href,
-      "https://chichilu-01.github.io/myblog/"
-    );*/
-    const target = new URL(href, document.baseURI);
+    let base;
 
-    const targetPage = target.pathname.split("/").pop();
-    const currentPage = location.pathname.split("/").pop();
+    if (location.hostname.includes("translate.goog")) {
 
+      base =
+        SITE +
+        location.pathname;
 
-    // ===== Đi vào trang form =====
+    } else {
+
+      base = location.href;
+
+    }
+
+    const target = new URL(href, base);
+
+    const targetPage =
+      target.pathname.split("/").pop();
+
+    const currentPage =
+      location.pathname.split("/").pop();
+
+    //--------------------------------------------------
+    // 1. ĐI VÀO FORM
+    //--------------------------------------------------
+
     if (formPages.includes(targetPage)) {
 
-      const currentLang =
-        new URLSearchParams(location.search).get("_x_tr_tl") ||
-        localStorage.getItem("translateLang");
-      console.log("=== GO TO FORM ===");
-      console.log("Current URL:", location.href);
-      console.log("Target:", target.href);
-      console.log("currentLang:", currentLang);
-      console.log("Before save:", localStorage.getItem("translateLang"));
-
-      if (currentLang) {
-        localStorage.setItem("translateLang", currentLang);
-        console.log("After save:", localStorage.getItem("translateLang"));
+      if (lang) {
+        localStorage.setItem(
+          "translateLang",
+          lang
+        );
       }
 
-      // Đi vào trang form (không dịch)
-      link.href = target.href;
-      console.log(target.href);
-      console.log(target.pathname);
-      console.log("currentLang:", currentLang);
-      console.log("location.href:", location.href);
-      console.log("saved after set:", localStorage.getItem("translateLang"));
+      console.log("GO FORM");
+      console.log("save:", lang);
+
+      link.href =
+        SITE +
+        target.pathname +
+        target.search +
+        target.hash;
 
       return;
     }
 
-    console.log("=== LEAVE FORM ===");
-    console.log("Current URL:", location.href);
-    console.log("Target:", target.href);
-    console.log("savedLang:", localStorage.getItem("translateLang"));
-    // ===== Rời khỏi trang form =====
+    //--------------------------------------------------
+    // 2. RỜI FORM
+    //--------------------------------------------------
+
     if (formPages.includes(currentPage)) {
 
-      const savedLang = localStorage.getItem("translateLang");
-      console.log("currentPage:", currentPage);
-      console.log("savedLang:", savedLang);
-      console.log("target.href:", target.href);
+      const savedLang =
+        localStorage.getItem(
+          "translateLang"
+        );
+
+      console.log("LEAVE FORM");
+      console.log(savedLang);
 
       if (savedLang) {
 
-        const path = target.pathname + target.search + target.hash;
+        const path =
+          target.pathname +
+          target.search +
+          target.hash;
 
         link.href =
-          `https://chichilu--01-github-io.translate.goog${path}?_x_tr_sl=ja&_x_tr_tl=${savedLang}&_x_tr_hl=ja`;
+          `${GOOGLE}${path}?_x_tr_sl=ja&_x_tr_tl=${savedLang}&_x_tr_hl=ja`;
 
       } else {
 
-        // Chưa từng dịch
-        link.href = target.href;
+        link.href =
+          SITE +
+          target.pathname +
+          target.search +
+          target.hash;
 
       }
 
       return;
     }
 
+    //--------------------------------------------------
+    // 3. TRANG BÌNH THƯỜNG
+    //--------------------------------------------------
 
-    // ===== Các trang bình thường =====
     if (lang) {
 
-      const path = target.pathname + target.search + target.hash;
+      const path =
+        target.pathname +
+        target.search +
+        target.hash;
 
       link.href =
-        `https://chichilu--01-github-io.translate.goog${path}?_x_tr_sl=ja&_x_tr_tl=${lang}&_x_tr_hl=ja`;
+        `${GOOGLE}${path}?_x_tr_sl=ja&_x_tr_tl=${lang}&_x_tr_hl=ja`;
+
+    } else {
+
+      link.href =
+        SITE +
+        target.pathname +
+        target.search +
+        target.hash;
 
     }
 
   });
 
 });
-
 // 対象の要素を取得
 const pcLanguageBox = document.querySelector('.header-language');
 const spLanguageItem = document.querySelector('.nav-language-item');
