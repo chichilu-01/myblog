@@ -208,6 +208,9 @@ document.addEventListener("DOMContentLoaded", () => {
     if (formPages.includes(currentPage)) {
 
       const savedLang = localStorage.getItem("translateLang");
+      console.log("currentPage:", currentPage);
+      console.log("savedLang:", savedLang);
+      console.log("target.href:", target.href);
 
       if (savedLang) {
 
