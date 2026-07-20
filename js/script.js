@@ -154,7 +154,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const GOOGLE = "https://chichilu--01-github-io.translate.goog";
 
   const formPages = [
-    "cv.html",
+    "newpost.html",
     "contact_career.html",
     "contact_new.html"
   ];
