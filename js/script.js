@@ -227,11 +227,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
       e.preventDefault();
 
+      const cleanPath =
+        cleanGoogleTranslateParams(target.href);
+
       window.location.href =
-        SITE +
-        target.pathname +
-        target.search +
-        target.hash;
+        SITE + cleanPath;
 
       return;
     }
