@@ -151,7 +151,7 @@ function backToJapanese() {
 document.addEventListener("DOMContentLoaded", () => {
 
   const formPages = [
-    "about.html",
+    "cv.html",
     "contact_career.html",
     "contact_new.html"
   ];
