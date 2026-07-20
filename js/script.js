@@ -94,7 +94,7 @@ function translateToPortuguese() { translateTo("pt"); }
 function translateToFrench() { translateTo("fr"); }
 
 function backToJapanese() {
-    window.name = "";
+  window.name = "";
   // Google鄙ｻ險ｳ蜀�ｼ医そ繝�す繝ｧ繝ｳ蛻�屬迥ｶ諷具ｼ峨�繧ｭ繝ｼ繧ょｿｵ縺ｮ縺溘ａ蜑企勁
   sessionStorage.removeItem("siteLanguage");
 
@@ -148,6 +148,18 @@ function backToJapanese() {
     });
 
 });*/
+function cleanGoogleTranslateParams(url) {
+
+  const u = new URL(url);
+
+  u.searchParams.delete("_x_tr_sl");
+  u.searchParams.delete("_x_tr_tl");
+  u.searchParams.delete("_x_tr_hl");
+
+  return u.pathname + u.search + u.hash;
+}
+
+
 
 document.addEventListener("DOMContentLoaded", () => {
 
@@ -239,10 +251,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
       if (savedLang) {
 
-        const path =
+        /*const path =
           target.pathname +
           target.search +
-          target.hash;
+          target.hash;*/
+
+        const path = cleanGoogleTranslateParams(target.href);
+
 
         window.location.href =
           `${GOOGLE}${path}?_x_tr_sl=ja&_x_tr_tl=${savedLang}&_x_tr_hl=ja`;
@@ -268,10 +283,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
       e.preventDefault();
 
-      const path =
+      /*const path =
         target.pathname +
         target.search +
-        target.hash;
+        target.hash;*/
+
+      const path = cleanGoogleTranslateParams(target.href);
+
 
       window.location.href =
         `${GOOGLE}${path}?_x_tr_sl=ja&_x_tr_tl=${lang}&_x_tr_hl=ja`;
