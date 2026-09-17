@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             <div class="logo">
                 <h1>
-                    <a href="../index.html">
+                    <a href="../myblog/index.html">
                         <i class="fa-solid fa-pen-nib"></i>
                         Welcome to My Blog
                     </a>
@@ -15,19 +15,19 @@ document.addEventListener('DOMContentLoaded', () => {
             </div>
 
             <nav class="main-nav">
-                <a href="../index.html">
+                <a href="../myblog/index.html">
                     <i class="fa-solid fa-house"></i> Home
                 </a>
 
-                <a href="../about/about.html">
+                <a href="../myblog/about/about.html">
                     <i class="fa-solid fa-user"></i> About
                 </a>
 
-                <a href="../newpost/newpost.html">
+                <a href="../myblog/newpost/newpost.html">
                     <i class="fa-solid fa-pen"></i> 記事を書く
                 </a>
 
-                <a href="../cv/cv.html" class="btn-highlight">
+                <a href="../myblog/cv/cv.html" class="btn-highlight">
                     <i class="fa-solid fa-file-lines"></i> 履歴書
                 </a>
             </nav>
