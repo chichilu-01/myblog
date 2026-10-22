@@ -1,104 +1,17 @@
-/* -----------------------------------------------------------
-   POST DETAIL STYLE - WATERCOLOR & MODERN LUXURY THEME (DARK)
-   Hoàng Minh Phương Blog - css/post-style.css (Cleaned & Optimized)
-   ----------------------------------------------------------- */
-:root {
-  --bg-dark: #0b0c10;
-  --bg-card: rgba(15, 17, 23, 0.85);
-  --primary: #FFD166;
-  --text-main: #F8F7F2;
-  --text-muted: #b0b0b0;
-  --border: rgba(255, 209, 102, 0.12);
-}
-/* --- BASE LAYOUT --- */
-.post-container {
-  flex: 1;
-  width: 100%;
-}
-.back-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  color: var(--primary);
-  font-weight: 600;
-  font-size: 0.95rem;
-  margin: 40px 0 24px 5%;
-  transition: 0.3s ease;
-}
-.back-btn:hover {
-  transform: translateX(-4px);
-  color: #FFB703;
-}
-/* --- PREMIUM POST LAYOUT --- */
-.premium-post {
-  background: var(--bg-card);
-  border-top: 1px solid var(--border);
-  border-bottom: 1px solid var(--border);
-  padding: 60px 10%; /* Tăng padding để đọc không bị mỏi mắt */
-  backdrop-filter: blur(10px);
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
-  width: 100%;
-}
-.premium-post h1 {
-  font-size: 3rem;
-  font-weight: 800;
-  line-height: 1.3;
-  margin-bottom: 20px;
-  background: linear-gradient(to right, #ffffff, #ffeaa7);
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-.post-meta {
-  display: flex;
-  gap: 20px;
-  color: var(--text-muted);
-  font-size: 0.95rem;
-  margin-bottom: 40px;
-  border-bottom: 1px solid var(--border);
-  padding-bottom: 20px;
-}
-.premium-post > img {
-  width: 100%;
-  height: auto;
-  border-radius: 16px;
-  margin-bottom: 45px;
-  border: 1px solid var(--border);
-}
-.premium-post h2 {
-  font-size: 1.8rem;
-  color: var(--primary);
-  margin: 40px 0 20px;
-  font-weight: 700;
-}
-.premium-post p {
-  color: #e2e8f0;
-  font-size: 1.15rem;
-  margin-bottom: 24px;
-  line-height: 1.7;
-}
-.premium-post blockquote {
-  background: rgba(255, 209, 102, 0.05);
-  border-left: 4px solid var(--primary);
-  padding: 24px 30px;
-  margin: 40px 0;
-  border-radius: 0 16px 16px 0;
-  font-style: italic;
-  font-size: 1.2rem;
-  color: #fff;
-}
-/* --- MOBILE RESPONSIVE (Tối ưu cho bài viết) --- */
-@media (max-width: 768px) {
-  .premium-post {
-    padding: 30px 5%; /* Thu hẹp padding cho di động */
-  }
-  .premium-post h1 {
-    font-size: 2rem; /* Giảm size tiêu đề để không bị vỡ */
-  }
-  .premium-post p {
-    font-size: 1rem;
-  }
-  .back-btn {
-    margin-left: 5%;
-  }
-}
+/* TRANG BÀI VIẾT — tờ văn bản trên giấy dó */
+.post-container{flex:1;width:100%;max-width:900px;margin:0 auto;padding:0 20px}
+.back-btn{display:inline-flex;align-items:center;gap:8px;margin:36px 0 20px;color:var(--son);font-weight:700;font-size:.95rem}
+.back-btn:hover{transform:translateX(-4px)}
+.premium-post{position:relative;margin-bottom:70px;padding:56px 64px;background:var(--paper2);border:2px solid var(--wood);outline:1px solid var(--gold);outline-offset:-10px;box-shadow:8px 8px 0 rgba(74,42,23,.28)}
+.premium-post h1{margin-bottom:18px;padding-bottom:16px;color:var(--ink);font:900 2.4rem/1.35 var(--display);text-align:center;border-bottom:3px double var(--son)}
+.post-meta{display:flex;flex-wrap:wrap;justify-content:center;gap:8px 22px;margin-bottom:34px;color:var(--muted);font-size:.92rem;font-style:italic}
+.post-meta i{color:var(--gold);margin-right:6px}
+.premium-post>img,.main-post-image{width:100%;margin-bottom:38px;padding:8px;background:var(--paper);border:1px solid var(--wood);filter:sepia(.25);box-shadow:3px 3px 0 rgba(74,42,23,.25)}
+.premium-post h2{margin:38px 0 16px;color:var(--son);font:700 1.6rem/1.4 var(--display)}
+.premium-post h2::before{content:"◆ ";color:var(--gold);font-size:.7em}
+.premium-post p{margin-bottom:22px;color:#33241a;font-size:1.1rem;line-height:1.95}
+.premium-post blockquote{margin:34px 0;padding:22px 28px;color:var(--wood);font-size:1.12rem;font-style:italic;background:rgba(163,38,27,.07);border-left:5px solid var(--son)}
+.gallery-heading{margin:40px 0 18px;color:var(--son);font:700 1.3rem var(--display)}.gallery-heading i{color:var(--gold);margin-right:8px}
+.gallery-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-bottom:28px}
+.gallery-grid img{width:100%;aspect-ratio:4/3;padding:6px;background:var(--paper);border:1px solid var(--wood);filter:sepia(.3);box-shadow:3px 3px 0 rgba(74,42,23,.25)}
+@media(max-width:768px){.post-container{padding:0 12px}.premium-post{padding:34px 22px}.premium-post h1{font-size:1.7rem}.premium-post p{font-size:1rem}.gallery-grid{grid-template-columns:1fr}}

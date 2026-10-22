@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
             <div class="logo">
                 <h1>
                     <a href="/myblog/">
-                        <i class="fa-solid fa-pen-nib"></i>
+                        <span class="seal">書</span>
                         Welcome to My Blog
                     </a>
                 </h1>
