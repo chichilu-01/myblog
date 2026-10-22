@@ -1,79 +1,60 @@
 <!doctype html>
-<html lang="ja">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>私の趣味は料理 - Hoang Minh Phuong</title>
+<html lang="en">
 
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;900&family=Noto+Serif:ital,wght@0,400;0,600;0,700;1,400&family=Noto+Serif+JP:wght@400;700&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-    />
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title data-i18n="p4.title">My Hobby Is Cooking</title>
+  <link rel="icon" href="../logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;900&family=Noto+Serif:ital,wght@0,400;0,600;0,700;1,400&family=Noto+Serif+JP:wght@400;700&display=swap">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/header-footer.css">
+  <link rel="stylesheet" href="../css/post-style.css">
+</head>
 
-    <link rel="stylesheet" href="../css/style.css" />
-    <link rel="stylesheet" href="../css/header-footer.css" />
-    <link rel="stylesheet" href="../css/post-style.css" />
-  </head>
+<body class="post-page-content">
+  <div id="header"></div>
 
-  <body class="post-page-content">
-   <div id="header"></div>
+  <main class="post-container">
+    <a href="../blog/blog.html" class="back-btn"><i class="fa-solid fa-arrow-left" aria-hidden="true"></i> <span data-i18n="common.backBlog">Back to all posts</span></a>
 
-    <main class="post-container">
-      <a href="../index.html" class="back-btn"
-        ><i class="fa-solid fa-arrow-left"></i> Homeに戻る</a
-      >
+    <article class="premium-post">
+      <h1 data-i18n="p4.title">My Hobby Is Cooking</h1>
 
-      <article class="premium-post">
-        <h1>私の趣味は料理をすることです</h1>
+      <div class="post-meta">
+        <span><i class="fa-regular fa-calendar" aria-hidden="true"></i> <time datetime="2025-03-14" data-date="2025-03-14">2025-03-14</time></span>
+        <span><i class="fa-solid fa-user" aria-hidden="true"></i> <span data-i18n="common.author">Hoang Minh Phuong</span></span>
+        <span><i class="fa-solid fa-utensils" aria-hidden="true"></i> <span data-i18n="cat.cooking">Cooking</span></span>
+      </div>
 
-        <div class="post-meta">
-          <span><i class="fa-regular fa-calendar"></i> 2025/03/14</span>
-          <span><i class="fa-solid fa-user"></i> Hoang Minh Phuong</span>
-          <span><i class="fa-solid fa-utensils"></i> Hobby & Cooking</span>
-        </div>
+      <img src="../images/soba.jpg" alt="My Hobby Is Cooking" data-i18n-alt="p4.title" class="main-post-image">
 
-        <img
-          src="../images/soba.jpg"
-          alt="Soba Noodles"
-          class="main-post-image"
-        />
-
-        <h2>料理が好きな理由</h2>
-        <p>
-          私の趣味は料理をすることです。休みの日には、よく家で新しいレシピに挑戦したり、友達や家族のためにごはんを作ったりします。
-        </p>
-
-        <blockquote>
-          "料理を通して、創造力や集中力を高めることができると思っています。何より、人が喜んでくれる顔を見るのが一番の幸せです。"
-        </blockquote>
-
-        <p>
-          特に和食や洋食を作るのが好きで、美味しくできたときにとても達成感を感じます。
-        </p>
-
-        <h3 class="gallery-heading">
-          <i class="fa-solid fa-camera"></i> 最近作った料理たち
-        </h3>
-        <div class="gallery-grid">
-          <img src="../images/soba1.jpg" alt="料理写真 1" />
-          <img src="../images/cook1.jpg" alt="料理写真 2" />
-          <img src="../images/cook2.jpg" alt="料理写真 3" />
-          <img src="../images/cook3.jpg" alt="料理写真 4" />
-        </div>
-
-        <p>これからも色々な国の料理に挑戦していきたいです！</p>
-      </article>
-    </main>
+      <h2 data-i18n="p4.b0">Why I love cooking</h2>
+      <p data-i18n-html="p4.b1">My hobby is cooking. On my days off I often try new recipes at home, or cook meals for friends and family.</p>
+      <blockquote data-i18n="p4.b2">I think cooking helps build creativity and concentration. Above all, seeing the happy faces of the people eating is my greatest joy.</blockquote>
+      <p data-i18n-html="p4.b3">I especially enjoy making Japanese and Western dishes, and I feel a real sense of accomplishment when they turn out delicious.</p>
+      <h3 class="gallery-heading"><i class="fa-solid fa-camera" aria-hidden="true"></i> <span data-i18n="p4.b4">Dishes I made recently</span></h3>
+      <div class="gallery-grid">
+        <img src="../images/soba1.jpg" alt="More soba" data-i18n-alt="g.3" loading="lazy">
+        <img src="../images/cook1.jpg" alt="From my kitchen, no. 1" data-i18n-alt="g.4" loading="lazy">
+        <img src="../images/cook2.jpg" alt="From my kitchen, no. 2" data-i18n-alt="g.5" loading="lazy">
+        <img src="../images/cook3.jpg" alt="From my kitchen, no. 3" data-i18n-alt="g.6" loading="lazy">
+      </div>
+      <p data-i18n-html="p4.b5">I want to keep trying dishes from all kinds of countries!</p>
+    </article>
+    <nav class="post-nav">
+      <a class="post-nav-link prev" href="post3.html"><small>&larr;</small> <span data-i18n="p3.title">My Weakness</span></a>
+      <a class="post-nav-link next" href="post5.html"><span data-i18n="p5.title">The Pizza My Girlfriend Made</span> <small>&rarr;</small></a>
+    </nav>
+  </main>
 
   <div id="footer"></div>
+  <script src="../js/translations.js"></script>
+  <script src="../js/i18n.js"></script>
   <script src="../js/components.js"></script>
+</body>
 
-    <script src="../js/script.js"></script>
-  </body>
 </html>

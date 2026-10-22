@@ -1,475 +1,165 @@
 <!doctype html>
-<html lang="ja">
+<html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-
-    <link rel="icon" href="logo.png">
-
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
-    >
-
-    <meta
-        name="description"
-        content="Blog cá nhân của Hoang Minh Phuong - Chia sẻ về lập trình, nấu ăn và cuộc sống."
-    >
-
-    <meta name="google" content="translate">
-
-    <title>Hoang Minh Phuong Blog</title>
-
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-    <link
-        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;900&family=Noto+Serif:ital,wght@0,400;0,600;0,700;1,400&family=Noto+Serif+JP:wght@400;700&display=swap"
-        rel="stylesheet"
-    >
-
-    <!-- Font Awesome -->
-    <link
-        rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-    >
-
-    <!-- CSS -->
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/header-footer.css">
-    <link rel="stylesheet" href="css/projector.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Personal blog of Hoang Minh Phuong — programming, cooking and life.">
+  <title data-i18n="home.title">Hoang Minh Phuong — Personal Blog</title>
+  <link rel="icon" href="logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;900&family=Noto+Serif:ital,wght@0,400;0,600;0,700;1,400&family=Noto+Serif+JP:wght@400;700&display=swap">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/header-footer.css">
+  <link rel="stylesheet" href="css/projector.css">
 </head>
 
 <body>
+  <div id="header"></div>
 
-    <!-- ==================================================
-         HEADER
-    ================================================== -->
-    <div id="header"></div>
-
-
-    <!-- ==================================================
-         HERO
-    ================================================== -->
-    <section class="hero">
-
-        <img
-            src="images/background_image.png"
-            alt="Welcome to my world"
-            class="hero-image"
-        >
-
-        <div class="container">
-
-            <h2>Welcome to my world</h2>
-
-            <p>
-                Nơi chia sẻ kiến thức lập trình, kinh nghiệm sống
-                và những món ăn ngon.
-            </p>
-
+  <section class="hero">
+    <div class="container hero-inner">
+      <div class="hero-text">
+        <span class="eyebrow" data-i18n="hero.eyebrow">Personal blog</span>
+        <h2 data-i18n="hero.title">Welcome to my world</h2>
+        <p data-i18n="hero.text">A cozy corner for sharing programming knowledge, life experiences and good food.</p>
+        <div class="hero-actions">
+          <a class="btn" href="blog/blog.html"><i class="fa-solid fa-book-open" aria-hidden="true"></i> <span data-i18n="hero.cta1">Read the blog</span></a>
+          <a class="btn btn-outline" href="about/about.html"><i class="fa-solid fa-user" aria-hidden="true"></i> <span data-i18n="hero.cta2">About me</span></a>
         </div>
+      </div>
+      <div class="hero-photo">
+        <img src="images/thumbs/avatar.jpg" alt="Portrait of Hoang Minh Phuong" data-i18n-alt="hero.photoAlt">
+      </div>
+    </div>
+  </section>
 
-    </section>
+  <main class="container" id="posts">
 
+    <div class="section-title">
+      <h3><i class="fa-regular fa-newspaper" aria-hidden="true"></i> <span data-i18n="home.latest">Latest posts</span></h3>
+    </div>
 
-    <!-- ==================================================
-         POSTS
-    ================================================== -->
-    <main class="container" id="posts">
+    <div class="post-grid post-grid-3">
 
-        <div class="section-title">
-            <h3>
-                <i class="fa-regular fa-newspaper"></i>
-                最新の記事
-            </h3>
+      <article class="post-card" data-cat="cooking">
+        <a class="post-image" href="post/post5.html" tabindex="-1" aria-hidden="true">
+          <img src="images/pizza.jpg" alt="" loading="lazy">
+        </a>
+        <div class="post-content">
+          <div class="post-meta">
+            <span class="tag tag-cooking" data-i18n="cat.cooking">Cooking</span>
+            <time datetime="2026-07-08" data-date="2026-07-08">2026-07-08</time>
+          </div>
+          <h2><a href="post/post5.html" data-i18n="p5.title">The Pizza My Girlfriend Made</a></h2>
+          <p class="excerpt" data-i18n="p5.excerpt">My girlfriend tried homemade pizza for the very first time. Kneaded from scratch and baked with care, it tasted like it came from a real pizzeria — such a heartwarming evening.</p>
+          <a href="post/post5.html" class="read-more"><span data-i18n="common.readMore">Read more</span> &rarr;</a>
         </div>
+      </article>
 
+      <article class="post-card" data-cat="cooking">
+        <a class="post-gallery" href="post/post4.html" tabindex="-1" aria-hidden="true">
+          <img src="images/soba.jpg" alt="" loading="lazy">
+        <div class="gallery-overlay"><span data-i18n="post4.more">+4 more photos</span></div>
+        </a>
+        <div class="post-content">
+          <div class="post-meta">
+            <span class="tag tag-cooking" data-i18n="cat.cooking">Cooking</span>
+            <time datetime="2025-03-14" data-date="2025-03-14">2025-03-14</time>
+          </div>
+          <h2><a href="post/post4.html" data-i18n="p4.title">My Hobby Is Cooking</a></h2>
+          <p class="excerpt" data-i18n="p4.excerpt">On days off I often try new recipes at home or cook for friends and family...</p>
+          <a href="post/post4.html" class="read-more"><span data-i18n="common.readMore">Read more</span> &rarr;</a>
+        </div>
+      </article>
 
-        <!-- ==================================================
-             RETRO TV
-        ================================================== -->
-        <div class="projector-container">
+      <article class="post-card" data-cat="life">
+        <a class="post-image" href="post/post3.html" tabindex="-1" aria-hidden="true">
+          <img src="images/tansho2.jpg" alt="" loading="lazy">
+        </a>
+        <div class="post-content">
+          <div class="post-meta">
+            <span class="tag tag-life" data-i18n="cat.life">Life</span>
+            <time datetime="2025-02-14" data-date="2025-02-14">2025-02-14</time>
+          </div>
+          <h2><a href="post/post3.html" data-i18n="p3.title">My Weakness</a></h2>
+          <p class="excerpt" data-i18n="p3.excerpt">My weakness is that I'm quiet and introverted. I get a little nervous when I talk to people I've just met...</p>
+          <a href="post/post3.html" class="read-more"><span data-i18n="common.readMore">Read more</span> &rarr;</a>
+        </div>
+      </article>
 
-            <div class="retro-tv-container">
+    </div>
 
-                <!-- Antenna -->
-                <div class="antenna-container">
-                    <div class="antenna antenna-left"></div>
-                    <div class="antenna antenna-right"></div>
-                </div>
+    <div class="center-row">
+      <a class="btn btn-outline" href="blog/blog.html"><span data-i18n="home.viewAll">View all posts</span> &rarr;</a>
+    </div>
 
+    <div class="section-title">
+      <h3><i class="fa-solid fa-tv" aria-hidden="true"></i> <span data-i18n="home.tv">Channel surfing</span></h3>
+    </div>
 
-                <!-- TV -->
-                <div class="tv-frame">
-
-                    <!-- Screen -->
-                    <div class="screen" id="post-screen">
-
-                        <img
-                            id="post-image"
-                            src=""
-                            alt="Post"
-                            style="display: none;"
-                        >
-
-                        <div id="post-frame"></div>
-
-                        <h2 id="post-title"></h2>
-
-                        <p id="post-excerpt"></p>
-
-                    </div>
-
-
-                    <!-- Controls -->
-                    <div class="side-panel">
-
-                        <div class="control-group">
-
-                            <div
-                                class="channel-dial"
-                                onclick="changeChannel()"
-                            ></div>
-
-                            <span>CHANNELS</span>
-
-                        </div>
-
-
-                        <div class="control-group">
-
-                            <div class="channel-dial small-dial"></div>
-
-                            <span>VOLUME</span>
-
-                        </div>
-
-
-                        <div class="control-group">
-
-                            <div
-                                class="power-btn"
-                                id="power-btn"
-                                onclick="togglePower()"
-                            ></div>
-
-                            <span>POWER</span>
-
-                        </div>
-
-                    </div>
-
-                </div>
-
+    <div class="projector-container">
+      <div class="retro-tv-container">
+        <div class="antenna-container">
+          <div class="antenna antenna-left"></div>
+          <div class="antenna antenna-right"></div>
+        </div>
+        <div class="tv-frame">
+          <div class="screen" id="post-screen">
+            <p id="tv-hint"><span data-i18n="tv.hint">Press POWER to switch on</span></p>
+            <img id="post-image" src="" alt="" style="display: none;">
+            <h2 id="post-title"></h2>
+            <p id="post-excerpt"></p>
+          </div>
+          <div class="side-panel">
+            <div class="control-group">
+              <button type="button" class="channel-dial" id="channel-btn" aria-label="Next channel"></button>
+              <span data-i18n="tv.channels">CHANNELS</span>
             </div>
-
+            <div class="control-group">
+              <div class="channel-dial small-dial"></div>
+              <span data-i18n="tv.volume">VOLUME</span>
+            </div>
+            <div class="control-group">
+              <button type="button" class="power-btn" id="power-btn" aria-label="Power"></button>
+              <span data-i18n="tv.power">POWER</span>
+            </div>
+          </div>
         </div>
-
-
-        <!-- ==================================================
-             POST GRID
-        ================================================== -->
-        <div class="post-grid">
-
-
-            <!-- Post 1 -->
-            <article class="post-card">
-
-                <div class="post-image">
-
-                    <img
-                        src="images/maytinh1.jpg"
-                        alt="Góc làm việc máy tính"
-                        loading="lazy"
-                    >
-
-                </div>
-
-
-                <div class="post-content">
-
-                    <div class="post-meta">
-
-                        <time datetime="2025-01-14">
-                            <i class="fa-regular fa-calendar"></i>
-                            14/01/2025
-                        </time>
-
-                    </div>
-
-
-                    <h2>
-                        <a href="post/post1.html">
-                            最初の記事 (Bài viết đầu tiên)
-                        </a>
-                    </h2>
-
-
-                    <p class="excerpt">
-                        これは個人ブログの最初の記事で、始まりを示しています…
-                        Đây là bài viết đầu tiên của blog cá nhân,
-                        đánh dấu sự khởi đầu...
-                    </p>
-
-
-                    <a
-                        href="post/post1.html"
-                        class="read-more"
-                    >
-                        続きを読む &rarr;
-                    </a>
-
-                </div>
-
-            </article>
-
-
-            <!-- Post 2 -->
-            <article class="post-card">
-
-                <div class="post-image">
-
-                    <img
-                        src="images/anh1.jpg"
-                        alt="Chân dung Hoàng Minh Phương"
-                        loading="lazy"
-                    >
-
-                </div>
-
-
-                <div class="post-content">
-
-                    <div class="post-meta">
-
-                        <span class="tag">
-                            Java
-                        </span>
-
-                        <time datetime="2025-01-14">
-                            14/01/2025
-                        </time>
-
-                    </div>
-
-
-                    <h2>
-                        <a href="post/post2.html">
-                            自己PR (Giới thiệu bản thân)
-                        </a>
-                    </h2>
-
-
-                    <p class="excerpt">
-                        責任感が強く、学んだことをすぐに行動に移せるタイプです。
-                        Javaを中心にWeb開発を学び...
-                    </p>
-
-
-                    <a
-                        href="post/post2.html"
-                        class="read-more"
-                    >
-                        続きを読む &rarr;
-                    </a>
-
-                </div>
-
-            </article>
-
-
-            <!-- Post 3 -->
-            <article class="post-card">
-
-                <div class="post-image">
-
-                    <img
-                        src="images/tansho2.jpg"
-                        alt="Suy tư"
-                        loading="lazy"
-                    >
-
-                </div>
-
-
-                <div class="post-content">
-
-                    <div class="post-meta">
-
-                        <time datetime="2025-02-14">
-                            14/02/2025
-                        </time>
-
-                    </div>
-
-
-                    <h2>
-                        <a href="post/post3.html">
-                            私の短所です (Điểm yếu của tôi)
-                        </a>
-                    </h2>
-
-
-                    <p class="excerpt">
-                        私の短所は、無口で内向的なところです。
-                        初対面の人と話すときは少し緊張してしまい...
-                    </p>
-
-
-                    <a
-                        href="post/post3.html"
-                        class="read-more"
-                    >
-                        続きを読む &rarr;
-                    </a>
-
-                </div>
-
-            </article>
-
-
-            <!-- Post 4 -->
-            <article class="post-card">
-
-                <div class="post-gallery">
-
-                    <img
-                        src="images/soba.jpg"
-                        alt="Món mỳ Soba"
-                        loading="lazy"
-                    >
-
-                    <div class="gallery-overlay">
-
-                        <span>
-                            他に4枚の写真 (+4 ảnh khác)
-                        </span>
-
-                    </div>
-
-                </div>
-
-
-                <div class="post-content">
-
-                    <div class="post-meta">
-
-                        <span class="tag hobby">
-                            Hobby
-                        </span>
-
-                        <time datetime="2025-03-14">
-                            14/03/2025
-                        </time>
-
-                    </div>
-
-
-                    <h2>
-                        <a href="post/post4.html">
-                            私の趣味は料理をすることです
-                        </a>
-                    </h2>
-
-
-                    <p class="excerpt">
-                        休みの日には、よく家で新しいレシピに挑戦したり、
-                        友達や家族のためにごはんを作ったりします...
-                    </p>
-
-
-                    <a
-                        href="post/post4.html"
-                        class="read-more"
-                    >
-                        続きを読む &rarr;
-                    </a>
-
-                </div>
-
-            </article>
-
-
-            <!-- Post 5 -->
-            <article class="post-card">
-
-                <div class="post-image">
-
-                    <img
-                        src="images/pizza.jpg"
-                        alt="彼女が作ったピザ"
-                        loading="lazy"
-                    >
-
-                </div>
-
-
-                <div class="post-content">
-
-                    <div class="post-meta">
-
-                        <time datetime="2026-07-08">
-                            08/07/2026
-                        </time>
-
-                    </div>
-
-
-                    <h2>
-                        <a href="post/post5.html">
-                            彼女が作ったピザ
-                        </a>
-                    </h2>
-
-
-                    <p class="excerpt">
-                        彼女が初めて手作りピザに挑戦してくれました。
-                        生地から丁寧にこねて焼き上げたピザは、
-                        まるでお店のような本格的な味で、
-                        とても心温まる時間でした。
-                    </p>
-
-
-                    <a
-                        href="post/post5.html"
-                        class="read-more"
-                    >
-                        続きを読む &rarr;
-                    </a>
-
-                </div>
-
-            </article>
-
-        </div>
-
-    </main>
-
-
-    <!-- ==================================================
-         FOOTER
-    ================================================== -->
-    <div id="footer"></div>
-
-
-    <!-- ==================================================
-         JAVASCRIPT
-    ================================================== -->
-
-    <!-- Background -->
-    <!-- <script src="js/background.js"></script> -->
-
-    <!-- Header / Footer / Mobile Menu -->
-    <script src="js/components.js"></script>
-
-    <!-- Other Scripts -->
-    <script src="js/script.js"></script>
-
-    <!-- Retro TV -->
-    <script src="js/projector.js"></script>
-
+      </div>
+    </div>
+
+    <div class="section-title">
+      <h3><i class="fa-solid fa-compass" aria-hidden="true"></i> <span data-i18n="home.explore">Explore the site</span></h3>
+    </div>
+
+    <div class="tile-grid">
+      <a class="tile" href="projects/projects.html">
+        <span class="tile-icon"><i class="fa-solid fa-laptop-code" aria-hidden="true"></i></span>
+        <h4 data-i18n="tile.projects.t">Projects</h4>
+        <p data-i18n="tile.projects.d">Things I've built while learning web development.</p>
+      </a>
+      <a class="tile" href="gallery/gallery.html">
+        <span class="tile-icon"><i class="fa-solid fa-images" aria-hidden="true"></i></span>
+        <h4 data-i18n="tile.gallery.t">Gallery</h4>
+        <p data-i18n="tile.gallery.d">Food, desks and little everyday moments.</p>
+      </a>
+      <a class="tile" href="contact/contact.html">
+        <span class="tile-icon"><i class="fa-solid fa-envelope" aria-hidden="true"></i></span>
+        <h4 data-i18n="tile.contact.t">Contact</h4>
+        <p data-i18n="tile.contact.d">Say hello or send me a message.</p>
+      </a>
+    </div>
+
+  </main>
+
+  <div id="footer"></div>
+  <script src="js/translations.js"></script>
+  <script src="js/i18n.js"></script>
+  <script src="js/components.js"></script>
+  <script src="js/projector.js"></script>
 </body>
 
 </html>

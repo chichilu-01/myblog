@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Notes on programming, cooking and everyday life.">
+  <title data-i18n="blog.title">Blog — Hoang Minh Phuong</title>
+  <link rel="icon" href="../logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;900&family=Noto+Serif:ital,wght@0,400;0,600;0,700;1,400&family=Noto+Serif+JP:wght@400;700&display=swap">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/header-footer.css">
+  <link rel="stylesheet" href="../css/pages.css">
+</head>
+
+<body>
+  <div id="header"></div>
+
+  <main class="container page">
+    <header class="page-head">
+      <h1 data-i18n="blog.h">The Blog</h1>
+      <p class="page-sub" data-i18n="blog.sub">Notes on programming, cooking and everyday life.</p>
+    </header>
+
+    <div class="filters" role="group" aria-label="Category">
+      <button type="button" class="filter-btn active" data-filter="all"><span data-i18n="cat.all">All</span></button>
+      <button type="button" class="filter-btn" data-filter="tech"><span data-i18n="cat.tech">Tech</span></button>
+      <button type="button" class="filter-btn" data-filter="life"><span data-i18n="cat.life">Life</span></button>
+      <button type="button" class="filter-btn" data-filter="cooking"><span data-i18n="cat.cooking">Cooking</span></button>
+    </div>
+
+    <div class="post-grid" id="blog-grid">
+
+      <article class="post-card" data-cat="cooking">
+        <a class="post-image" href="../post/post5.html" tabindex="-1" aria-hidden="true">
+          <img src="../images/pizza.jpg" alt="" loading="lazy">
+        </a>
+        <div class="post-content">
+          <div class="post-meta">
+            <span class="tag tag-cooking" data-i18n="cat.cooking">Cooking</span>
+            <time datetime="2026-07-08" data-date="2026-07-08">2026-07-08</time>
+          </div>
+          <h2><a href="../post/post5.html" data-i18n="p5.title">The Pizza My Girlfriend Made</a></h2>
+          <p class="excerpt" data-i18n="p5.excerpt">My girlfriend tried homemade pizza for the very first time. Kneaded from scratch and baked with care, it tasted like it came from a real pizzeria — such a heartwarming evening.</p>
+          <a href="../post/post5.html" class="read-more"><span data-i18n="common.readMore">Read more</span> &rarr;</a>
+        </div>
+      </article>
+
+      <article class="post-card" data-cat="cooking">
+        <a class="post-gallery" href="../post/post4.html" tabindex="-1" aria-hidden="true">
+          <img src="../images/soba.jpg" alt="" loading="lazy">
+        <div class="gallery-overlay"><span data-i18n="post4.more">+4 more photos</span></div>
+        </a>
+        <div class="post-content">
+          <div class="post-meta">
+            <span class="tag tag-cooking" data-i18n="cat.cooking">Cooking</span>
+            <time datetime="2025-03-14" data-date="2025-03-14">2025-03-14</time>
+          </div>
+          <h2><a href="../post/post4.html" data-i18n="p4.title">My Hobby Is Cooking</a></h2>
+          <p class="excerpt" data-i18n="p4.excerpt">On days off I often try new recipes at home or cook for friends and family...</p>
+          <a href="../post/post4.html" class="read-more"><span data-i18n="common.readMore">Read more</span> &rarr;</a>
+        </div>
+      </article>
+
+      <article class="post-card" data-cat="life">
+        <a class="post-image" href="../post/post3.html" tabindex="-1" aria-hidden="true">
+          <img src="../images/tansho2.jpg" alt="" loading="lazy">
+        </a>
+        <div class="post-content">
+          <div class="post-meta">
+            <span class="tag tag-life" data-i18n="cat.life">Life</span>
+            <time datetime="2025-02-14" data-date="2025-02-14">2025-02-14</time>
+          </div>
+          <h2><a href="../post/post3.html" data-i18n="p3.title">My Weakness</a></h2>
+          <p class="excerpt" data-i18n="p3.excerpt">My weakness is that I'm quiet and introverted. I get a little nervous when I talk to people I've just met...</p>
+          <a href="../post/post3.html" class="read-more"><span data-i18n="common.readMore">Read more</span> &rarr;</a>
+        </div>
+      </article>
+
+      <article class="post-card" data-cat="tech">
+        <a class="post-image" href="../post/post2.html" tabindex="-1" aria-hidden="true">
+          <img src="../images/anh1.jpg" alt="" loading="lazy">
+        </a>
+        <div class="post-content">
+          <div class="post-meta">
+            <span class="tag tag-tech" data-i18n="cat.tech">Tech</span>
+            <time datetime="2025-01-14" data-date="2025-01-14">2025-01-14</time>
+          </div>
+          <h2><a href="../post/post2.html" data-i18n="p2.title">Self-Introduction</a></h2>
+          <p class="excerpt" data-i18n="p2.excerpt">I have a strong sense of responsibility and put what I learn into action right away. I'm studying web development with a focus on Java...</p>
+          <a href="../post/post2.html" class="read-more"><span data-i18n="common.readMore">Read more</span> &rarr;</a>
+        </div>
+      </article>
+
+      <article class="post-card" data-cat="life">
+        <a class="post-image" href="../post/post1.html" tabindex="-1" aria-hidden="true">
+          <img src="../images/maytinh1.jpg" alt="" loading="lazy">
+        </a>
+        <div class="post-content">
+          <div class="post-meta">
+            <span class="tag tag-life" data-i18n="cat.life">Life</span>
+            <time datetime="2025-01-14" data-date="2025-01-14">2025-01-14</time>
+          </div>
+          <h2><a href="../post/post1.html" data-i18n="p1.title">My First Post</a></h2>
+          <p class="excerpt" data-i18n="p1.excerpt">This is the first post on my personal blog, marking the very beginning...</p>
+          <a href="../post/post1.html" class="read-more"><span data-i18n="common.readMore">Read more</span> &rarr;</a>
+        </div>
+      </article>
+
+    </div>
+    <p class="empty-note" data-i18n="blog.empty">No posts in this category yet.</p>
+  </main>
+
+  <div id="footer"></div>
+  <script src="../js/translations.js"></script>
+  <script src="../js/i18n.js"></script>
+  <script src="../js/components.js"></script>
+  <script src="../js/pages.js"></script>
+</body>
+
+</html>

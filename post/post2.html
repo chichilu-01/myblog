@@ -1,66 +1,54 @@
 <!doctype html>
-<html lang="ja">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>自己PR - Hoang Minh Phuong</title>
+<html lang="en">
 
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;900&family=Noto+Serif:ital,wght@0,400;0,600;0,700;1,400&family=Noto+Serif+JP:wght@400;700&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-    />
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title data-i18n="p2.title">Self-Introduction</title>
+  <link rel="icon" href="../logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;900&family=Noto+Serif:ital,wght@0,400;0,600;0,700;1,400&family=Noto+Serif+JP:wght@400;700&display=swap">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/header-footer.css">
+  <link rel="stylesheet" href="../css/post-style.css">
+</head>
 
-    <link rel="stylesheet" href="../css/style.css" />
-    <link rel="stylesheet" href="../css/header-footer.css" />
-    <link rel="stylesheet" href="../css/post-style.css" />
-  </head>
-
-  <body class="post-page-content">
+<body class="post-page-content">
   <div id="header"></div>
 
-    <main class="post-container">
-      <a href="../index.html" class="back-btn"
-        ><i class="fa-solid fa-arrow-left"></i> Homeに戻る</a
-      >
+  <main class="post-container">
+    <a href="../blog/blog.html" class="back-btn"><i class="fa-solid fa-arrow-left" aria-hidden="true"></i> <span data-i18n="common.backBlog">Back to all posts</span></a>
 
-      <article class="premium-post">
-        <h1>自己PR (自己紹介)</h1>
+    <article class="premium-post">
+      <h1 data-i18n="p2.title">Self-Introduction</h1>
 
-        <div class="post-meta">
-          <span><i class="fa-regular fa-calendar"></i> 2025/01/14</span>
-          <span><i class="fa-solid fa-user"></i> Hoang Minh Phuong</span>
-          <span><i class="fa-brands fa-java"></i> Java Developer</span>
-        </div>
+      <div class="post-meta">
+        <span><i class="fa-regular fa-calendar" aria-hidden="true"></i> <time datetime="2025-01-14" data-date="2025-01-14">2025-01-14</time></span>
+        <span><i class="fa-solid fa-user" aria-hidden="true"></i> <span data-i18n="common.author">Hoang Minh Phuong</span></span>
+        <span><i class="fa-brands fa-java" aria-hidden="true"></i> <span data-i18n="cat.tech">Tech</span></span>
+      </div>
 
-        <img src="../images/anh1.jpg" alt="Hoang Minh Phuong" />
+      <img src="../images/anh1.jpg" alt="Self-Introduction" data-i18n-alt="p2.title">
 
-        <h2>私の強み</h2>
-        <p>
-          私は責任感が強く、学んだことをすぐに行動に移せるタイプです。失敗を恐れず、まずは挑戦してみることを大切にしています。
-        </p>
-
-        <h2>スキルと経験</h2>
-        <p>
-          現在、<strong>Java</strong>を中心にWeb開発を学んでいます。これまでに、HTML・CSS・JavaScriptを使っておみくじアプリやログイン機能付きサイト、この個人ブログなどを制作し、GitHubに公開しました。
-        </p>
-        <p>
-          落ち着いた性格ですが、チームの一員として責任を持ち、最後までやり遂げることができます。
-        </p>
-
-        <blockquote>
-          "入社後は、新しい技術を積極的に吸収し、成長し続けるエンジニアを目指します。"
-        </blockquote>
-      </article>
-    </main>
+      <h2 data-i18n="p2.b0">My strengths</h2>
+      <p data-i18n-html="p2.b1">I have a strong sense of responsibility and put what I learn into action right away. I don't fear failure — I value giving things a try first.</p>
+      <h2 data-i18n="p2.b2">Skills and experience</h2>
+      <p data-i18n-html="p2.b3">I'm currently studying web development centered on <strong>Java</strong>. Using HTML, CSS and JavaScript, I've built an omikuji (fortune) app, a website with login functionality and this personal blog, and published them on GitHub.</p>
+      <p data-i18n-html="p2.b4">I'm calm by nature, but I take responsibility as a member of a team and see things through to the end.</p>
+      <blockquote data-i18n="p2.b5">After joining a company, I aim to keep absorbing new technologies and keep growing as an engineer.</blockquote>
+    </article>
+    <nav class="post-nav">
+      <a class="post-nav-link prev" href="post1.html"><small>&larr;</small> <span data-i18n="p1.title">My First Post</span></a>
+      <a class="post-nav-link next" href="post3.html"><span data-i18n="p3.title">My Weakness</span> <small>&rarr;</small></a>
+    </nav>
+  </main>
 
   <div id="footer"></div>
+  <script src="../js/translations.js"></script>
+  <script src="../js/i18n.js"></script>
   <script src="../js/components.js"></script>
-    <script src="../js/script.js"></script>
-  </body>
+</body>
+
 </html>

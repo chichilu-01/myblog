@@ -1,17 +1,26 @@
-/* TRANG BÀI VIẾT — tờ văn bản trên giấy dó */
-.post-container{flex:1;width:100%;max-width:900px;margin:0 auto;padding:0 20px}
-.back-btn{display:inline-flex;align-items:center;gap:8px;margin:36px 0 20px;color:var(--son);font-weight:700;font-size:.95rem}
+/* POST PAGE */
+.post-container{flex:1;width:100%;max-width:880px;margin:0 auto;padding:0 20px}
+.back-btn{display:inline-flex;align-items:center;gap:8px;margin:34px 0 18px;color:var(--link);font-weight:700;font-size:.95rem}
 .back-btn:hover{transform:translateX(-4px)}
-.premium-post{position:relative;margin-bottom:70px;padding:56px 64px;background:var(--paper2);border:2px solid var(--wood);outline:1px solid var(--gold);outline-offset:-10px;box-shadow:8px 8px 0 rgba(74,42,23,.28)}
-.premium-post h1{margin-bottom:18px;padding-bottom:16px;color:var(--ink);font:900 2.4rem/1.35 var(--display);text-align:center;border-bottom:3px double var(--son)}
-.post-meta{display:flex;flex-wrap:wrap;justify-content:center;gap:8px 22px;margin-bottom:34px;color:var(--muted);font-size:.92rem;font-style:italic}
-.post-meta i{color:var(--gold);margin-right:6px}
-.premium-post>img,.main-post-image{width:100%;margin-bottom:38px;padding:8px;background:var(--paper);border:1px solid var(--wood);filter:sepia(.25);box-shadow:3px 3px 0 rgba(74,42,23,.25)}
-.premium-post h2{margin:38px 0 16px;color:var(--son);font:700 1.6rem/1.4 var(--display)}
-.premium-post h2::before{content:"◆ ";color:var(--gold);font-size:.7em}
-.premium-post p{margin-bottom:22px;color:#33241a;font-size:1.1rem;line-height:1.95}
-.premium-post blockquote{margin:34px 0;padding:22px 28px;color:var(--wood);font-size:1.12rem;font-style:italic;background:rgba(163,38,27,.07);border-left:5px solid var(--son)}
-.gallery-heading{margin:40px 0 18px;color:var(--son);font:700 1.3rem var(--display)}.gallery-heading i{color:var(--gold);margin-right:8px}
-.gallery-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-bottom:28px}
-.gallery-grid img{width:100%;aspect-ratio:4/3;padding:6px;background:var(--paper);border:1px solid var(--wood);filter:sepia(.3);box-shadow:3px 3px 0 rgba(74,42,23,.25)}
-@media(max-width:768px){.post-container{padding:0 12px}.premium-post{padding:34px 22px}.premium-post h1{font-size:1.7rem}.premium-post p{font-size:1rem}.gallery-grid{grid-template-columns:1fr}}
+.premium-post{margin-bottom:30px;padding:52px 60px;background:var(--card);border:1px solid var(--line);border-radius:22px;box-shadow:var(--shadow)}
+.premium-post h1{margin-bottom:16px;font:900 2.3rem/1.3 var(--display);text-align:center}
+.post-meta{display:flex;flex-wrap:wrap;justify-content:center;gap:8px 22px;margin-bottom:30px;padding-bottom:22px;color:var(--muted);font-size:.9rem;border-bottom:1px solid var(--line)}
+.post-meta i{color:var(--honey-deep);margin-right:6px}
+.premium-post>img,.main-post-image{width:100%;max-height:520px;margin-bottom:34px;border-radius:14px;box-shadow:0 8px 20px rgba(185,131,18,.2)}
+.premium-post h2{margin:36px 0 14px;padding-left:14px;font:700 1.55rem/1.4 var(--display);border-left:5px solid var(--honey)}
+.premium-post p{margin-bottom:20px;color:#40341f;font-size:1.08rem;line-height:1.95}
+.premium-post blockquote{margin:30px 0;padding:20px 26px;font-size:1.1rem;font-style:italic;color:#5a430a;background:var(--honey-soft);border-left:5px solid var(--honey-deep);border-radius:0 12px 12px 0}
+.gallery-heading{margin:38px 0 16px;font:700 1.25rem var(--display)}.gallery-heading i{color:var(--honey-deep);margin-right:8px}
+.gallery-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-bottom:26px}
+.gallery-grid img{width:100%;aspect-ratio:4/3;border-radius:12px;box-shadow:0 6px 16px rgba(185,131,18,.2)}
+.post-nav{display:flex;justify-content:space-between;gap:16px;margin-bottom:70px}
+.post-nav-link{flex:1;max-width:48%;padding:14px 18px;font-weight:700;font-size:.92rem;background:var(--card);border:1px solid var(--line);border-radius:14px;transition:.25s}
+.post-nav-link:hover{border-color:var(--honey);background:var(--honey-soft)}
+.post-nav-link.next{text-align:right;margin-left:auto}
+@media(max-width:768px){
+  .post-container{padding:0 12px}
+  .premium-post{padding:30px 20px;border-radius:16px}
+  .premium-post h1{font-size:1.65rem}.premium-post p{font-size:1rem}
+  .gallery-grid{grid-template-columns:1fr}
+  .post-nav{flex-direction:column}.post-nav-link{max-width:100%}
+}

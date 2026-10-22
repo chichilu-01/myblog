@@ -1,20 +1,16 @@
-/* GIỚI THIỆU — khung ảnh oval xưa + trang giấy */
-.about-page{flex:1;max-width:1160px;margin:60px auto;padding:0 20px;display:flex;justify-content:center}
-.about-card{width:100%;max-width:960px;display:grid;grid-template-columns:320px 1fr;overflow:hidden;background:var(--paper2);border:2px solid var(--wood);outline:1px solid var(--gold);outline-offset:-8px;box-shadow:8px 8px 0 rgba(74,42,23,.28)}
-.profile-section{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:26px;padding:44px 30px;background:linear-gradient(180deg,#5a2c18,var(--wood2));border-right:3px double var(--gold)}
-.img-wrapper{width:190px;height:240px;padding:6px;border-radius:50%/46%;background:linear-gradient(145deg,#f3d98b,#8a5d12);box-shadow:0 0 0 4px var(--son),0 10px 24px rgba(0,0,0,.5)}
-.img-wrapper img{width:100%;height:100%;border-radius:50%/46%;border:3px solid var(--wood2);filter:sepia(.3)}
-.social-icons{display:flex;gap:14px}
-.social-icons a{display:flex;align-items:center;justify-content:center;width:42px;height:42px;color:#f3d98b;border:1px solid var(--gold);border-radius:3px}
-.social-icons a:hover{background:var(--son);color:var(--paper2)}
-.content-section{display:flex;flex-direction:column;gap:26px;padding:46px}
-.lang-switch{display:flex;flex-wrap:wrap;gap:10px;padding-bottom:16px;border-bottom:3px double var(--wood)}
-.lang-switch button{padding:8px 16px;color:var(--wood);font:600 .9rem var(--serif);cursor:pointer;background:var(--bg-btn);border:1px solid var(--wood);border-radius:2px;transition:.25s}
-.lang-switch button:hover{border-color:var(--son)}
-.lang-switch button.active{color:var(--paper2);background:var(--son);border-color:#6e170f}
-.about-block{display:none}.about-block.active{display:block}
-.about-block h2{margin-bottom:16px;color:var(--son);font:900 2rem var(--display)}
-.about-block p{margin-bottom:16px;color:#3b2a1d;font-size:1.05rem;line-height:1.9}
-.about-block strong{color:var(--wood)}
-.signature{display:inline-block;margin-top:24px;padding-top:14px;color:var(--son);font:italic 700 1rem var(--display);letter-spacing:.08em;border-top:1px dashed var(--wood)}
-@media(max-width:850px){.about-page{margin:30px auto}.about-card{grid-template-columns:1fr}.profile-section{border-right:0;border-bottom:3px double var(--gold);padding:34px 20px}.content-section{padding:30px 22px}.about-block h2{font-size:1.6rem;text-align:center}}
+/* ABOUT */
+.about-page{flex:1;margin:60px auto;display:flex;justify-content:center}
+.about-card{width:100%;max-width:960px;display:grid;grid-template-columns:310px 1fr;overflow:hidden;background:var(--card);border:1px solid var(--line);border-radius:24px;box-shadow:var(--shadow)}
+.profile-section{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:26px;padding:44px 28px;background:linear-gradient(180deg,var(--honey-soft),#f2dc8e)}
+.img-wrapper{width:200px;height:250px;padding:6px;border-radius:100px 100px 20px 20px;background:var(--card);box-shadow:0 12px 28px rgba(185,131,18,.3)}
+.img-wrapper img{width:100%;height:100%;border-radius:94px 94px 14px 14px;object-position:center 30%}
+.social-icons{display:flex;gap:12px}
+.social-icons a{display:flex;align-items:center;justify-content:center;width:42px;height:42px;background:var(--card);border:1px solid var(--line);border-radius:50%}
+.social-icons a:hover{background:var(--honey);transform:translateY(-2px)}
+.content-section{display:flex;flex-direction:column;justify-content:center;gap:26px;padding:46px}
+.text-content h1{margin-bottom:16px;font:900 2rem var(--display)}
+.text-content p{margin-bottom:16px;color:#40341f;font-size:1.05rem;line-height:1.9}
+.text-content strong{color:#6a4705}
+.signature{display:inline-block;margin-top:14px;padding-top:12px;color:var(--link);font:italic 700 1rem var(--display);letter-spacing:.06em;border-top:2px solid var(--honey)}
+.about-actions{display:flex;flex-wrap:wrap;gap:12px}
+@media(max-width:850px){.about-page{margin:30px auto}.about-card{grid-template-columns:1fr}.profile-section{padding:34px 20px}.content-section{padding:30px 22px}.text-content h1{font-size:1.6rem;text-align:center}.about-actions{justify-content:center}}

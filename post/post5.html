@@ -1,60 +1,53 @@
 <!doctype html>
-<html lang="ja">
+<html lang="en">
 
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>彼女が作ったピザ｜Hoang Minh Phuong's Blog</title>
-
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;900&family=Noto+Serif:ital,wght@0,400;0,600;0,700;1,400&family=Noto+Serif+JP:wght@400;700&display=swap"
-        rel="stylesheet" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-
-    <link rel="stylesheet" href="../css/style.css" />
-    <link rel="stylesheet" href="../css/header-footer.css" />
-    <link rel="stylesheet" href="../css/post-style.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title data-i18n="p5.title">The Pizza My Girlfriend Made</title>
+  <link rel="icon" href="../logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;900&family=Noto+Serif:ital,wght@0,400;0,600;0,700;1,400&family=Noto+Serif+JP:wght@400;700&display=swap">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/header-footer.css">
+  <link rel="stylesheet" href="../css/post-style.css">
 </head>
 
 <body class="post-page-content">
-    <div id="header"></div>
+  <div id="header"></div>
 
-    <main class="post-container">
-        <a href="../index.html" class="back-btn"><i class="fa-solid fa-arrow-left"></i>Homeに戻る</a>
+  <main class="post-container">
+    <a href="../blog/blog.html" class="back-btn"><i class="fa-solid fa-arrow-left" aria-hidden="true"></i> <span data-i18n="common.backBlog">Back to all posts</span></a>
 
-        <article class="premium-post">
-            <h1>彼女が作ったピザ</h1>
+    <article class="premium-post">
+      <h1 data-i18n="p5.title">The Pizza My Girlfriend Made</h1>
 
-            <div class="post-meta">
-                <span><i class="fa-regular fa-calendar"></i>2026/07/08</span>
-                <span><i class="fa-solid fa-user"></i> Hoang Minh Phuong</span>
-            </div>
+      <div class="post-meta">
+        <span><i class="fa-regular fa-calendar" aria-hidden="true"></i> <time datetime="2026-07-08" data-date="2026-07-08">2026-07-08</time></span>
+        <span><i class="fa-solid fa-user" aria-hidden="true"></i> <span data-i18n="common.author">Hoang Minh Phuong</span></span>
+        <span><i class="fa-solid fa-pizza-slice" aria-hidden="true"></i> <span data-i18n="cat.cooking">Cooking</span></span>
+      </div>
 
-            <!-- 画像は実際のピザの写真ファイル名に変更してください -->
-            <img src="../images/pizza.jpg" alt="彼女が作った手作りピザ" />
+      <img src="../images/pizza.jpg" alt="The Pizza My Girlfriend Made" data-i18n-alt="p5.title">
 
-            <h2>心温まる手作りピザの夜</h2>
-            <p>
-                今日は、彼女が初めてpizzaを作ってくれました。トッピングを工夫して焼き上げたピザは、まるでお店で出てくるような本格的な仕上がりでした。
-            </p>
-            <p>
-                一口食べた瞬間に広がるチーズの風味と、カリッとした生地の食感。何よりも、相手のことを想って作ってくれたという気持ちが、一番のスパイスになっていた気がします。
-            </p>
-
-            <blockquote>"美味しい料理は、心を豊かにする。"</blockquote>
-
-            <p>
-                美味しいものを共有できる時間は、日々の生活の中で本当にかけがえのないものだと改めて感じました。今度は二人で一緒にトッピングを考えて、また新しいピザ作りに挑戦してみたいと思います。
-            </p>
-        </article>
-    </main>
+      <h2 data-i18n="p5.b0">A heartwarming homemade pizza night</h2>
+      <p data-i18n-html="p5.b1">Today my girlfriend made pizza for the first time. She got creative with the toppings, and the finished pizza looked and tasted like something served in a restaurant.</p>
+      <p data-i18n-html="p5.b2">The moment I took a bite, the flavor of the cheese spread through my mouth, and the crust was wonderfully crisp. Above all, knowing she made it thinking of me was the best seasoning of all.</p>
+      <blockquote data-i18n="p5.b3">Delicious food enriches the heart.</blockquote>
+      <p data-i18n-html="p5.b4">Time spent sharing good food is truly precious in daily life — I felt that again. Next time, I'd like to think up the toppings together and try making a new pizza.</p>
+    </article>
+    <nav class="post-nav">
+      <a class="post-nav-link prev" href="post4.html"><small>&larr;</small> <span data-i18n="p4.title">My Hobby Is Cooking</span></a>
+      <span></span>
+    </nav>
+  </main>
 
   <div id="footer"></div>
+  <script src="../js/translations.js"></script>
+  <script src="../js/i18n.js"></script>
   <script src="../js/components.js"></script>
-
-    <script src="../js/script.js"></script>
 </body>
 
 </html>

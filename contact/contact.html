@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title data-i18n="contact.title">Contact — Hoang Minh Phuong</title>
+  <link rel="icon" href="../logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;900&family=Noto+Serif:ital,wght@0,400;0,600;0,700;1,400&family=Noto+Serif+JP:wght@400;700&display=swap">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/header-footer.css">
+  <link rel="stylesheet" href="../css/pages.css">
+</head>
+
+<body>
+  <div id="header"></div>
+
+  <main class="container page">
+    <header class="page-head">
+      <h1 data-i18n="contact.h">Get in touch</h1>
+      <p class="page-sub" data-i18n="contact.sub">Have a question, an idea, or just want to say hello? I'd love to hear from you.</p>
+    </header>
+
+    <div class="contact-layout">
+      <div class="contact-cards">
+        <a class="contact-card" href="mailto:hoangminhphuong270401@gmail.com">
+          <span class="tile-icon"><i class="fa-solid fa-envelope" aria-hidden="true"></i></span>
+          <div><small data-i18n="contact.email">Email</small><strong>hoangminhphuong270401@gmail.com</strong></div>
+        </a>
+        <a class="contact-card" href="tel:08058264308">
+          <span class="tile-icon"><i class="fa-solid fa-phone" aria-hidden="true"></i></span>
+          <div><small data-i18n="contact.phone">Phone</small><strong>080-5826-4308</strong></div>
+        </a>
+        <div class="contact-card">
+          <span class="tile-icon"><i class="fa-solid fa-share-nodes" aria-hidden="true"></i></span>
+          <div><small data-i18n="contact.social">Social</small>
+            <span class="social-inline">
+              <a href="#" aria-label="GitHub"><i class="fa-brands fa-github" aria-hidden="true"></i></a>
+              <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin" aria-hidden="true"></i></a>
+              <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook" aria-hidden="true"></i></a>
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <form class="contact-form" id="contact-form">
+        <h3 data-i18n="contact.formTitle">Send me a message</h3>
+        <label for="c-name"><span data-i18n="contact.name">Your name</span></label>
+        <input type="text" id="c-name" required>
+        <label for="c-subject"><span data-i18n="contact.subject">Subject</span></label>
+        <input type="text" id="c-subject" required>
+        <label for="c-message"><span data-i18n="contact.message">Message</span></label>
+        <textarea id="c-message" rows="6" required></textarea>
+        <button type="submit" class="btn"><i class="fa-solid fa-paper-plane" aria-hidden="true"></i> <span data-i18n="contact.send">Send message</span></button>
+        <p class="form-note" data-i18n="contact.note">This opens your email app with the message ready to send.</p>
+      </form>
+    </div>
+  </main>
+
+  <div id="footer"></div>
+  <script src="../js/translations.js"></script>
+  <script src="../js/i18n.js"></script>
+  <script src="../js/components.js"></script>
+  <script src="../js/pages.js"></script>
+</body>
+
+</html>

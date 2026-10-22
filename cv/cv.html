@@ -1,51 +1,44 @@
-<!DOCTYPE html>
-<html lang="ja">
+<!doctype html>
+<html lang="en">
 
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title data-i18n="cv.title">Résumé — Hoang Minh Phuong</title>
   <link rel="icon" href="../logo.png">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>履歴書 (CV) - Hoang Minh Phuong</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;900&family=Noto+Serif:ital,wght@0,400;0,600;0,700;1,400&family=Noto+Serif+JP:wght@400;700&display=swap"
-    rel="stylesheet">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;900&family=Noto+Serif:ital,wght@0,400;0,600;0,700;1,400&family=Noto+Serif+JP:wght@400;700&display=swap">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
   <link rel="stylesheet" href="../css/style.css">
-  <link rel="stylesheet" href="../css/header-footer.css" />
+  <link rel="stylesheet" href="../css/header-footer.css">
   <link rel="stylesheet" href="../css/cv.css">
 </head>
 
 <body>
   <div id="header"></div>
+
   <main class="container cv-page">
-    <div class="section-title center-text">
-      <h2><i class="fa-solid fa-id-card"></i> 履歴書 (Curriculum Vitae)</h2>
-      <p>Cập nhật lần cuối: 14/01/2025</p>
-    </div>
+    <header class="page-head">
+      <h1><i class="fa-solid fa-id-card" aria-hidden="true"></i> <span data-i18n="cv.h">Résumé (Curriculum Vitae)</span></h1>
+      <p class="page-sub"><span data-i18n="cv.updated">Last updated:</span> <time datetime="2025-01-14" data-date="2025-01-14">2025-01-14</time></p>
+    </header>
 
     <div class="pdf-wrapper">
-      <iframe src="../pdf/HOANGMINHPHUONG履歴書.pdf" title="CV Hoàng Minh Phương"></iframe>
-
-      <div class="pdf-fallback">
-        <p>Trình duyệt của bạn không hỗ trợ xem PDF trực tiếp.</p>
-      </div>
+      <iframe src="../pdf/HOANGMINHPHUONG履歴書.pdf" title="Résumé of Hoang Minh Phuong" data-i18n-title="cv.frame"></iframe>
+      <div class="pdf-fallback"><p data-i18n="cv.fallback">Your browser can't display PDFs directly.</p></div>
     </div>
 
     <div class="cv-actions">
-      <a href="../pdf/HOANGMINHPHUONG履歴書.pdf" target="_blank" class="btn-primary">
-        <i class="fa-solid fa-external-link-alt"></i> Mở tab mới
-      </a>
-      <a href="../pdf/HOANGMINHPHUONG履歴書.pdf" download="CV_HOANGMINHPHUONG.pdf" class="btn-secondary">
-        <i class="fa-solid fa-download"></i> Tải xuống (PDF)
-      </a>
+      <a href="../pdf/HOANGMINHPHUONG履歴書.pdf" target="_blank" rel="noopener" class="btn"><i class="fa-solid fa-external-link-alt" aria-hidden="true"></i> <span data-i18n="cv.open">Open in new tab</span></a>
+      <a href="../pdf/HOANGMINHPHUONG履歴書.pdf" download="CV_HOANGMINHPHUONG.pdf" class="btn btn-outline"><i class="fa-solid fa-download" aria-hidden="true"></i> <span data-i18n="cv.download">Download (PDF)</span></a>
     </div>
   </main>
+
   <div id="footer"></div>
-<script src="../js/components.js"></script>
-  <script src="../js/script.js"></script>
+  <script src="../js/translations.js"></script>
+  <script src="../js/i18n.js"></script>
+  <script src="../js/components.js"></script>
 </body>
 
 </html>
