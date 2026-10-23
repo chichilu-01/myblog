@@ -5,14 +5,17 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title data-i18n="p2.title">Self-Introduction</title>
+  <script>document.documentElement.classList.add('js');try{var t=localStorage.getItem('theme');if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)}catch(e){}</script>
   <link rel="icon" href="../logo.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;900&family=Noto+Serif:ital,wght@0,400;0,600;0,700;1,400&family=Noto+Serif+JP:wght@400;700&display=swap">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,700;1,500&family=EB+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Noto+Serif+JP:wght@400;700&display=swap">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></noscript>
   <link rel="stylesheet" href="../css/style.css">
   <link rel="stylesheet" href="../css/header-footer.css">
   <link rel="stylesheet" href="../css/post-style.css">
+  <link rel="stylesheet" href="../css/extras.css">
 </head>
 
 <body class="post-page-content">
@@ -30,7 +33,7 @@
         <span><i class="fa-brands fa-java" aria-hidden="true"></i> <span data-i18n="cat.tech">Tech</span></span>
       </div>
 
-      <img src="../images/anh1.jpg" alt="Self-Introduction" data-i18n-alt="p2.title">
+      <img src="../images/w1600/anh1.webp" width="1200" height="1600" fetchpriority="high" alt="Self-Introduction" data-i18n-alt="p2.title">
 
       <h2 data-i18n="p2.b0">My strengths</h2>
       <p data-i18n-html="p2.b1">I have a strong sense of responsibility and put what I learn into action right away. I don't fear failure — I value giving things a try first.</p>
@@ -39,6 +42,7 @@
       <p data-i18n-html="p2.b4">I'm calm by nature, but I take responsibility as a member of a team and see things through to the end.</p>
       <blockquote data-i18n="p2.b5">After joining a company, I aim to keep absorbing new technologies and keep growing as an engineer.</blockquote>
     </article>
+    <div class="share-row"><button type="button" class="btn btn-outline" id="share-btn"><i class="fa-solid fa-link" aria-hidden="true"></i> <span data-i18n="share.copy">Copy link</span></button></div>
     <nav class="post-nav">
       <a class="post-nav-link prev" href="post1.html"><small>&larr;</small> <span data-i18n="p1.title">My First Post</span></a>
       <a class="post-nav-link next" href="post3.html"><span data-i18n="p3.title">My Weakness</span> <small>&rarr;</small></a>
@@ -49,6 +53,7 @@
   <script src="../js/translations.js"></script>
   <script src="../js/i18n.js"></script>
   <script src="../js/components.js"></script>
+  <script src="../js/pages.js"></script>
 </body>
 
 </html>

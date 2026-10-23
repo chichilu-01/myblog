@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 260 180" width="260" height="180"><defs><mask id="mr" maskUnits="userSpaceOnUse" x="0" y="0" width="260" height="180"><rect x="0" y="0" width="260" height="180" fill="#fff"/><g fill="#000" stroke="#000"><circle cx="62" cy="58" r="9" fill="none" stroke-width="3.4"/><circle cx="62" cy="58" r="2.6" stroke="none"/><path d="M96 92 L104 118" stroke-width="2.4" fill="none"/><path d="M106 95 L114 121" stroke-width="2.4" fill="none"/><path d="M116 98 L124 124" stroke-width="2.4" fill="none"/><path d="M126 101 L134 127" stroke-width="2.4" fill="none"/><path d="M136 104 L144 130" stroke-width="2.4" fill="none"/></g></mask></defs><g fill="#5c3d0a">
+      <circle mask="url(#mr)" cx="62" cy="58" r="25"/>
+      <path d="M40 64 C22 66 18 86 30 96 C32 82 40 78 50 76 Z"/>
+      <path mask="url(#mr)" d="M72 78 C96 84 130 100 152 116 L196 102 L186 134 C150 144 106 134 82 108 Z"/>
+      <path d="M112.0 92.0 Q111.8 62.4 96.5 29.9 Q98.2 65.7 112.0 92.0Z"/><path d="M112.0 92.0 Q117.9 60.3 109.6 22.0 Q103.9 60.8 112.0 92.0Z"/><path d="M112.0 92.0 Q124.1 64.0 123.5 27.0 Q110.3 61.5 112.0 92.0Z"/><path d="M112.0 92.0 Q127.9 71.3 133.0 40.1 Q114.9 66.0 112.0 92.0Z"/>
+      <path d="M180.0 116.0 Q206.4 114.0 231.9 95.0 Q200.4 99.1 180.0 116.0Z"/><path d="M180.0 116.0 Q208.6 121.0 241.7 109.5 Q206.9 105.1 180.0 116.0Z"/><path d="M180.0 116.0 Q205.2 128.6 239.1 126.4 Q208.0 112.8 180.0 116.0Z"/><path d="M180.0 116.0 Q196.7 133.1 224.9 137.9 Q203.7 118.7 180.0 116.0Z"/>
+    </g>
+    <g fill="none" stroke="#5c3d0a" stroke-width="3.4" stroke-linecap="round">
+      <path d="M118 130 L116 170 M110 172 L124 172"/><path d="M134 128 L136 168 M128 170 L142 170"/>
+    </g></svg>

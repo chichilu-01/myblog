@@ -5,14 +5,17 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title data-i18n="p3.title">My Weakness</title>
+  <script>document.documentElement.classList.add('js');try{var t=localStorage.getItem('theme');if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)}catch(e){}</script>
   <link rel="icon" href="../logo.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;900&family=Noto+Serif:ital,wght@0,400;0,600;0,700;1,400&family=Noto+Serif+JP:wght@400;700&display=swap">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,700;1,500&family=EB+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Noto+Serif+JP:wght@400;700&display=swap">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></noscript>
   <link rel="stylesheet" href="../css/style.css">
   <link rel="stylesheet" href="../css/header-footer.css">
   <link rel="stylesheet" href="../css/post-style.css">
+  <link rel="stylesheet" href="../css/extras.css">
 </head>
 
 <body class="post-page-content">
@@ -30,7 +33,7 @@
         <span><i class="fa-solid fa-book-open" aria-hidden="true"></i> <span data-i18n="cat.life">Life</span></span>
       </div>
 
-      <img src="../images/tansho2.jpg" alt="My Weakness" data-i18n-alt="p3.title">
+      <img src="../images/w1600/tansho2.webp" width="1200" height="1600" fetchpriority="high" alt="My Weakness" data-i18n-alt="p3.title">
 
       <h2 data-i18n="p3.b0">Being introverted, and how I deal with it</h2>
       <p data-i18n-html="p3.b1">My weakness is that I'm a little quiet and introverted. When I talk to someone for the first time I get nervous, and there are moments when it's hard to put my thoughts into words right away.</p>
@@ -38,6 +41,7 @@
       <p data-i18n-html="p3.b3">However, because I speak less, I value listening carefully and trying to deeply understand other people's feelings and intentions.</p>
       <blockquote data-i18n="p3.b4">I believe being a good listener is an important skill for building trust in a team. Making the most of this trait, I work every day to become someone my team can rely on.</blockquote>
     </article>
+    <div class="share-row"><button type="button" class="btn btn-outline" id="share-btn"><i class="fa-solid fa-link" aria-hidden="true"></i> <span data-i18n="share.copy">Copy link</span></button></div>
     <nav class="post-nav">
       <a class="post-nav-link prev" href="post2.html"><small>&larr;</small> <span data-i18n="p2.title">Self-Introduction</span></a>
       <a class="post-nav-link next" href="post4.html"><span data-i18n="p4.title">My Hobby Is Cooking</span> <small>&rarr;</small></a>
@@ -48,6 +52,7 @@
   <script src="../js/translations.js"></script>
   <script src="../js/i18n.js"></script>
   <script src="../js/components.js"></script>
+  <script src="../js/pages.js"></script>
 </body>
 
 </html>

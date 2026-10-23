@@ -5,14 +5,17 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title data-i18n="p4.title">My Hobby Is Cooking</title>
+  <script>document.documentElement.classList.add('js');try{var t=localStorage.getItem('theme');if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)}catch(e){}</script>
   <link rel="icon" href="../logo.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;900&family=Noto+Serif:ital,wght@0,400;0,600;0,700;1,400&family=Noto+Serif+JP:wght@400;700&display=swap">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,700;1,500&family=EB+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Noto+Serif+JP:wght@400;700&display=swap">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></noscript>
   <link rel="stylesheet" href="../css/style.css">
   <link rel="stylesheet" href="../css/header-footer.css">
   <link rel="stylesheet" href="../css/post-style.css">
+  <link rel="stylesheet" href="../css/extras.css">
 </head>
 
 <body class="post-page-content">
@@ -30,7 +33,7 @@
         <span><i class="fa-solid fa-utensils" aria-hidden="true"></i> <span data-i18n="cat.cooking">Cooking</span></span>
       </div>
 
-      <img src="../images/soba.jpg" alt="My Hobby Is Cooking" data-i18n-alt="p4.title" class="main-post-image">
+      <img src="../images/w1600/soba.webp" width="960" height="1280" fetchpriority="high" alt="My Hobby Is Cooking" data-i18n-alt="p4.title" class="main-post-image">
 
       <h2 data-i18n="p4.b0">Why I love cooking</h2>
       <p data-i18n-html="p4.b1">My hobby is cooking. On my days off I often try new recipes at home, or cook meals for friends and family.</p>
@@ -38,13 +41,14 @@
       <p data-i18n-html="p4.b3">I especially enjoy making Japanese and Western dishes, and I feel a real sense of accomplishment when they turn out delicious.</p>
       <h3 class="gallery-heading"><i class="fa-solid fa-camera" aria-hidden="true"></i> <span data-i18n="p4.b4">Dishes I made recently</span></h3>
       <div class="gallery-grid">
-        <img src="../images/soba1.jpg" alt="More soba" data-i18n-alt="g.3" loading="lazy">
-        <img src="../images/cook1.jpg" alt="From my kitchen, no. 1" data-i18n-alt="g.4" loading="lazy">
-        <img src="../images/cook2.jpg" alt="From my kitchen, no. 2" data-i18n-alt="g.5" loading="lazy">
-        <img src="../images/cook3.jpg" alt="From my kitchen, no. 3" data-i18n-alt="g.6" loading="lazy">
+        <img src="../images/w800/soba1.webp" width="600" height="800" alt="More soba" data-i18n-alt="g.3" loading="lazy" decoding="async">
+        <img src="../images/w800/cook1.webp" width="600" height="800" alt="From my kitchen, no. 1" data-i18n-alt="g.4" loading="lazy" decoding="async">
+        <img src="../images/w800/cook2.webp" width="600" height="800" alt="From my kitchen, no. 2" data-i18n-alt="g.5" loading="lazy" decoding="async">
+        <img src="../images/w800/cook3.webp" width="600" height="800" alt="From my kitchen, no. 3" data-i18n-alt="g.6" loading="lazy" decoding="async">
       </div>
       <p data-i18n-html="p4.b5">I want to keep trying dishes from all kinds of countries!</p>
     </article>
+    <div class="share-row"><button type="button" class="btn btn-outline" id="share-btn"><i class="fa-solid fa-link" aria-hidden="true"></i> <span data-i18n="share.copy">Copy link</span></button></div>
     <nav class="post-nav">
       <a class="post-nav-link prev" href="post3.html"><small>&larr;</small> <span data-i18n="p3.title">My Weakness</span></a>
       <a class="post-nav-link next" href="post5.html"><span data-i18n="p5.title">The Pizza My Girlfriend Made</span> <small>&rarr;</small></a>
@@ -55,6 +59,7 @@
   <script src="../js/translations.js"></script>
   <script src="../js/i18n.js"></script>
   <script src="../js/components.js"></script>
+  <script src="../js/pages.js"></script>
 </body>
 
 </html>

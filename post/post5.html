@@ -5,14 +5,17 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title data-i18n="p5.title">The Pizza My Girlfriend Made</title>
+  <script>document.documentElement.classList.add('js');try{var t=localStorage.getItem('theme');if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)}catch(e){}</script>
   <link rel="icon" href="../logo.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;900&family=Noto+Serif:ital,wght@0,400;0,600;0,700;1,400&family=Noto+Serif+JP:wght@400;700&display=swap">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,700;1,500&family=EB+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Noto+Serif+JP:wght@400;700&display=swap">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></noscript>
   <link rel="stylesheet" href="../css/style.css">
   <link rel="stylesheet" href="../css/header-footer.css">
   <link rel="stylesheet" href="../css/post-style.css">
+  <link rel="stylesheet" href="../css/extras.css">
 </head>
 
 <body class="post-page-content">
@@ -30,7 +33,7 @@
         <span><i class="fa-solid fa-pizza-slice" aria-hidden="true"></i> <span data-i18n="cat.cooking">Cooking</span></span>
       </div>
 
-      <img src="../images/pizza.jpg" alt="The Pizza My Girlfriend Made" data-i18n-alt="p5.title">
+      <img src="../images/w1600/pizza.webp" width="1200" height="1600" fetchpriority="high" alt="The Pizza My Girlfriend Made" data-i18n-alt="p5.title">
 
       <h2 data-i18n="p5.b0">A heartwarming homemade pizza night</h2>
       <p data-i18n-html="p5.b1">Today my girlfriend made pizza for the first time. She got creative with the toppings, and the finished pizza looked and tasted like something served in a restaurant.</p>
@@ -38,6 +41,7 @@
       <blockquote data-i18n="p5.b3">Delicious food enriches the heart.</blockquote>
       <p data-i18n-html="p5.b4">Time spent sharing good food is truly precious in daily life — I felt that again. Next time, I'd like to think up the toppings together and try making a new pizza.</p>
     </article>
+    <div class="share-row"><button type="button" class="btn btn-outline" id="share-btn"><i class="fa-solid fa-link" aria-hidden="true"></i> <span data-i18n="share.copy">Copy link</span></button></div>
     <nav class="post-nav">
       <a class="post-nav-link prev" href="post4.html"><small>&larr;</small> <span data-i18n="p4.title">My Hobby Is Cooking</span></a>
       <span></span>
@@ -48,6 +52,7 @@
   <script src="../js/translations.js"></script>
   <script src="../js/i18n.js"></script>
   <script src="../js/components.js"></script>
+  <script src="../js/pages.js"></script>
 </body>
 
 </html>

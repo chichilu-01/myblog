@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 200" width="240" height="200"><defs><mask id="md" maskUnits="userSpaceOnUse" x="0" y="0" width="240" height="200"><rect x="0" y="0" width="240" height="200" fill="#fff"/><g fill="#000" stroke="#000"><circle cx="68" cy="86" r="3.6" stroke="none"/><circle cx="68" cy="100" r="3.6" stroke="none"/><circle cx="81" cy="86" r="3.6" stroke="none"/><circle cx="81" cy="100" r="3.6" stroke="none"/><circle cx="94" cy="86" r="3.6" stroke="none"/><circle cx="94" cy="100" r="3.6" stroke="none"/><circle cx="107" cy="86" r="3.6" stroke="none"/><circle cx="107" cy="100" r="3.6" stroke="none"/><circle cx="120" cy="86" r="3.6" stroke="none"/><circle cx="120" cy="100" r="3.6" stroke="none"/><circle cx="133" cy="86" r="3.6" stroke="none"/><circle cx="133" cy="100" r="3.6" stroke="none"/><circle cx="146" cy="86" r="3.6" stroke="none"/><circle cx="146" cy="100" r="3.6" stroke="none"/><circle cx="159" cy="86" r="3.6" stroke="none"/><circle cx="159" cy="100" r="3.6" stroke="none"/><path d="M56 93 C90 80 132 80 164 92" fill="none" stroke-width="2.2"/><circle cx="188" cy="43" r="2.6" stroke="none"/></g></mask></defs><g fill="#5c3d0a">
+      <path mask="url(#md)" d="M50 90 C60 70 130 66 160 80 C172 86 176 98 168 108 C150 118 80 122 56 112 C46 106 44 98 50 90 Z"/>
+      <path mask="url(#md)" d="M146 80 C160 66 168 54 172 44 L190 50 C186 64 180 80 166 98 Z"/>
+      <path mask="url(#md)" d="M170 46 C176 34 192 32 202 38 L218 47 L200 53 C192 57 182 55 176 53 Z"/>
+      <path d="M174 38 L168 24 L182 34 Z"/><path d="M50 92 L36 84 L48 100 Z"/>
+    </g>
+    <g fill="none" stroke="#5c3d0a" stroke-width="4.2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M178 36 C160 18 130 12 92 22"/><path d="M152 20 L148 4"/><path d="M130 16 L124 2"/><path d="M110 19 L100 7"/><path d="M176 34 C164 26 160 18 156 10"/>
+      <path d="M152 108 L158 150 L154 190 L162 192"/><path d="M166 108 L180 146 L184 188 L192 190"/>
+      <path d="M70 110 L62 150 L68 190 L76 192"/><path d="M86 112 L98 152 L94 190 L102 192"/>
+    </g></svg>

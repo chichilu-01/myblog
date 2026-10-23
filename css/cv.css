@@ -1,7 +1,7 @@
 /* RÉSUMÉ */
 .cv-page{flex:1;display:flex;flex-direction:column;align-items:center;padding-top:50px;padding-bottom:80px}
-.pdf-wrapper{width:100%;max-width:950px;height:850px;margin-bottom:34px;overflow:hidden;background:var(--card);border:1px solid var(--line);border-radius:18px;box-shadow:var(--shadow)}
+.pdf-wrapper{width:100%;max-width:950px;height:850px;margin-bottom:34px;overflow:hidden;}
 .pdf-wrapper iframe{width:100%;height:100%;border:0}
 .pdf-fallback{display:none}
-.cv-actions{display:flex;gap:16px;flex-wrap:wrap;justify-content:center}
+.pdf-wrapper{padding:6px}.cv-actions{display:flex;gap:16px;flex-wrap:wrap;justify-content:center}
 @media(max-width:768px){.pdf-wrapper{height:520px}}

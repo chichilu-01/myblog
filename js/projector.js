@@ -1,6 +1,6 @@
 /* projector.js — the retro TV on the home page */
 (function () {
-  var IMAGES = ['maytinh1.jpg', 'anh1.jpg', 'tansho2.jpg', 'maytinh2.jpg', 'soba.jpg', 'pizza.jpg', 'avatar.jpg'];
+  var IMAGES = ['maytinh1', 'anh1', 'tansho2', 'maytinh2', 'soba', 'pizza', 'avatar'];
   var isPowerOn = false;
   var channel = 0;
 
@@ -18,7 +18,7 @@
       var n = channel + 1;
       title.textContent = I18N.t('tv.' + n + '.t');
       excerpt.textContent = I18N.t('tv.' + n + '.e');
-      img.src = 'images/thumbs/' + IMAGES[channel];
+      img.src = 'images/w800/' + IMAGES[channel] + '.webp';
       img.alt = title.textContent;
       img.style.display = title.style.display = excerpt.style.display = 'block';
       hint.style.display = 'none';

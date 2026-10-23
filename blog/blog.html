@@ -6,17 +6,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Notes on programming, cooking and everyday life.">
   <title data-i18n="blog.title">Blog — Hoang Minh Phuong</title>
+  <script>document.documentElement.classList.add('js');try{var t=localStorage.getItem('theme');if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)}catch(e){}</script>
   <link rel="icon" href="../logo.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;900&family=Noto+Serif:ital,wght@0,400;0,600;0,700;1,400&family=Noto+Serif+JP:wght@400;700&display=swap">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,700;1,500&family=EB+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Noto+Serif+JP:wght@400;700&display=swap">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></noscript>
   <link rel="stylesheet" href="../css/style.css">
   <link rel="stylesheet" href="../css/header-footer.css">
   <link rel="stylesheet" href="../css/pages.css">
+  <link rel="stylesheet" href="../css/extras.css">
 </head>
 
-<body>
+<body class="page-blog">
   <div id="header"></div>
 
   <main class="container page">
@@ -24,6 +27,11 @@
       <h1 data-i18n="blog.h">The Blog</h1>
       <p class="page-sub" data-i18n="blog.sub">Notes on programming, cooking and everyday life.</p>
     </header>
+
+    <div class="search-box">
+      <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+      <input type="search" id="blog-search" placeholder="Search posts…" aria-label="Search posts…" data-i18n-placeholder="search.ph" data-i18n-aria="search.ph" autocomplete="off">
+    </div>
 
     <div class="filters" role="group" aria-label="Category">
       <button type="button" class="filter-btn active" data-filter="all"><span data-i18n="cat.all">All</span></button>
@@ -36,7 +44,7 @@
 
       <article class="post-card" data-cat="cooking">
         <a class="post-image" href="../post/post5.html" tabindex="-1" aria-hidden="true">
-          <img src="../images/pizza.jpg" alt="" loading="lazy">
+          <img src="../images/w800/pizza.webp" width="600" height="800" alt="" loading="lazy" decoding="async">
         </a>
         <div class="post-content">
           <div class="post-meta">
@@ -51,7 +59,7 @@
 
       <article class="post-card" data-cat="cooking">
         <a class="post-gallery" href="../post/post4.html" tabindex="-1" aria-hidden="true">
-          <img src="../images/soba.jpg" alt="" loading="lazy">
+          <img src="../images/w800/soba.webp" width="600" height="800" alt="" loading="lazy" decoding="async">
         <div class="gallery-overlay"><span data-i18n="post4.more">+4 more photos</span></div>
         </a>
         <div class="post-content">
@@ -67,7 +75,7 @@
 
       <article class="post-card" data-cat="life">
         <a class="post-image" href="../post/post3.html" tabindex="-1" aria-hidden="true">
-          <img src="../images/tansho2.jpg" alt="" loading="lazy">
+          <img src="../images/w800/tansho2.webp" width="600" height="800" alt="" loading="lazy" decoding="async">
         </a>
         <div class="post-content">
           <div class="post-meta">
@@ -82,7 +90,7 @@
 
       <article class="post-card" data-cat="tech">
         <a class="post-image" href="../post/post2.html" tabindex="-1" aria-hidden="true">
-          <img src="../images/anh1.jpg" alt="" loading="lazy">
+          <img src="../images/w800/anh1.webp" width="600" height="800" alt="" loading="lazy" decoding="async">
         </a>
         <div class="post-content">
           <div class="post-meta">
@@ -97,7 +105,7 @@
 
       <article class="post-card" data-cat="life">
         <a class="post-image" href="../post/post1.html" tabindex="-1" aria-hidden="true">
-          <img src="../images/maytinh1.jpg" alt="" loading="lazy">
+          <img src="../images/w800/maytinh1.webp" width="800" height="523" alt="" loading="lazy" decoding="async">
         </a>
         <div class="post-content">
           <div class="post-meta">

@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 150" width="560" height="150"><defs><g id="b" fill="#5c3d0a">
+  <path d="M154 31 L198 38 L155 38 Z"/>
+  <ellipse cx="150" cy="35" rx="6.5" ry="5.5"/>
+  <path d="M146 30 L136 19 L141 18 L150 29 Z"/><path d="M142 33 L129 25 L133 22 L145 31 Z"/>
+  <path d="M147 39 C139 47 134 49 125 52 L120 61 C134 59 145 50 153 41 Z"/>
+  <path d="M118 52 C100 43 62 45 28 58 C58 67 100 69 117 63 C125 60 125 56 118 52 Z"/>
+  <path d="M104 50 C102 30 80 14 44 8 C62 17 76 31 82 50 Z"/>
+  <path d="M116 51 C119 32 106 16 84 4 C94 18 98 33 95 50 Z"/>
+  <path d="M28 58 L2 50 L4 56 L24 61 Z"/><path d="M28 60 L0 61 L2 66 L26 64 Z"/><path d="M30 62 L4 72 L8 76 L32 65 Z"/>
+  <g fill="none" stroke="#5c3d0a" stroke-width="2.6" stroke-linecap="round">
+    <path d="M84 66 L14 84 L6 80 M14 84 L8 90"/>
+    <path d="M90 67 L22 93 L13 91 M22 93 L18 99"/>
+  </g>
+  <g fill="none" stroke="#efe0b8" stroke-width="2" stroke-linecap="round">
+    <path d="M52 58 L64 58"/><path d="M72 59 L90 59"/><path d="M100 58 L112 57"/>
+    <path d="M60 22 C74 28 84 38 88 49"/><path d="M92 26 C98 34 100 42 99 49"/>
+  </g>
+</g></defs><use href="#b" transform="translate(10 20) scale(0.95)"/><use href="#b" transform="translate(250 70) scale(0.72)"/><use href="#b" transform="translate(430 38) scale(0.55)"/></svg>

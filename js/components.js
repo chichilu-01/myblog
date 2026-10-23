@@ -38,6 +38,7 @@
       '<button type="button" class="lang-btn" data-lang="vi" lang="vi" title="Tiếng Việt">VI</button>' +
       '<button type="button" class="lang-btn" data-lang="ja" lang="ja" title="日本語">日本語</button>' +
       '</div>' +
+      '<button type="button" class="theme-btn" aria-label="Switch light / dark mode" data-i18n-aria="theme.toggle"><i class="fa-solid fa-moon"></i></button>' +
       '<button type="button" class="mobile-menu-btn" aria-label="Menu" aria-controls="main-nav" aria-expanded="false" data-i18n-aria="menu.open">' +
       '<i class="fa-solid fa-bars"></i></button>' +
       '</div></header>';
@@ -53,7 +54,8 @@
       '<a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>' +
       '<a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook"></i></a></div></div>' +
       '</div><div class="footer-bottom"><p>&copy; <span id="year"></span> HOANG MINH PHUONG. ' +
-      '<span data-i18n="footer.rights">All rights reserved.</span></p></div></footer>';
+      '<span data-i18n="footer.rights">All rights reserved.</span></p>' +
+      '<p class="motif-note" data-i18n="footer.motif">Motifs inspired by the ancient Đông Sơn bronze drums of Vietnam.</p></div></footer>';
 
     var h = document.getElementById('header');
     var f = document.getElementById('footer');
@@ -85,9 +87,64 @@
     nav.addEventListener('click', function (e) { if (e.target.closest('a')) setOpen(false); });
   }
 
+  function wireExtras() {
+    var root = document.documentElement;
+    var themeBtn = document.querySelector('.theme-btn');
+    function paintTheme() {
+      var dark = root.getAttribute('data-theme') === 'dark';
+      themeBtn.querySelector('i').className = dark ? 'fa-solid fa-sun' : 'fa-solid fa-moon';
+    }
+    if (themeBtn) {
+      paintTheme();
+      themeBtn.addEventListener('click', function () {
+        var next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+        root.setAttribute('data-theme', next);
+        try { localStorage.setItem('theme', next); } catch (e) { /* ignore */ }
+        paintTheme();
+      });
+    }
+
+    // back-to-top button
+    var top = document.createElement('button');
+    top.type = 'button';
+    top.className = 'to-top';
+    top.setAttribute('data-i18n-aria', 'top.back');
+    top.innerHTML = '<i class="fa-solid fa-chevron-up" aria-hidden="true"></i>';
+    top.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+    document.body.appendChild(top);
+
+    // header shrinks a little + to-top shows after scrolling
+    var header = document.querySelector('.site-header');
+    function onScroll() {
+      var y = window.pageYOffset || root.scrollTop;
+      if (header) header.classList.toggle('scrolled', y > 24);
+      top.classList.toggle('show', y > 600);
+    }
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+
+    // gentle reveal on scroll
+    var sel = '.post-card,.tile,.project-card,.gallery-item,.contact-card,.contact-form,.section-title,.page-head,.about-card,.pdf-wrapper,.retro-tv-container';
+    var els = Array.prototype.slice.call(document.querySelectorAll(sel));
+    if (!('IntersectionObserver' in window)) return;
+    var seen = 0;
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (!en.isIntersecting) return;
+        var el = en.target;
+        el.style.transitionDelay = (seen++ % 4) * 90 + 'ms';
+        el.classList.add('in');
+        setTimeout(function () { el.style.transitionDelay = ''; }, 1000);
+        io.unobserve(el);
+      });
+    }, { threshold: 0.12 });
+    els.forEach(function (el) { el.classList.add('reveal'); io.observe(el); });
+  }
+
   document.addEventListener('DOMContentLoaded', function () {
     build();
     wire();
+    wireExtras();
     window.I18N.apply();
   });
 })();
