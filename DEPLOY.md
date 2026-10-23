@@ -16,3 +16,23 @@
 
 ## When you add a new photo
 Create the two WebP sizes (800 px and 1600 px wide, quality ~76) and put them in `images/w800` / `images/w1600`.
+
+## Logo and phone home-screen icon
+The ChiChiLu phoenix is used as the site icon (pixel-art redraw by default).
+
+| File | Used for |
+|---|---|
+| `favicon.ico`, `favicon.svg` | Browser tab |
+| `icons/apple-touch-icon.png` | iPhone / iPad "Add to Home Screen" |
+| `icons/icon-192.png`, `icon-512.png`, `icon-maskable-512.png` + `site.webmanifest` | Android / Chrome "Install app" |
+| `images/logo-bird-pixel.png` | Pixel phoenix, transparent, 512 px (for any other use) |
+| `images/logo-bird-classic.png` | Original phoenix (no text), transparent background |
+| `icons/classic/` | The same icon set made from the original (smooth) artwork |
+
+To use the smooth artwork instead of the pixel one, copy the 4 PNG files from `icons/classic/` over the ones in `icons/`.
+
+**Add to the phone:** open the site, then
+- iPhone (Safari): Share → *Add to Home Screen*.
+- Android (Chrome): ⋮ menu → *Add to Home screen* / *Install app*.
+
+Phones remember the icon from the moment you add the site. If you change the icon later, delete the shortcut and add it again.
